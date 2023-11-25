@@ -507,6 +507,7 @@ ENDM
 	map_attributes CeruleanPokecenter1F, CERULEAN_POKECENTER_1F, $00, 0
 	map_attributes CeruleanPokecenter2FBeta, CERULEAN_POKECENTER_2F_BETA, $00, 0
 	map_attributes CeruleanGym, CERULEAN_GYM, $00, 0
+	map_attributes CeruleanBikeShop, CERULEAN_BIKE_SHOP, $00, 0
 	map_attributes CeruleanMart, CERULEAN_MART, $00, 0
 	map_attributes Route10Pokecenter1F, ROUTE_10_POKECENTER_1F, $00, 0
 	map_attributes Route10Pokecenter2FBeta, ROUTE_10_POKECENTER_2F_BETA, $00, 0
@@ -665,6 +666,8 @@ ENDM
 	map_attributes Route2NuggetHouse, ROUTE_2_NUGGET_HOUSE, $00, 0
 	map_attributes Route2Gate, ROUTE_2_GATE, $00, 0
 	map_attributes VictoryRoadGate, VICTORY_ROAD_GATE, $00, 0
+	map_attributes Route2ViridianForestGateNorth, ROUTE_2_VIRIDIAN_FOREST_GATE_NORTH, $00, 0
+	map_attributes Route2ViridianForestGateSouth, ROUTE_2_VIRIDIAN_FOREST_GATE_SOUTH, $00, 0
 	map_attributes ElmsLab, ELMS_LAB, $00, 0
 	map_attributes PlayersHouse1F, PLAYERS_HOUSE_1F, $00, 0
 	map_attributes PlayersHouse2F, PLAYERS_HOUSE_2F, $00, 0
@@ -695,3 +698,35 @@ ENDM
 	map_attributes Route30BerryHouse, ROUTE_30_BERRY_HOUSE, $00, 0
 	map_attributes MrPokemonsHouse, MR_POKEMONS_HOUSE, $00, 0
 	map_attributes Route31VioletGate, ROUTE_31_VIOLET_GATE, $00, 0
+	map_attributes ViridianForest, VIRIDIAN_FOREST, $06, 0
+	map_attributes Museum1F, MUSEUM_1F, $00, 0
+	map_attributes Museum2F, MUSEUM_2F, $00, 0
+	map_attributes SilphCo2F, SILPH_CO_2F, $00, 0
+	map_attributes PowerPlantB1F, POWER_PLANT_B1F, $00, 0
+	map_attributes UndergroundKPF, UNDERGROUND_KPF, $00, 0
+	map_attributes Route8UndergroundPathEntrance, ROUTE_8_UNDERGROUND_PATH_ENTRANCE, $00, 0
+	map_attributes Route7UndergroundPathEntrance, ROUTE_7_UNDERGROUND_PATH_ENTRANCE, $00, 0
+	map_attributes CinnabarVolcano1F, CINNABAR_VOLCANO_1F, $09, 0
+	map_attributes CinnabarVolcano2F, CINNABAR_VOLCANO_2F, $09, 0
+	map_attributes CinnabarVolcanoB1F, CINNABAR_VOLCANO_B1F, $09, 0
+	map_attributes CinnabarVolcanoItemRooms, CINNABAR_VOLCANO_ITEM_ROOMS, $09, 0
+	map_attributes CeruleanCave1F, CERULEAN_CAVE_1F, $1D, 0
+	map_attributes CeruleanCaveB1F, CERULEAN_CAVE_B1F, $09, 0
+	map_attributes CeruleanCave2F, CERULEAN_CAVE_2F, $09, 0
+	map_attributes SeafoamIslands1F, SEAFOAM_ISLANDS_1F, $09, 0
+	map_attributes SeafoamIslandsB1F, SEAFOAM_ISLANDS_B1F, $19, 0
+	map_attributes SeafoamIslandsB2F, SEAFOAM_ISLANDS_B2F, $19, 0
+	map_attributes SeafoamIslandsB3F, SEAFOAM_ISLANDS_B3F, $19, 0
+	map_attributes SeafoamIslandsB4F, SEAFOAM_ISLANDS_B4F, $19, 0
+	map_attributes SafariZoneCenter, SAFARI_ZONE_CENTER, $06, 0
+	map_attributes SafariZoneNorth, SAFARI_ZONE_NORTH, $06, 0
+	map_attributes SafariZoneEast, SAFARI_ZONE_EAST, $06, 0
+	map_attributes SafariZoneWest, SAFARI_ZONE_WEST, $06, 0
+	map_attributes SafariZoneCenterHouse, SAFARI_ZONE_CENTER_HOUSE, $00, 0
+	map_attributes SafariZoneNorthHouse, SAFARI_ZONE_NORTH_HOUSE, $00, 0
+	map_attributes SafariZoneEastHouse, SAFARI_ZONE_EAST_HOUSE, $00, 0
+	map_attributes SafariZoneWestHouse, SAFARI_ZONE_WEST_HOUSE, $00, 0
+	map_attributes SafariZoneSecretHouse, SAFARI_ZONE_SECRET_HOUSE, $00, 0
+	map_attributes TestWarpRoom, TEST_WARP_ROOM, $00, 0 ; FOR TESTING
+	
+	

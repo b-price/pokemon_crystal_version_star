@@ -9,6 +9,7 @@
 	const LAKEOFRAGE_COOLTRAINER_F2
 	const LAKEOFRAGE_GYARADOS
 	const LAKEOFRAGE_WESLEY
+	const LAKEOFRAGE_CLAIR
 	const LAKEOFRAGE_POKE_BALL1
 	const LAKEOFRAGE_POKE_BALL2
 
@@ -18,8 +19,8 @@ LakeOfRage_MapScripts:
 	scene_script LakeOfRageNoop2Scene ; unusable
 
 	def_callbacks
+	callback MAPCALLBACK_OBJECTS, LakeOfRageClairWesleyCallback
 	callback MAPCALLBACK_NEWMAP, LakeOfRageFlypointCallback
-	callback MAPCALLBACK_OBJECTS, LakeOfRageWesleyCallback
 
 LakeOfRageNoop1Scene:
 	end
@@ -27,18 +28,34 @@ LakeOfRageNoop1Scene:
 LakeOfRageNoop2Scene:
 	end
 
-LakeOfRageFlypointCallback:
-	setflag ENGINE_FLYPOINT_LAKE_OF_RAGE
+LakeOfRageClairWesleyCallback:
+	readvar VAR_WEEKDAY
+	ifequal THURSDAY, .ClairCanAppear
+	ifequal SUNDAY, .ClairCanAppear
+	ifequal WEDNESDAY, .WesleyAppears
+	disappear LAKEOFRAGE_CLAIR
+	disappear LAKEOFRAGE_WESLEY
 	endcallback
 
-LakeOfRageWesleyCallback:
-	readvar VAR_WEEKDAY
-	ifequal WEDNESDAY, .WesleyAppears
+.ClairCanAppear:
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .ClairAppears
+	disappear LAKEOFRAGE_CLAIR
+	disappear LAKEOFRAGE_WESLEY
+	endcallback
+
+.ClairAppears:
+	appear LAKEOFRAGE_CLAIR
 	disappear LAKEOFRAGE_WESLEY
 	endcallback
 
 .WesleyAppears:
 	appear LAKEOFRAGE_WESLEY
+	disappear LAKEOFRAGE_CLAIR
+	endcallback
+
+LakeOfRageFlypointCallback:
+	setflag ENGINE_FLYPOINT_LAKE_OF_RAGE
 	endcallback
 
 LakeOfRageLanceScript:
@@ -223,11 +240,45 @@ WesleyNotWednesdayScript:
 	closetext
 	end
 
+LakeOfRageClair:
+    faceplayer
+    opentext
+    checkflag ENGINE_CLAIR_REMATCH
+    iftrue .FightDone
+    writetext LakeOfRageClairIntroText
+    yesorno
+    iffalse .RefusedBattle
+    writetext LakeOfRageClairAcceptText
+    waitbutton
+    closetext
+    winlosstext LakeOfRageClairBeatenText, 0
+    loadtrainer CLAIR, CLAIR2
+    startbattle
+    reloadmapafterbattle
+    setflag ENGINE_CLAIR_REMATCH
+    opentext
+    writetext LakeOfRageClairAfterBattleText
+    waitbutton
+    closetext
+    end
+
+.RefusedBattle:
+	writetext LakeOfRageClairRefusedText
+	waitbutton
+	closetext
+	end
+
+.FightDone:
+	writetext LakeOfRageClairAfterBattleText
+	waitbutton
+	closetext
+	end
+
 LakeOfRageElixer:
 	itemball ELIXER
 
 LakeOfRageTMDetect:
-	itemball TM_DETECT
+	itemball PP_UP
 
 LakeOfRageHiddenFullRestore:
 	hiddenitem FULL_RESTORE, EVENT_LAKE_OF_RAGE_HIDDEN_FULL_RESTORE
@@ -480,6 +531,55 @@ WesleyNotWednesdayText:
 	cont "That's too bad."
 	done
 
+LakeOfRageClairIntroText:
+	text "CLAIR: Hello,"
+	line "<PLAYER>. Ever"
+	cont "since our battle,"
+
+	para "I've been rethink-"
+	line "ing my battle"
+	cont "strategy."
+
+	para "I believe we've"
+	line "made some serious"
+	cont "improvements."
+
+	para "Would you consider"
+	line "a rematch?"
+	done
+
+LakeOfRageClairAcceptText:
+	text "Excellent."
+	line "No holding back!"
+	done
+
+LakeOfRageClairRefusedText:
+	text "That might be a"
+	line "wise decision on"
+	cont "your part."
+	done
+
+LakeOfRageClairBeatenText:
+	text "No! I can't"
+	line "believe it!"
+	done
+
+LakeOfRageClairAfterBattleText:
+	text "You really are"
+	line "something special."
+
+	para "Unlike last time,"
+	line "I can accept"
+	cont "defeat and"
+
+	para "appreciate the"
+	line "thrilling battle"
+	cont "we had."
+
+	para "Let's battle"
+	line "again sometime."
+	done
+
 LakeOfRageSignText:
 	text "LAKE OF RAGE,"
 	line "also known as"
@@ -518,5 +618,6 @@ LakeOfRage_MapEvents:
 	object_event 36,  7, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 0, TrainerCooltrainerfLois, EVENT_LAKE_OF_RAGE_CIVILIANS
 	object_event 18, 22, SPRITE_GYARADOS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, RedGyarados, EVENT_LAKE_OF_RAGE_RED_GYARADOS
 	object_event  4,  4, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, WesleyScript, EVENT_LAKE_OF_RAGE_WESLEY_OF_WEDNESDAY
+	object_event 28, 24, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, LakeOfRageClair, EVENT_CLAIR_REMATCH
 	object_event  7, 10, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, LakeOfRageElixer, EVENT_LAKE_OF_RAGE_ELIXER
 	object_event 35,  2, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, LakeOfRageTMDetect, EVENT_LAKE_OF_RAGE_TM_DETECT

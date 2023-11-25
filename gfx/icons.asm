@@ -1,3 +1,5 @@
+SECTION "Mon Icons", ROMX
+
 Icons: ; used only for BANK(Icons)
 
 NullIcon:
@@ -39,3 +41,8 @@ GyaradosIcon:     INCBIN "gfx/icons/gyarados.2bpp"
 SlowpokeIcon:     INCBIN "gfx/icons/slowpoke.2bpp"
 SudowoodoIcon:    INCBIN "gfx/icons/sudowoodo.2bpp"
 BigmonIcon:       INCBIN "gfx/icons/bigmon.2bpp"
+ArticunoIcon:     INCBIN "gfx/icons/articuno.2bpp"
+ZapdosIcon:       INCBIN "gfx/icons/zapdos.2bpp"
+MoltresIcon:      INCBIN "gfx/icons/moltres.2bpp"
+MewtwoIcon:       INCBIN "gfx/icons/mewtwo.2bpp"
+MewIcon:          INCBIN "gfx/icons/mew.2bpp"

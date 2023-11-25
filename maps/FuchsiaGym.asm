@@ -10,6 +10,22 @@ FuchsiaGym_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_OBJECTS, FuchsiaGymJanineCallback
+
+FuchsiaGymJanineCallback:
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .JanineCanDisappear
+	appear FUCHSIAGYM_JANINE
+	endcallback
+.JanineCanDisappear:
+	readvar VAR_WEEKDAY
+	ifequal SATURDAY, .JanineDisappear
+	ifequal WEDNESDAY, .JanineDisappear
+	appear FUCHSIAGYM_JANINE
+	endcallback
+.JanineDisappear:
+	disappear FUCHSIAGYM_JANINE
+	endcallback
 
 FuchsiaGymJanineScript:
 	checkflag ENGINE_SOULBADGE
@@ -196,6 +212,8 @@ CamperBarryScript:
 FuchsiaGymGuideScript:
 	faceplayer
 	opentext
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .FuchsiaGymGuideJanineHint
 	checkevent EVENT_BEAT_JANINE
 	iftrue .FuchsiaGymGuideWinScript
 	writetext FuchsiaGymGuideText
@@ -205,6 +223,12 @@ FuchsiaGymGuideScript:
 
 .FuchsiaGymGuideWinScript:
 	writetext FuchsiaGymGuideWinText
+	waitbutton
+	closetext
+	end
+
+.FuchsiaGymGuideJanineHint:
+	writetext FuchsiaGymGuideHintText
 	waitbutton
 	closetext
 	end
@@ -378,6 +402,26 @@ FuchsiaGymGuideWinText:
 	cont "from JOHTO!"
 	done
 
+FuchsiaGymGuideHintText:
+	text "Hey, <PLAYER>!"
+	line "I can't forget"
+	
+	para "that amazing"
+	line "battle you had"
+	cont "with JANINE."
+
+	para "I hear she likes"
+	line "to visit her dad"
+
+	para "at INDIGO PLATEAU"
+	line "on WEDNESDAYs and"
+	cont "SATURDAYs."
+
+	para "Maybe she'd have"
+	line "a rematch with"
+	cont "you!"
+	done
+
 FuchsiaGym_MapEvents:
 	db 0, 0 ; filler
 
@@ -392,7 +436,7 @@ FuchsiaGym_MapEvents:
 	bg_event  6, 15, BGEVENT_READ, FuchsiaGymStatue
 
 	def_object_events
-	object_event  1, 10, SPRITE_JANINE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, FuchsiaGymJanineScript, -1
+	object_event  1, 10, SPRITE_JANINE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, FuchsiaGymJanineScript, EVENT_JANINE_IN_GYM
 	object_event  5,  7, SPRITE_FUCHSIA_GYM_1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, LassAliceScript, -1
 	object_event  5, 11, SPRITE_FUCHSIA_GYM_2, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, LassLindaScript, -1
 	object_event  9,  4, SPRITE_FUCHSIA_GYM_3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PicnickerCindyScript, -1

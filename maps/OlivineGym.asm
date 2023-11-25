@@ -6,6 +6,22 @@ OlivineGym_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_OBJECTS, OlivineGymJasmineCallback
+
+OlivineGymJasmineCallback:
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .JasmineCanDisappear
+	appear OLIVINEGYM_JASMINE
+	endcallback
+.JasmineCanDisappear:
+	readvar VAR_WEEKDAY
+	ifequal WEDNESDAY, .JasmineDisappear
+	ifequal FRIDAY, .JasmineDisappear
+	appear OLIVINEGYM_JASMINE
+	endcallback
+.JasmineDisappear:
+	disappear OLIVINEGYM_JASMINE
+	endcallback
 
 OlivineGymJasmineScript:
 	faceplayer
@@ -60,6 +76,8 @@ OlivineGymActivateRockets:
 
 OlivineGymGuideScript:
 	faceplayer
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .OlivineGymGuideJasmineHint
 	checkevent EVENT_BEAT_JASMINE
 	iftrue .OlivineGymGuideWinScript
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
@@ -80,6 +98,13 @@ OlivineGymGuideScript:
 .OlivineGymGuidePreScript:
 	opentext
 	writetext OlivineGymGuidePreText
+	waitbutton
+	closetext
+	end
+
+.OlivineGymGuideJasmineHint:
+	opentext
+	writetext OlivineGymGuideHintText
 	waitbutton
 	closetext
 	end
@@ -137,9 +162,7 @@ Text_ReceivedMineralBadge:
 	done
 
 Jasmine_BadgeSpeech:
-	text "MINERALBADGE"
-	line "raises #MON's"
-	cont "DEFENSE."
+	text "…What a battle."
 
 	para "…Um… Please take"
 	line "this too…"
@@ -193,6 +216,20 @@ OlivineGymGuidePreText:
 	para "A strong trainer"
 	line "has to be compas-"
 	cont "sionate."
+	done
+
+OlivineGymGuideHintText:
+	text "Long time, no see!"
+	line "JASMINE has really"
+	cont "been training"
+	cont "a lot lately."
+
+	para "But she still man-"
+	line "ages to visit"
+	cont "AMPHY every"
+
+	para "WEDNESDAY and"
+	line "FRIDAY."
 	done
 
 OlivineGym_MapEvents:

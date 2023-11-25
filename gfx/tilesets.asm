@@ -6,9 +6,6 @@ ENDM
 
 SECTION "Tileset Data 1", ROMX
 
-TilesetKantoGFX::
-INCBIN "gfx/tilesets/kanto.2bpp.lz"
-
 TilesetKantoMeta::
 INCBIN "data/tilesets/kanto_metatiles.bin"
 
@@ -335,3 +332,44 @@ INCBIN "data/tilesets/omanyte_word_room_metatiles.bin"
 
 TilesetAerodactylWordRoomMeta::
 INCBIN "data/tilesets/aerodactyl_word_room_metatiles.bin"
+
+TilesetCaveCinnabarGFX::
+INCBIN "gfx/tilesets/cave_cinnabar.2bpp.lz"
+
+TilesetCaveCinnabarMeta::
+INCBIN "data/tilesets/cave_cinnabar_metatiles.bin"
+
+TilesetCaveCinnabarColl::
+INCLUDE "data/tilesets/cave_cinnabar_collision.asm"
+
+SECTION "Tileset Data 9", ROMX
+
+TilesetSafariZoneGFX::
+INCBIN "gfx/tilesets/safari_zone.2bpp.lz"
+
+TilesetSafariZoneMeta::
+INCBIN "data/tilesets/safari_zone_metatiles.bin"
+
+TilesetSafariZoneColl::
+INCLUDE "data/tilesets/safari_zone_collision.asm"
+
+TilesetPowerPlantGFX::
+INCBIN "gfx/tilesets/power_plant.2bpp.lz"
+
+TilesetPowerPlantMeta::
+INCBIN "data/tilesets/power_plant_metatiles.bin"
+
+TilesetPowerPlantColl::
+INCLUDE "data/tilesets/power_plant_collision.asm"
+
+TilesetMuseumGFX::
+INCBIN "gfx/tilesets/museum.2bpp.lz"
+
+TilesetMuseumMeta::
+INCBIN "data/tilesets/museum_metatiles.bin"
+
+TilesetMuseumColl::
+INCLUDE "data/tilesets/museum_collision.asm"
+
+TilesetKantoGFX::
+INCBIN "gfx/tilesets/kanto.2bpp.lz"

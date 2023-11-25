@@ -1,3 +1,6 @@
+	object_const_def
+	const SILVERCAVE_HIKER
+	
 SilverCaveOutside_MapScripts:
 	def_scene_scripts
 
@@ -7,6 +10,30 @@ SilverCaveOutside_MapScripts:
 SilverCaveOutsideFlypointCallback:
 	setflag ENGINE_FLYPOINT_SILVER_CAVE
 	endcallback
+	
+SilverCaveMoveTutorScript:
+	faceplayer
+	opentext
+	writetext SilverCaveTutorExplosionText
+	waitbutton
+	writetext SilverCaveTutorExplosionText2
+	yesorno
+	iffalse .TutorRefused
+	setval EXPLOSION
+	writetext SilverCaveTutorExplosionClear
+	special MoveTutor
+	ifequal FALSE, .TeachMove
+.TutorRefused
+	writetext SilverCaveTutorExplosionRefused
+	waitbutton
+	closetext
+	end
+
+.TeachMove
+	writetext SilverCaveTutorExplosionTaught
+	waitbutton
+	closetext
+	end
 
 MtSilverPokecenterSign:
 	jumpstd PokecenterSignScript
@@ -19,6 +46,37 @@ SilverCaveOutsideHiddenFullRestore:
 
 MtSilverSignText:
 	text "MT.SILVER"
+	done
+	
+SilverCaveTutorExplosionText:
+	text "BOOM!"
+
+	para "I've got loads"
+	line "of dynamite and"
+	cont "I'm not afraid to"
+	cont "use it!"
+	done
+
+SilverCaveTutorExplosionText2:
+	text "That means I can"
+	line "teach your"
+
+	para "#MON to use"
+	line "EXPLOSION!"
+	done
+
+SilverCaveTutorExplosionRefused:
+	text "Your loss!"
+	done
+
+SilverCaveTutorExplosionClear:
+	text_start
+	done
+
+SilverCaveTutorExplosionTaught:
+	text "Have fun!"
+
+	para "KABOOM!"
 	done
 
 SilverCaveOutside_MapEvents:
@@ -36,3 +94,4 @@ SilverCaveOutside_MapEvents:
 	bg_event  9, 25, BGEVENT_ITEM, SilverCaveOutsideHiddenFullRestore
 
 	def_object_events
+	object_event 25, 20, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SilverCaveMoveTutorScript, -1

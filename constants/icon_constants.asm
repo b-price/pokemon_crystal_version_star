@@ -39,6 +39,11 @@
 	const ICON_SLOWPOKE
 	const ICON_SUDOWOODO
 	const ICON_BIGMON
+	const ICON_ARTICUNO
+	const ICON_ZAPDOS
+	const ICON_MOLTRES
+	const ICON_MEWTWO
+	const ICON_MEW
 DEF NUM_ICONS EQU const_value - 1
 
 ; LoadMenuMonIcon.Jumptable indexes (see engine/gfx/mon_icons.asm)
@@ -50,3 +55,14 @@ DEF NUM_ICONS EQU const_value - 1
 	const MONICON_MOBILE1
 	const MONICON_MOBILE2
 	const MONICON_UNUSED
+	
+; party menu icon palettes
+	const_def
+	const PAL_ICON_RED    ; 0
+	const PAL_ICON_BLUE   ; 1
+	const PAL_ICON_GREEN  ; 2
+	const PAL_ICON_BROWN  ; 3
+	const PAL_ICON_PINK   ; 4
+	const PAL_ICON_GRAY   ; 5
+	const PAL_ICON_TEAL   ; 6
+	const PAL_ICON_PURPLE ; 7

@@ -8,15 +8,35 @@
 	const CELADONCITY_YOUNGSTER2
 	const CELADONCITY_TEACHER2
 	const CELADONCITY_LASS
+	const CELADONCITY_NURSE
+	const CELADONCITY_WHITNEY
 
 CeladonCity_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, CeladonCityFlypointCallback
+	callback MAPCALLBACK_OBJECTS, CeladonCityWhitneyCallback
 
 CeladonCityFlypointCallback:
 	setflag ENGINE_FLYPOINT_CELADON
+	endcallback
+
+CeladonCityWhitneyCallback:
+	readvar VAR_WEEKDAY
+	ifequal MONDAY, .WhitneyCanAppear
+	ifequal WEDNESDAY, .WhitneyCanAppear
+	disappear CELADONCITY_WHITNEY
+	endcallback
+
+.WhitneyCanAppear:
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .WhitneyAppears
+	disappear CELADONCITY_WHITNEY
+	endcallback
+
+.WhitneyAppears:
+	appear CELADONCITY_WHITNEY
 	endcallback
 
 CeladonCityFisherScript:
@@ -37,7 +57,20 @@ CeladonCityGramps1Script:
 	jumptextfaceplayer CeladonCityGramps1Text
 
 CeladonCityGramps2Script:
-	jumptextfaceplayer CeladonCityGramps2Text
+	faceplayer
+	opentext
+	writetext CeladonCityGramps2Text
+	waitbutton
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .CeladonCityGramps2ErikaHint
+	closetext
+	end
+
+.CeladonCityGramps2ErikaHint:
+	writetext CeladonCityGramps2HintText
+	waitbutton
+	closetext
+	end
 
 CeladonCityYoungster1Script:
 	jumptextfaceplayer CeladonCityYoungster1Text
@@ -74,6 +107,65 @@ CeladonCityPokecenterSign:
 
 CeladonCityHiddenPpUp:
 	hiddenitem PP_UP, EVENT_CELADON_CITY_HIDDEN_PP_UP
+	
+
+CeladonCityMoveTutorScript:
+	faceplayer
+	opentext
+	writetext CeladonCityTutorSoftboiledText
+	waitbutton
+	writetext CeladonCityTutorSoftboiledText2
+	yesorno
+	iffalse .TutorRefused
+	setval SOFTBOILED
+	writetext CeladonCityTutorSoftboiledClear
+	special MoveTutor
+	ifequal FALSE, .TeachMove
+.TutorRefused
+	writetext CeladonCityTutorSoftboiledRefused
+	waitbutton
+	closetext
+	end
+
+.TeachMove
+	writetext CeladonCityTutorSoftboiledTaught
+	waitbutton
+	closetext
+	end
+
+CeladonCityWhitney:
+    faceplayer
+    opentext
+    checkflag ENGINE_WHITNEY_REMATCH
+    iftrue .FightDone
+    writetext CeladonCityWhitneyIntroText
+    yesorno
+    iffalse .RefusedBattle
+    writetext CeladonCityWhitneyAcceptText
+    waitbutton
+    closetext
+    winlosstext CeladonCityWhitneyBeatenText, 0
+    loadtrainer WHITNEY, WHITNEY2
+    startbattle
+    reloadmapafterbattle
+    setflag ENGINE_WHITNEY_REMATCH
+    opentext
+    writetext CeladonCityWhitneyAfterBattleText
+    waitbutton
+    closetext
+    end
+
+.RefusedBattle:
+	writetext CeladonCityWhitneyRefusedText
+	waitbutton
+	closetext
+	end
+
+.FightDone:
+	writetext CeladonCityWhitneyAfterBattleText
+	waitbutton
+	closetext
+	end
 
 CeladonCityFisherText:
 	text "This POLIWRATH is"
@@ -127,6 +219,25 @@ CeladonCityGramps2Text:
 	para "girls are allowed"
 	line "here!"
 	done
+
+CeladonCityGramps2HintText:
+	text "The most gorgeous"
+	line "among them must"
+	cont "be ERIKA."
+
+	para "She visits the"
+	line "NATIONAL PARK in"
+
+	para "JOTHO every MONDAY"
+	line "and TUESDAY."
+
+	para "How do I know"
+	line "that?"
+
+	para "A little birdie"
+	line "told me!"
+	done
+
 
 CeladonCityYoungster1Text:
 	text "Want to know a"
@@ -243,6 +354,86 @@ CeladonCityTrainerTipsText:
 	line "CELADON DEPT."
 	cont "STORE!"
 	done
+	
+CeladonCityTutorSoftboiledText:
+	text "Hello there!"
+	line "I'm training to"
+	cont "be a nurse."
+
+	para "I've learned a"
+	line "lot from CHANSEY"
+	cont "and BLISSEY!"
+	done
+
+CeladonCityTutorSoftboiledText2:
+	text "Would you like me"
+	line "to teach your"
+
+	para "#MON to use"
+	line "SOFTBOILED?"
+	done
+
+CeladonCityTutorSoftboiledRefused:
+	text "OK then."
+	done
+
+CeladonCityTutorSoftboiledClear:
+	text_start
+	done
+
+CeladonCityTutorSoftboiledTaught:
+	text "Now if your"
+	line "#MON is in a"
+
+	para "pinch, they can"
+	line "eat an egg"
+	cont "and restore HP."
+
+	para "Or if they are"
+	line "feeling a bit"
+	cont "hungry, hehehe!"
+	done
+
+CeladonCityWhitneyIntroText:
+	text "WHITNEY: I just"
+	line "looove shopping!"
+
+	para "Oh, hey <PLAYER>!"
+	line "I'm sorry I was"
+
+	para "a bit of a sore"
+	line "loser last time we"
+	cont "battled."
+
+	para "I'll make it up to"
+	line "you with rematch!"
+
+	para "Whaddya say?"
+	done
+
+CeladonCityWhitneyAcceptText:
+	text "OK, get ready!"
+	done
+
+CeladonCityWhitneyRefusedText:
+	text "Oh, are you"
+	line "scared?"
+	done
+
+CeladonCityWhitneyBeatenText:
+	text "…I'm not gonna"
+	line "cry…"
+	done
+
+CeladonCityWhitneyAfterBattleText:
+	text "Argh! I just can't"
+	line "manage to beat"
+	cont "you!"
+
+	para "It's ok though."
+	line "I'll just shop"
+	cont "away my feelings!"
+	done
 
 CeladonCity_MapEvents:
 	db 0, 0 ; filler
@@ -280,3 +471,5 @@ CeladonCity_MapEvents:
 	object_event 24, 33, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonCityYoungster2Script, -1
 	object_event  6, 14, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonCityTeacher2Script, -1
 	object_event  7, 22, SPRITE_LASS, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 2, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonCityLassScript, -1
+	object_event  5, 18, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonCityMoveTutorScript, -1
+	object_event  8, 18, SPRITE_WHITNEY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonCityWhitney, EVENT_WHITNEY_REMATCH

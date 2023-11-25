@@ -49,9 +49,13 @@ Script_ApproachLanceFromLeft:
 Script_ApproachLanceFromRight:
 	special FadeOutMusic
 	applymovement PLAYER, MovementData_ApproachLanceFromRight
+	
+
 LancesRoomLanceScript:
 	turnobject LANCESROOM_LANCE, LEFT
 	opentext
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue Lance2Script
 	writetext LanceBattleIntroText
 	waitbutton
 	closetext
@@ -61,6 +65,9 @@ LancesRoomLanceScript:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
+	sjump LanceBattleScript
+	
+LanceBattleScript:
 	setevent EVENT_BEAT_CHAMPION_LANCE
 	opentext
 	writetext LanceBattleAfterText
@@ -127,6 +134,18 @@ LancesRoomLanceScript:
 	pause 15
 	warpfacing UP, HALL_OF_FAME, 4, 13
 	end
+	
+Lance2Script:
+	writetext LanceBattleIntroText2
+	waitbutton
+	closetext
+	winlosstext LanceBattleWinText, 0
+	setlasttalked LANCESROOM_LANCE
+	loadtrainer CHAMPION, LANCE2
+	startbattle
+	dontrestartmapmusic
+	reloadmapafterbattle
+	sjump LanceBattleScript
 
 LancesRoom_EnterMovement:
 	step UP
@@ -230,6 +249,33 @@ LanceBattleIntroText:
 
 	para "the #MON LEAGUE"
 	line "CHAMPION…"
+
+	para "I, LANCE the drag-"
+	line "on master, accept"
+	cont "your challenge!"
+	done
+	
+LanceBattleIntroText2:
+	text "LANCE: I've been"
+	line "waiting for you."
+
+	para "<PLAY_G>!"
+
+	para "I knew that you'd"
+	line "come back after"
+
+	para "taking the KANTO"
+	line "gym challenge."
+
+	para "There's no need"
+	line "for words now."
+
+	para "We will once"
+	line "more battle to"
+	line "determine who is"
+
+	para "the stronger of"
+	line "the two of us."
 
 	para "I, LANCE the drag-"
 	line "on master, accept"

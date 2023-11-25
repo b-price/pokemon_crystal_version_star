@@ -169,5 +169,69 @@ KantoWaterWildMons:
 	db 30, TENTACOOL
 	db 35, TENTACRUEL
 	end_water_wildmons
+	
+	def_water_wildmons VIRIDIAN_FOREST
+	db 6 percent ; encounter rate
+	db 35, POLIWAG
+	db 30, GOLDEEN
+	db 35, POLIWHIRL
+	end_water_wildmons
+	
+	def_water_wildmons SAFARI_ZONE_CENTER
+	db 6 percent ; encounter rate
+	db 35, PSYDUCK
+	db 40, GOLDUCK
+	db 35, SQUIRTLE
+	end_water_wildmons
+	
+	def_water_wildmons SAFARI_ZONE_EAST
+	db 6 percent ; encounter rate
+	db 35, PSYDUCK
+	db 40, GOLDUCK
+	db 35, TOTODILE
+	end_water_wildmons
+	
+	def_water_wildmons SAFARI_ZONE_NORTH
+	db 6 percent ; encounter rate
+	db 35, PSYDUCK
+	db 40, GOLDUCK
+	db 35, SQUIRTLE
+	end_water_wildmons
+	
+	def_water_wildmons SAFARI_ZONE_WEST
+	db 6 percent ; encounter rate
+	db 35, PSYDUCK
+	db 40, GOLDUCK
+	db 35, TOTODILE
+	end_water_wildmons
+	
+	def_water_wildmons CINNABAR_VOLCANO_B1F
+	db 6 percent ; encounter rate
+	db 45, SLOWPOKE
+	db 50, QUAGSIRE
+	db 55, SLOWBRO
+	end_water_wildmons
+	
+	def_water_wildmons SEAFOAM_ISLANDS_B4F
+	db 6 percent ; encounter rate
+	db 45, SEEL
+	db 50, DEWGONG
+	db 55, SLOWBRO
+	end_water_wildmons
+	
+	def_water_wildmons CERULEAN_CAVE_1F
+	db 6 percent ; encounter rate
+	db 55, GOLBAT
+	db 60, QUAGSIRE
+	db 65, SLOWBRO
+	end_water_wildmons
+	
+	def_water_wildmons CERULEAN_CAVE_B1F
+	db 6 percent ; encounter rate
+	db 65, GOLBAT
+	db 70, QUAGSIRE
+	db 75, SLOWBRO
+	end_water_wildmons
+
 
 	db -1 ; end

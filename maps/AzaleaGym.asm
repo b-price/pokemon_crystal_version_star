@@ -11,6 +11,22 @@ AzaleaGym_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_OBJECTS, AzaleaGymBugsyCallback
+
+AzaleaGymBugsyCallback:
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .BugsyCanDisappear
+	appear AZALEAGYM_BUGSY
+	endcallback
+.BugsyCanDisappear:
+	readvar VAR_WEEKDAY
+	ifequal SATURDAY, .BugsyDisappear
+	ifequal FRIDAY, .BugsyDisappear
+	appear AZALEAGYM_BUGSY
+	endcallback
+.BugsyDisappear:
+	disappear AZALEAGYM_BUGSY
+	endcallback
 
 AzaleaGymBugsyScript:
 	faceplayer
@@ -124,6 +140,8 @@ TrainerBugCatcherJosh:
 
 AzaleaGymGuideScript:
 	faceplayer
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .AzaleaGymGuideBugsyHint
 	checkevent EVENT_BEAT_BUGSY
 	iftrue .AzaleaGymGuideWinScript
 	opentext
@@ -135,6 +153,13 @@ AzaleaGymGuideScript:
 .AzaleaGymGuideWinScript:
 	opentext
 	writetext AzaleaGymGuideWinText
+	waitbutton
+	closetext
+	end
+
+.AzaleaGymGuideBugsyHint:
+	opentext
+	writetext AzaleaGymGuideHintText
 	waitbutton
 	closetext
 	end
@@ -359,6 +384,24 @@ AzaleaGymGuideWinText:
 	cont "#MON is bright!"
 	done
 
+AzaleaGymGuideHintText:
+	text "Long time, no see!"
+	line "BUGSY has really"
+	cont "been training"
+	cont "a lot lately."
+
+	para "He's not here on"
+	line "FRIDAYs or"
+	cont "SATURDAYs."
+
+	para "He's always raving"
+	line "VIRIDIAN FOREST."
+
+	para "I bet he's check-"
+	line "-ing out the bug"
+	cont "#MON there!"
+	done
+
 AzaleaGym_MapEvents:
 	db 0, 0 ; filler
 
@@ -373,7 +416,7 @@ AzaleaGym_MapEvents:
 	bg_event  6, 13, BGEVENT_READ, AzaleaGymStatue
 
 	def_object_events
-	object_event  5,  7, SPRITE_BUGSY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, AzaleaGymBugsyScript, -1
+	object_event  5,  7, SPRITE_BUGSY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, AzaleaGymBugsyScript, EVENT_BUGSY_IN_GYM
 	object_event  5,  3, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerBugCatcherBenny, -1
 	object_event  8,  8, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerBugCatcherAl, -1
 	object_event  0,  2, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerBugCatcherJosh, -1

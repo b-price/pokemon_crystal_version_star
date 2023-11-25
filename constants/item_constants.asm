@@ -30,7 +30,7 @@
 	const FIRE_STONE   ; 16
 	const THUNDERSTONE ; 17
 	const WATER_STONE  ; 18
-	const ITEM_19      ; 19
+	const HELIX_FOSSIL ; 19 ADDED
 	const HP_UP        ; 1a
 	const PROTEIN      ; 1b
 	const IRON         ; 1c
@@ -50,12 +50,12 @@
 	const SUPER_REPEL  ; 2a
 	const MAX_REPEL    ; 2b
 	const DIRE_HIT     ; 2c
-	const ITEM_2D      ; 2d
+	const DOME_FOSSIL  ; 2d ADDED
 	const FRESH_WATER  ; 2e
 	const SODA_POP     ; 2f
 	const LEMONADE     ; 30
 	const X_ATTACK     ; 31
-	const ITEM_32      ; 32
+	const OLD_AMBER    ; 32 ADDED
 	const X_DEFEND     ; 33
 	const X_SPEED      ; 34
 	const X_SPECIAL    ; 35
@@ -95,7 +95,7 @@
 	const BIG_MUSHROOM ; 57
 	const SILVERPOWDER ; 58
 	const BLU_APRICORN ; 59
-	const ITEM_5A      ; 5a
+	const SECRET_KEY   ; 5a ADDED
 	const AMULET_COIN  ; 5b
 	const YLW_APRICORN ; 5c
 	const GRN_APRICORN ; 5d
@@ -229,7 +229,7 @@ DEF TM01 EQU const_value
 	add_tm PSYCH_UP     ; c8
 	add_tm HIDDEN_POWER ; c9
 	add_tm SUNNY_DAY    ; ca
-	add_tm SWEET_SCENT  ; cb
+	add_tm ICE_BEAM     ; cb CHANGED
 	add_tm SNORE        ; cc
 	add_tm BLIZZARD     ; cd
 	add_tm HYPER_BEAM   ; ce
@@ -252,7 +252,7 @@ DEF TM01 EQU const_value
 	add_tm MUD_SLAP     ; df
 	add_tm DOUBLE_TEAM  ; e0
 	add_tm ICE_PUNCH    ; e1
-	add_tm SWAGGER      ; e2
+	add_tm THUNDERBOLT  ; e2 CHANGED
 	add_tm SLEEP_TALK   ; e3
 	add_tm SLUDGE_BOMB  ; e4
 	add_tm SANDSTORM    ; e5
@@ -261,7 +261,7 @@ DEF TM01 EQU const_value
 	add_tm DEFENSE_CURL ; e8
 	add_tm THUNDERPUNCH ; e9
 	add_tm DREAM_EATER  ; ea
-	add_tm DETECT       ; eb
+	add_tm FLAMETHROWER ; eb CHANGED
 	add_tm REST         ; ec
 	add_tm ATTRACT      ; ed
 	add_tm THIEF        ; ee
@@ -302,9 +302,13 @@ MACRO add_mt
 ENDM
 
 DEF MT01 EQU const_value
-	add_mt FLAMETHROWER
-	add_mt THUNDERBOLT
-	add_mt ICE_BEAM
+	add_mt SPIKES       ; CHANGED
+	add_mt SWORDS_DANCE ; CHANGED
+	add_mt ROCK_SLIDE   ; CHANGED
+	add_mt SWEET_SCENT  ; ADDED
+	add_mt SOFTBOILED  ; ADDED
+	add_mt EXPLOSION  ; ADDED
+	add_mt SUBSTITUTE  ; ADDED
 DEF NUM_TUTORS = __tmhm_value__ - NUM_TMS - NUM_HMS - 1
 
 DEF NUM_TM_HM_TUTOR EQU NUM_TMS + NUM_HMS + NUM_TUTORS

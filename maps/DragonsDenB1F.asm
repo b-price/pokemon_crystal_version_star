@@ -41,7 +41,6 @@ DragonsDenB1FCheckRivalCallback:
 	endcallback
 
 DragonsDenB1F_ClairScene:
-; BUG: Clair can give TM24 Dragonbreath twice (see docs/bugs_and_glitches.md)
 	appear DRAGONSDENB1F_CLAIR
 	opentext
 	writetext ClairText_Wait
@@ -217,7 +216,7 @@ ClairText_GiveDragonbreathDragonDen:
 
 Text_ReceivedTM24:
 	text "<PLAYER> received"
-	line "TM24."
+	line "TM24 DRAGONBREATH."
 	done
 
 ClairText_DescribeDragonbreathDragonDen:

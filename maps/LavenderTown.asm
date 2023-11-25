@@ -3,15 +3,34 @@
 	const LAVENDERTOWN_TEACHER
 	const LAVENDERTOWN_GRAMPS
 	const LAVENDERTOWN_YOUNGSTER
+	const LAVENDERTOWN_MORTY
 
 LavenderTown_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, LavenderTownFlypointCallback
+	callback MAPCALLBACK_OBJECTS, LavenderTownMortyCallback
 
 LavenderTownFlypointCallback:
 	setflag ENGINE_FLYPOINT_LAVENDER
+	endcallback
+
+LavenderTownMortyCallback:
+	readvar VAR_WEEKDAY
+	ifequal TUESDAY, .MortyCanAppear
+	ifequal THURSDAY, .MortyCanAppear
+	disappear LAVENDERTOWN_MORTY
+	endcallback
+
+.MortyCanAppear:
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .MortyAppears
+	disappear LAVENDERTOWN_MORTY
+	endcallback
+
+.MortyAppears:
+	appear LAVENDERTOWN_MORTY
 	endcallback
 
 LavenderTownPokefanMScript:
@@ -25,6 +44,40 @@ LavenderTownGrampsScript:
 
 LavenderTownYoungsterScript:
 	jumptextfaceplayer LavenderTownYoungsterText
+
+LavenderTownMorty:
+    faceplayer
+    opentext
+    checkflag ENGINE_MORTY_REMATCH
+    iftrue .FightDone
+    writetext LavenderTownMortyIntroText
+    yesorno
+    iffalse .RefusedBattle
+    writetext LavenderTownMortyAcceptText
+    waitbutton
+    closetext
+    winlosstext LavenderTownMortyBeatenText, 0
+    loadtrainer MORTY, MORTY2
+    startbattle
+    reloadmapafterbattle
+    setflag ENGINE_MORTY_REMATCH
+    opentext
+    writetext LavenderTownMortyAfterBattleText
+    waitbutton
+    closetext
+    end
+
+.RefusedBattle:
+	writetext LavenderTownMortyRefusedText
+	waitbutton
+	closetext
+	end
+
+.FightDone:
+	writetext LavenderTownMortyAfterBattleText
+	waitbutton
+	closetext
+	end
 
 LavenderTownSign:
 	jumptext LavenderTownSignText
@@ -73,6 +126,49 @@ LavenderTownYoungsterText:
 
 	para "Every trainer has"
 	line "to know that!"
+	done
+
+LavenderTownMortyIntroText:
+	text "MORTY: good to see"
+	line "you, <PLAYER>."
+
+	para "I was just out"
+	line "here to meet with"
+	cont "MR. FUJI."
+
+	para "Seeing you makes"
+	line "me want to battle,"
+	cont "though!"
+
+	para "How about it, you"
+	line "want to try my"
+	cont "much-improved"
+	cont "team?"
+	done
+
+LavenderTownMortyAcceptText:
+	text "Great. Spirits,"
+	line "give me strength!"
+	done
+
+LavenderTownMortyRefusedText:
+	text "Did I spook you?"
+	done
+
+LavenderTownMortyBeatenText:
+	text "Stronger than"
+	line "ever, I see."
+	done
+
+LavenderTownMortyAfterBattleText:
+	text "Thanks for the ex-"
+	line "hilarating battle."
+
+	para "It made me more"
+	line "in tune with my"
+	
+	para "and my #MON's"
+	line "spirits."
 	done
 
 LavenderTownSignText:
@@ -130,3 +226,4 @@ LavenderTown_MapEvents:
 	object_event  2, 15, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, LavenderTownTeacherScript, -1
 	object_event 14, 12, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LavenderTownGrampsScript, -1
 	object_event  6, 11, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 1, LavenderTownYoungsterScript, -1
+	object_event  8,  5, SPRITE_MORTY, SPRITEMOVEDATA_STANDING_DOWN, 1, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 1, LavenderTownMorty, EVENT_MORTY_REMATCH

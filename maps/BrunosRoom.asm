@@ -45,6 +45,8 @@ BrunoScript_Battle:
 	opentext
 	checkevent EVENT_BEAT_ELITE_4_BRUNO
 	iftrue BrunoScript_AfterBattle
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue Bruno2Script
 	writetext BrunoScript_BrunoBeforeText
 	waitbutton
 	closetext
@@ -69,6 +71,27 @@ BrunoScript_AfterBattle:
 	writetext BrunoScript_BrunoDefeatText
 	waitbutton
 	closetext
+	end
+	
+Bruno2Script:
+	writetext BrunoScript_BrunoBeforeText2
+	waitbutton
+	closetext
+	winlosstext BrunoScript_BrunoBeatenText, 0
+	loadtrainer BRUNO, BRUNO2
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_ELITE_4_BRUNO
+	opentext
+	writetext BrunoScript_BrunoDefeatText
+	waitbutton
+	closetext
+	playsound SFX_ENTER_DOOR
+	changeblock 4, 2, $16 ; open door
+	reloadmappart
+	closetext
+	setevent EVENT_BRUNOS_ROOM_EXIT_OPEN
+	waitsfx
 	end
 
 BrunosRoom_EnterMovement:
@@ -98,6 +121,30 @@ BrunoScript_BrunoBeforeText:
 
 	para "determined. Per-"
 	line "fect for battle!"
+
+	para "Ready, <PLAYER>?"
+	line "You will bow down"
+
+	para "to our overwhelm-"
+	line "ing power!"
+
+	para "Hoo hah!"
+	done
+	
+BrunoScript_BrunoBeforeText2:
+	text "Hello again,"
+	line "<PLAYER>."
+
+	para "I've trained more"
+	line "extremely than"
+	cont "ever before after"
+	cont "our match."
+	
+	para "We've never been"
+	line "so strong!"
+
+	para "You seem fearless"
+	line "as ever."
 
 	para "Ready, <PLAYER>?"
 	line "You will bow down"

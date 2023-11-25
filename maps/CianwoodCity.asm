@@ -83,6 +83,8 @@ CianwoodCitySuicuneAndEusine:
 CianwoodCityChucksWife:
 	faceplayer
 	opentext
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .ChuckHint
 	checkevent EVENT_GOT_HM02_FLY
 	iftrue .GotFly
 	writetext ChucksWifeEasierToFlyText
@@ -106,6 +108,11 @@ CianwoodCityChucksWife:
 	writetext ChucksWifeChubbyText
 	waitbutton
 .Done:
+	closetext
+	end
+.ChuckHint:
+	writetext ChucksWifeHintText
+	waitbutton
 	closetext
 	end
 
@@ -233,6 +240,22 @@ ChucksWifeChubbyText:
 	para "That's good, since"
 	line "he was getting a"
 	cont "little chubby."
+	done
+
+ChucksWifeHintText:
+	text "My husband's been"
+	line "training hard"
+	cont "since he lost to"
+	cont "you."
+
+	para "He goes and trains"
+	line "at a dojo in"
+	cont "KANTO on THURSDAYs"
+	cont "and FRIDAYs."
+
+	para "He's still a"
+	line "little chubby,"
+	cont "though!"
 	done
 
 CianwoodCityYoungsterText:
@@ -403,7 +426,7 @@ CianwoodCity_MapEvents:
 	bg_event  5, 29, BGEVENT_ITEM, CianwoodCityHiddenMaxEther
 
 	def_object_events
-	object_event 21, 37, SPRITE_STANDING_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CianwoodCityYoungster, -1
+	object_event 21, 37, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CianwoodCityYoungster, -1
 	object_event 17, 33, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CianwoodCityPokefanM, -1
 	object_event 14, 42, SPRITE_LASS, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CianwoodCityLass, -1
 	object_event  8, 16, SPRITE_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CianwoodCityRock, -1

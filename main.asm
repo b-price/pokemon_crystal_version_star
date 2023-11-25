@@ -40,6 +40,7 @@ INCLUDE "engine/events/bug_contest/caught_mon.asm"
 INCLUDE "engine/items/item_effects.asm"
 INCLUDE "engine/battle_anims/pokeball_wobble.asm"
 INCLUDE "engine/pokemon/knows_move.asm"
+INCLUDE "engine/battle/ai/items.asm"
 
 
 SECTION "bank4", ROMX
@@ -125,7 +126,7 @@ SECTION "bankA", ROMX
 
 INCLUDE "engine/link/link.asm"
 INCLUDE "engine/overworld/wildmons.asm"
-INCLUDE "engine/battle/link_result.asm"
+
 
 
 SECTION "bankB", ROMX
@@ -149,7 +150,7 @@ INCLUDE "engine/battle/effect_commands.asm"
 
 SECTION "Enemy Trainers", ROMX
 
-INCLUDE "engine/battle/ai/items.asm"
+;INCLUDE "engine/battle/ai/items.asm"
 INCLUDE "engine/battle/ai/scoring.asm"
 INCLUDE "engine/battle/read_trainer_attributes.asm"
 INCLUDE "engine/battle/read_trainer_party.asm"
@@ -681,9 +682,7 @@ SECTION "Crystal Events", ROMX
 
 INCLUDE "engine/events/battle_tower/load_trainer.asm"
 INCLUDE "engine/events/odd_egg.asm"
-
-
-SECTION "Stadium 2 Checksums", ROMX[$7DE0], BANK[$7F]
+INCLUDE "engine/battle/link_result.asm"
 
 ; The end of the ROM is taken up by checksums of the content, apparently used
 ; by Pokémon Stadium 2 due to the checksums' "N64PS3" header. (In Japan,

@@ -25,7 +25,7 @@ ItemDescriptions:
 	dw FireStoneDesc
 	dw ThunderStoneDesc
 	dw WaterStoneDesc
-	dw TeruSama2Desc
+	dw HelixFossilDesc
 	dw HPUpDesc
 	dw ProteinDesc
 	dw IronDesc
@@ -45,18 +45,18 @@ ItemDescriptions:
 	dw SuperRepelDesc
 	dw MaxRepelDesc
 	dw DireHitDesc
-	dw TeruSama3Desc
+	dw DomeFossilDesc
 	dw FreshWaterDesc
 	dw SodaPopDesc
 	dw LemonadeDesc
 	dw XAttackDesc
-	dw TeruSama4Desc
+	dw OldAmberDesc
 	dw XDefendDesc
 	dw XSpeedDesc
 	dw XSpecialDesc
 	dw CoinCaseDesc
 	dw ItemfinderDesc
-	dw TeruSama5Desc
+	dw PokeFluteDesc
 	dw ExpShareDesc
 	dw OldRodDesc
 	dw GoodRodDesc
@@ -90,7 +90,7 @@ ItemDescriptions:
 	dw BigMushroomDesc
 	dw SilverPowderDesc
 	dw BluApricornDesc
-	dw TeruSama6Desc
+	dw SecretKeyDesc
 	dw AmuletCoinDesc
 	dw YlwApricornDesc
 	dw GrnApricornDesc
@@ -354,8 +354,9 @@ WaterStoneDesc:
 	db   "Evolves certain"
 	next "kinds of #MON.@"
 
-TeruSama2Desc:
-	db   "?@"
+HelixFossilDesc:
+	db   "A spiral-shaped"
+	next "ancient fossil.@"
 
 HPUpDesc:
 	db   "Raises the HP of"
@@ -433,8 +434,9 @@ DireHitDesc:
 	db   "Ups critical hit"
 	next "ratio. (1 BTL)@"
 
-TeruSama3Desc:
-	db   "?@"
+DomeFossilDesc:
+	db   "A smooth, curved"
+	next "ancient fossil.@"
 
 FreshWaterDesc:
 	db   "Restores #MON"
@@ -452,8 +454,9 @@ XAttackDesc:
 	db   "Raises ATTACK."
 	next "(1 BTL)@"
 
-TeruSama4Desc:
-	db   "?@"
+OldAmberDesc:
+	db   "Fossilized sap"
+	next "from antiquity.@"
 
 XDefendDesc:
 	db   "Raises DEFENSE."
@@ -475,8 +478,9 @@ ItemfinderDesc:
 	db   "Checks for unseen"
 	next "items in the area.@"
 
-TeruSama5Desc:
-	db   "?@"
+PokeFluteDesc:
+	db   "Its song awakens"
+	next "sleeping #MON.@"
 
 ExpShareDesc:
 	db   "Shares battle EXP."
@@ -579,8 +583,8 @@ PoisonBarbDesc:
 	next "type moves. (HOLD)@"
 
 KingsRockDesc:
-	db   "May make the foe"
-	next "flinch. (HOLD)@"
+	db   "Evolves #MON, may"
+	next "cause flinch(HOLD)@"
 
 BitterBerryDesc:
 	db   "A self-cure for"
@@ -608,8 +612,9 @@ SilverPowderDesc:
 BluApricornDesc:
 	db   "A blue APRICORN.@"
 
-TeruSama6Desc:
-	db   "?@"
+SecretKeyDesc:
+	db   "An old, oddly-"
+	next "shaped key.@"
 
 AmuletCoinDesc:
 	db   "Doubles monetary"
@@ -809,8 +814,8 @@ TeruSama13Desc:
 	db   "?@"
 
 MetalCoatDesc:
-	db   "Powers up steel-"
-	next "type moves. (HOLD)@"
+	db   "Evolves #MON, ups"
+	next "steel power.(HOLD)@"
 
 DragonFangDesc:
 	db   "Powers up dragon-"

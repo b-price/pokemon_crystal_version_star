@@ -90,9 +90,6 @@ INCLUDE "gfx/tilesets/lighthouse_palette_map.asm"
 TilesetPlayersRoomPalMap:
 INCLUDE "gfx/tilesets/players_room_palette_map.asm"
 
-UnusedMuseumPalMap: ; unreferenced
-INCLUDE "gfx/tilesets/unused_museum_palette_map.asm"
-
 TilesetIcePathPalMap:
 INCLUDE "gfx/tilesets/ice_path_palette_map.asm"
 
@@ -107,6 +104,18 @@ INCLUDE "gfx/tilesets/battle_tower_inside_palette_map.asm"
 
 TilesetBattleTowerOutsidePalMap:
 INCLUDE "gfx/tilesets/battle_tower_outside_palette_map.asm"
+
+TilesetSafariZonePalMap:
+INCLUDE "gfx/tilesets/safari_zone_palette_map.asm"
+
+TilesetCaveCinnabarPalMap:
+INCLUDE "gfx/tilesets/cave_cinnabar_palette_map.asm"
+
+TilesetMuseumPalMap:
+INCLUDE "gfx/tilesets/museum_palette_map.asm"
+
+TilesetPowerPlantPalMap:
+INCLUDE "gfx/tilesets/power_plant_palette_map.asm"
 
 MapGroupPalettes: ; unreferenced
 ; entries correspond to MAPGROUP_* constants

@@ -132,7 +132,6 @@ INCLUDE "maps/RockTunnel1F.asm"
 INCLUDE "maps/RockTunnelB1F.asm"
 INCLUDE "maps/SafariZoneFuchsiaGateBeta.asm"
 INCLUDE "maps/SafariZoneBeta.asm"
-INCLUDE "maps/VictoryRoad.asm"
 INCLUDE "maps/OlivinePort.asm"
 INCLUDE "maps/VermilionPort.asm"
 INCLUDE "maps/FastShip1F.asm"
@@ -282,7 +281,6 @@ INCLUDE "maps/Route10Pokecenter1F.asm"
 INCLUDE "maps/Route10Pokecenter2FBeta.asm"
 INCLUDE "maps/PowerPlant.asm"
 INCLUDE "maps/BillsHouse.asm"
-INCLUDE "maps/FightingDojo.asm"
 INCLUDE "maps/SaffronGym.asm"
 INCLUDE "maps/SaffronMart.asm"
 INCLUDE "maps/SaffronPokecenter1F.asm"
@@ -359,7 +357,6 @@ INCLUDE "maps/BlackthornMart.asm"
 INCLUDE "maps/BlackthornPokecenter1F.asm"
 INCLUDE "maps/MoveDeletersHouse.asm"
 INCLUDE "maps/FuchsiaMart.asm"
-INCLUDE "maps/SafariZoneMainOffice.asm"
 INCLUDE "maps/FuchsiaGym.asm"
 INCLUDE "maps/BillsBrothersHouse.asm"
 INCLUDE "maps/FuchsiaPokecenter1F.asm"
@@ -432,7 +429,6 @@ INCLUDE "maps/Route31.asm"
 INCLUDE "maps/Route39.asm"
 INCLUDE "maps/Route40.asm"
 INCLUDE "maps/Route41.asm"
-INCLUDE "maps/Route12.asm"
 
 
 SECTION "Map Scripts 23", ROMX
@@ -451,7 +447,6 @@ INCLUDE "maps/Route9.asm"
 INCLUDE "maps/CinnabarPokecenter1F.asm"
 INCLUDE "maps/CinnabarPokecenter2FBeta.asm"
 INCLUDE "maps/Route19FuchsiaGate.asm"
-INCLUDE "maps/SeafoamGym.asm"
 
 
 SECTION "Map Scripts 24", ROMX
@@ -469,11 +464,6 @@ INCLUDE "maps/Route16.asm"
 INCLUDE "maps/Route7.asm"
 INCLUDE "maps/Route14.asm"
 INCLUDE "maps/LavenderTown.asm"
-INCLUDE "maps/Route6.asm"
-INCLUDE "maps/Route5.asm"
-INCLUDE "maps/Route24.asm"
-INCLUDE "maps/Route3.asm"
-INCLUDE "maps/Route4.asm"
 INCLUDE "maps/Route10South.asm"
 INCLUDE "maps/Route23.asm"
 INCLUDE "maps/SilverCavePokecenter1F.asm"
@@ -484,3 +474,55 @@ SECTION "Map Scripts 25", ROMX
 
 INCLUDE "maps/SilverCaveOutside.asm"
 INCLUDE "maps/Route10North.asm"
+INCLUDE "maps/ViridianForest.asm"
+INCLUDE "maps/SafariZoneCenter.asm"
+INCLUDE "maps/SafariZoneEast.asm"
+INCLUDE "maps/SafariZoneNorth.asm"
+INCLUDE "maps/SafariZoneWest.asm"
+INCLUDE "maps/CinnabarVolcano1F.asm"
+INCLUDE "maps/CinnabarVolcanoB1F.asm"
+INCLUDE "maps/CinnabarVolcano2F.asm"
+INCLUDE "maps/CinnabarVolcanoItemRooms.asm"
+
+SECTION "Map Scripts 26", ROMX
+
+INCLUDE "maps/PowerPlantB1F.asm"
+INCLUDE "maps/SeafoamIslands1F.asm"
+INCLUDE "maps/SeafoamIslandsB1F.asm"
+INCLUDE "maps/SeafoamIslandsB2F.asm"
+INCLUDE "maps/SeafoamIslandsB3F.asm"
+INCLUDE "maps/SeafoamIslandsB4F.asm"
+INCLUDE "maps/CeruleanCave1F.asm"
+INCLUDE "maps/CeruleanCaveB1F.asm"
+INCLUDE "maps/CeruleanCave2F.asm"
+
+SECTION "Map Scripts 27", ROMX
+
+INCLUDE "maps/SafariZoneCenterHouse.asm"
+INCLUDE "maps/SafariZoneEastHouse.asm"
+INCLUDE "maps/SafariZoneNorthHouse.asm"
+INCLUDE "maps/SafariZoneWestHouse.asm"
+INCLUDE "maps/SafariZoneSecretHouse.asm"
+INCLUDE "maps/SilphCo2F.asm"
+INCLUDE "maps/Route7UndergroundPathEntrance.asm"
+INCLUDE "maps/Route8UndergroundPathEntrance.asm"
+INCLUDE "maps/UndergroundKPF.asm"
+INCLUDE "maps/Museum1F.asm"
+INCLUDE "maps/Museum2F.asm"
+INCLUDE "maps/TestWarpRoom.asm"
+INCLUDE "maps/Route2ViridianForestGateNorth.asm"
+INCLUDE "maps/Route2ViridianForestGateSouth.asm"
+INCLUDE "maps/CeruleanBikeShop.asm"
+
+SECTION "Map Scripts 28", ROMX
+
+INCLUDE "maps/VictoryRoad.asm" ;moved from 8
+INCLUDE "maps/FightingDojo.asm" ;moved from 15
+INCLUDE "maps/SafariZoneMainOffice.asm" ;moved from 18
+INCLUDE "maps/Route12.asm" ;moved from 22
+INCLUDE "maps/SeafoamGym.asm" ;moved from 23
+INCLUDE "maps/Route6.asm" ;moved from 24
+INCLUDE "maps/Route5.asm" ;moved from 24
+INCLUDE "maps/Route24.asm" ;moved from 24
+INCLUDE "maps/Route3.asm" ;moved from 24
+INCLUDE "maps/Route4.asm" ;moved from 24

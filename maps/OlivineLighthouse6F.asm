@@ -7,10 +7,30 @@ OlivineLighthouse6F_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_OBJECTS, OlivineLighthouseJasmineCallback
+
+OlivineLighthouseJasmineCallback:
+	readvar VAR_WEEKDAY
+	ifequal WEDNESDAY, .JasmineCanAppear
+	ifequal FRIDAY, .JasmineCanAppear
+	disappear OLIVINELIGHTHOUSE6F_JASMINE
+	endcallback
+
+.JasmineCanAppear:
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .JasmineAppears
+	disappear OLIVINELIGHTHOUSE6F_JASMINE
+	endcallback
+
+.JasmineAppears:
+	appear OLIVINELIGHTHOUSE6F_JASMINE
+	endcallback
 
 OlivineLighthouseJasmine:
 	faceplayer
 	opentext
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .JasmineRematch
 	checkitem SECRETPOTION
 	iftrue .BroughtSecretpotion
 	checkevent EVENT_JASMINE_EXPLAINED_AMPHYS_SICKNESS
@@ -98,6 +118,38 @@ OlivineLighthouseJasmine:
 	end
 
 .Unused: ; unreferenced
+	end
+
+.JasmineRematch:
+	checkflag ENGINE_JASMINE_REMATCH
+    iftrue .FightDone
+    writetext OlivineLighthouseJasmineIntroText
+    yesorno
+    iffalse .RefusedBattle
+    writetext OlivineLighthouseJasmineAcceptText
+    waitbutton
+    closetext
+    winlosstext OlivineLighthouseJasmineBeatenText, 0
+    loadtrainer JASMINE, JASMINE2
+    startbattle
+    reloadmapafterbattle
+    setflag ENGINE_JASMINE_REMATCH
+    opentext
+    writetext OlivineLighthouseJasmineAfterBattleText
+    waitbutton
+    closetext
+    end
+
+.RefusedBattle:
+	writetext OlivineLighthouseJasmineRefusedText
+	waitbutton
+	closetext
+	end
+
+.FightDone:
+	writetext OlivineLighthouseJasmineAfterBattleText
+	waitbutton
+	closetext
 	end
 
 OlivineLighthouseAmphy:
@@ -238,6 +290,41 @@ JasmineISeeText:
 
 JasmineAmphyHangOnText:
 	text "…AMPHY, hang on!"
+	done
+
+OlivineLighthouseJasmineIntroText:
+	text "JASMINE: …Hi,"
+	line "<PLAYER>."
+
+	para "…Oh, AMPHY is"
+	line "actually doing"
+	cont "quite well."
+
+	para "I still like to"
+	line "come visit."
+
+	para "…I take it you"
+	line "want to battle?"
+	done
+
+OlivineLighthouseJasmineAcceptText:
+	text "Thought so…"
+	done
+
+OlivineLighthouseJasmineRefusedText:
+	text "Oh? Well,"
+	line "it was nice to"
+	cont "see you…"
+	done
+
+OlivineLighthouseJasmineBeatenText:
+	text "…Is that so…"
+	done
+
+OlivineLighthouseJasmineAfterBattleText:
+	text "That's okay."
+	line "We'll just have to"
+	cont "keep training…"
 	done
 
 AmphyPalPalooText:

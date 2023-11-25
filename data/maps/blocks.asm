@@ -212,6 +212,8 @@ Route40BattleTowerGate_Blocks:
 Route2Gate_Blocks:
 Route29Route46Gate_Blocks:
 Route5SaffronGate_Blocks:
+Route2ViridianForestGateNorth_Blocks:
+Route2ViridianForestGateSouth_Blocks:
 	INCBIN "maps/NorthSouthGate.blk"
 
 BetaEcruteakCity_Blocks: ; unreferenced
@@ -464,6 +466,8 @@ NationalParkBugContest_Blocks:
 
 Route5UndergroundPathEntrance_Blocks:
 Route6UndergroundPathEntrance_Blocks:
+Route7UndergroundPathEntrance_Blocks:
+Route8UndergroundPathEntrance_Blocks:
 	INCBIN "maps/UndergroundPathEntrance.blk"
 
 BetaCapsuleHouse_Blocks: ; unreferenced
@@ -843,9 +847,11 @@ VermilionPort_Blocks:
 	INCBIN "maps/VermilionPort.blk"
 
 OlivineCafe_Blocks:
-SafariZoneMainOffice_Blocks:
 	INCBIN "maps/OlivineCafe.blk"
 
+SafariZoneMainOffice_Blocks:
+	INCBIN "maps/SafariZoneMainOffice.blk"
+	
 PlayersHouse2F_Blocks:
 	INCBIN "maps/PlayersHouse2F.blk"
 
@@ -1045,3 +1051,85 @@ BetaBlank_Blocks: ; unreferenced
 
 GoldenrodDeptStoreRoof_Blocks:
 	INCBIN "maps/GoldenrodDeptStoreRoof.blk"
+	
+SECTION "Map Blocks 4", ROMX
+
+SilphCo2F_Blocks:
+	INCBIN "maps/SilphCo2F.blk"
+	
+ViridianForest_Blocks:
+	INCBIN "maps/ViridianForest.blk"
+	
+UndergroundKPF_Blocks:
+	INCBIN "maps/UndergroundKPF.blk"
+	
+Museum1F_Blocks:
+	INCBIN "maps/Museum1F.blk"
+	
+Museum2F_Blocks:
+	INCBIN "maps/Museum2F.blk"
+	
+CeruleanCave1F_Blocks:
+	INCBIN "maps/CeruleanCave1F.blk"
+	
+CeruleanCave2F_Blocks:
+	INCBIN "maps/CeruleanCave2F.blk"
+	
+CeruleanCaveB1F_Blocks:
+	INCBIN "maps/CeruleanCaveB1F.blk"
+	
+CinnabarVolcano1F_Blocks:
+	INCBIN "maps/CinnabarVolcano1F.blk"
+	
+CinnabarVolcano2F_Blocks:
+	INCBIN "maps/CinnabarVolcano2F.blk"
+	
+CinnabarVolcanoB1F_Blocks:
+	INCBIN "maps/CinnabarVolcanoB1F.blk"
+	
+CinnabarVolcanoItemRooms_Blocks:
+	INCBIN "maps/CinnabarVolcanoItemRooms.blk"
+	
+SeafoamIslands1F_Blocks:
+	INCBIN "maps/SeafoamIslands1F.blk"
+	
+SeafoamIslandsB1F_Blocks:
+	INCBIN "maps/SeafoamIslandsB1F.blk"
+	
+SeafoamIslandsB2F_Blocks:
+	INCBIN "maps/SeafoamIslandsB2F.blk"
+
+SeafoamIslandsB3F_Blocks:
+	INCBIN "maps/SeafoamIslandsB3F.blk"
+	
+SeafoamIslandsB4F_Blocks:
+	INCBIN "maps/SeafoamIslandsB4F.blk"
+	
+PowerPlantB1F_Blocks:
+	INCBIN "maps/PowerPlantB1F.blk"
+	
+SafariZoneCenter_Blocks:
+	INCBIN "maps/SafariZoneCenter.blk"
+	
+SafariZoneNorth_Blocks:
+	INCBIN "maps/SafariZoneNorth.blk"
+	
+SafariZoneEast_Blocks:
+	INCBIN "maps/SafariZoneEast.blk"
+	
+SafariZoneWest_Blocks:
+	INCBIN "maps/SafariZoneWest.blk"
+	
+SafariZoneCenterHouse_Blocks:
+SafariZoneNorthHouse_Blocks:
+SafariZoneEastHouse_Blocks:
+SafariZoneWestHouse_Blocks:
+SafariZoneSecretHouse_Blocks:
+	INCBIN "maps/SafariZoneHouse.blk"
+	
+TestWarpRoom_Blocks: ; for testing
+	INCBIN "maps/TestWarpRoom.blk"
+
+CeruleanBikeShop_Blocks:
+	INCBIN "maps/CeruleanBikeShop.blk"
+	

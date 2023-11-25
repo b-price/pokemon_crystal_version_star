@@ -1,4 +1,5 @@
 	object_const_def
+	const BATTLETOWEROUTSIDE_BLUE
 	const BATTLETOWEROUTSIDE_STANDING_YOUNGSTER
 	const BATTLETOWEROUTSIDE_BEAUTY
 	const BATTLETOWEROUTSIDE_SAILOR
@@ -8,9 +9,27 @@ BattleTowerOutside_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_OBJECTS, BattleTowerOutsideBlueCallback
 	callback MAPCALLBACK_TILES, BattleTowerOutsideNoopCallback
 	callback MAPCALLBACK_OBJECTS, BattleTowerOutsideShowCiviliansCallback
 
+BattleTowerOutsideBlueCallback:
+	readvar VAR_WEEKDAY
+	ifequal FRIDAY, .BlueCanAppear
+	ifequal SUNDAY, .BlueCanAppear
+	disappear BATTLETOWEROUTSIDE_BLUE
+	endcallback
+
+.BlueCanAppear:
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .BlueAppears
+	disappear BATTLETOWEROUTSIDE_BLUE
+	endcallback
+
+.BlueAppears:
+	appear BATTLETOWEROUTSIDE_BLUE
+	endcallback
+		
 BattleTowerOutsideNoopCallback:
 	endcallback
 
@@ -29,6 +48,40 @@ BattleTowerOutsideSailorScript:
 
 BattleTowerOutsideSign:
 	jumptext BattleTowerOutsideSignText
+
+BattleTowerOutsideBlue:
+    faceplayer
+    opentext
+    checkflag ENGINE_BLUE_REMATCH
+    iftrue .FightDone
+    writetext BattleTowerOutsideBlueIntroText
+    yesorno
+    iffalse .RefusedBattle
+    writetext BattleTowerOutsideBlueAcceptText
+    waitbutton
+    closetext
+    winlosstext BattleTowerOutsideBlueBeatenText, 0
+    loadtrainer BLUE, BLUE2
+    startbattle
+    reloadmapafterbattle
+    setflag ENGINE_BLUE_REMATCH
+    opentext
+    writetext BattleTowerOutsideBlueAfterBattleText
+    waitbutton
+    closetext
+    end
+
+.RefusedBattle:
+	writetext BattleTowerOutsideBlueRefusedText
+	waitbutton
+	closetext
+	end
+
+.FightDone:
+	writetext BattleTowerOutsideBlueAfterBattleText
+	waitbutton
+	closetext
+	end
 
 BattleTowerOutsideYoungsterText_NotYetOpen: ; unreferenced
 	text "Wow, the BATTLE"
@@ -127,6 +180,52 @@ BattleTowerOutsideText_DoorsOpen: ; unreferenced
 	text "It's open!"
 	done
 
+BattleTowerOutsideBlueIntroText:
+	text "BLUE: Yo,"
+	line "<PLAYER>!"
+
+	para "I see you're also"
+	line "challenging the"
+	cont "BATTLE TOWER."
+
+	para "You know, I've"
+	line "beefed up my team"
+	cont "since we last met."
+
+	para "How about we warm"
+	line "up with a little"
+	cont "battle?"
+	done
+
+BattleTowerOutsideBlueAcceptText:
+	text "Don't be cocky"
+	line "just because you"
+	cont "me once!"
+	done
+
+BattleTowerOutsideBlueRefusedText:
+	text "Oh, what's the"
+	line "matter? Afraid of"
+	cont "losing?"
+	done
+
+BattleTowerOutsideBlueBeatenText:
+	text "Darn it! You"
+	line "really are strong!"
+	done
+
+BattleTowerOutsideBlueAfterBattleText:
+	text "Ugh… I need to"
+	line "get better…"
+
+	para "First losing to"
+	line "RED and then you…"
+
+	para "One day, you'll"
+	line "see… I'll beat"
+	cont "you both!"
+	done
+
 BattleTowerOutside_MapEvents:
 	db 0, 0 ; filler
 
@@ -142,7 +241,8 @@ BattleTowerOutside_MapEvents:
 	bg_event 10, 10, BGEVENT_READ, BattleTowerOutsideSign
 
 	def_object_events
-	object_event  6, 12, SPRITE_STANDING_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, BattleTowerOutsideYoungsterScript, -1
+	object_event 11, 10, SPRITE_BLUE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BattleTowerOutsideBlue, EVENT_BLUE_REMATCH
+	object_event  6, 12, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, BattleTowerOutsideYoungsterScript, -1
 	object_event 13, 11, SPRITE_BEAUTY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, BattleTowerOutsideBeautyScript, -1
 	object_event 12, 18, SPRITE_SAILOR, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BattleTowerOutsideSailorScript, EVENT_BATTLE_TOWER_OPEN_CIVILIANS
 	object_event 12, 24, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1

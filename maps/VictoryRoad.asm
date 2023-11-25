@@ -1,5 +1,12 @@
 	object_const_def
 	const VICTORYROAD_RIVAL
+	const VICTORYROAD_COOLTRAINER_M1
+	const VICTORYROAD_COOLTRAINER_M2
+	const VICTORYROAD_COOLTRAINER_M3
+	const VICTORYROAD_COOLTRAINER_M4
+	const VICTORYROAD_COOLTRAINER_F1
+	const VICTORYROAD_COOLTRAINER_F2
+	const VICTORYROAD_COOLTRAINER_F3
 	const VICTORYROAD_POKE_BALL1
 	const VICTORYROAD_POKE_BALL2
 	const VICTORYROAD_POKE_BALL3
@@ -160,6 +167,83 @@ VictoryRoadRivalBattleExitMovement2:
 	step DOWN
 	step DOWN
 	step_end
+	
+TrainerCooltrainermErick:
+	trainer COOLTRAINERM, ERICK, EVENT_BEAT_COOLTRAINERM_ERICK, CooltrainermErickSeenText, CooltrainermErickBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext CooltrainermErickAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerCooltrainermAndy:
+	trainer COOLTRAINERM, ANDY, EVENT_BEAT_COOLTRAINERM_ANDY, CooltrainermAndySeenText, CooltrainermAndyBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext CooltrainermAndyAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerCooltrainermTyler:
+	trainer COOLTRAINERM, TYLER, EVENT_BEAT_COOLTRAINERM_TYLER, CooltrainermTylerSeenText, CooltrainermTylerBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext CooltrainermTylerAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerCooltrainermSteve:
+	trainer COOLTRAINERM, STEVE, EVENT_BEAT_COOLTRAINERM_STEVE, CooltrainermSteveSeenText, CooltrainermSteveBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext CooltrainermSteveAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerCooltrainerfSally:
+	trainer COOLTRAINERF, SALLY, EVENT_BEAT_COOLTRAINERF_SALLY, CooltrainerfSallySeenText, CooltrainerfSallyBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext CooltrainerfSallyAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerCooltrainerfWinona:
+	trainer COOLTRAINERF, WINONA, EVENT_BEAT_COOLTRAINERF_WINONA, CooltrainerfWinonaSeenText, CooltrainerfWinonaBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext CooltrainerfWinonaAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerCooltrainerfMarian:
+	trainer COOLTRAINERF, MARIAN, EVENT_BEAT_COOLTRAINERF_MARIAN, CooltrainerfMarianSeenText, CooltrainerfMarianBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext CooltrainerfMarianAfterBattleText
+	waitbutton
+	closetext
+	end
 
 VictoryRoadRivalBeforeText:
 	text "Hold it."
@@ -235,6 +319,130 @@ VictoryRoadRivalVictoryText:
 	para "I don't need any-"
 	line "thing else."
 	done
+	
+CooltrainermErickSeenText:
+	text "VICTORY ROAD is"
+	line "the last test for"
+	
+	para "trainers before"
+	line "the ELITE FOUR!"
+	done
+
+CooltrainermErickBeatenText:
+	text "I didn't pass the"
+	line "test…"
+	done
+
+CooltrainermErickAfterBattleText:
+	text "You must have what"
+	line "it takes to "
+	cont "succeed."
+	done
+	
+CooltrainermAndySeenText:
+	text "I can see it in"
+	line "your eyes, you're"
+	cont "tough!"
+	done
+
+CooltrainermAndyBeatenText:
+	text "I wasn't wrong…"
+	done
+
+CooltrainermAndyAfterBattleText:
+	text "Those eyes…"
+	
+	para "You've seen a lot,"
+	line "haven't you?"
+	done
+	
+CooltrainermTylerSeenText:
+	text "You're from JOHTO?"
+	
+	para "I hear the gyms"
+	line "are much easier"
+	cont "over there."
+	done
+
+CooltrainermTylerBeatenText:
+	text "Maybe not!"
+	done
+
+CooltrainermTylerAfterBattleText:
+	text "It wasn't easy"
+	line "getting all eight"
+	cont "KANTO badges…"
+	
+	para "I need to train"
+	line "harder."
+	done
+	
+CooltrainermSteveSeenText:
+	text "All of our train-"
+	line "ing has led us to"
+	cont "this point…"
+	
+	para "We can't lose!"
+	done
+
+CooltrainermSteveBeatenText:
+	text "Was it all for"
+	line "naught?"
+	done
+
+CooltrainermSteveAfterBattleText:
+	text "Good luck with the"
+	line "ELITE FOUR."
+	done
+	
+CooltrainerfSallySeenText:
+	text "Give me a great"
+	line "battle! Don't let"
+	cont "me down!"
+	done
+
+CooltrainerfSallyBeatenText:
+	text "That was good,"
+	line "even if I lost."
+	done
+
+CooltrainerfSallyAfterBattleText:
+	text "The closer I get"
+	line "to INDIGO PLATEAU,"
+	
+	para "the tougher the"
+	line "trainers are!"
+	done
+	
+CooltrainerfWinonaSeenText:
+	text "We can do it, just"
+	line "a little longer…"
+	done
+
+CooltrainerfWinonaBeatenText:
+	text "Ack!"
+	done
+
+CooltrainerfWinonaAfterBattleText:
+	text "We were so close"
+	line "to INDIGO PLATEAU…"
+	done
+	
+CooltrainerfMarianSeenText:
+	text "I've been through"
+	line "a lot to be here."
+	
+	para "I won't lose!"
+	done
+
+CooltrainerfMarianBeatenText:
+	text "What?!"
+	done
+
+CooltrainerfMarianAfterBattleText:
+	text "We just need to"
+	line "keep trying!"
+	done
 
 VictoryRoad_MapEvents:
 	db 0, 0 ; filler
@@ -261,6 +469,13 @@ VictoryRoad_MapEvents:
 
 	def_object_events
 	object_event 18, 13, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_VICTORY_ROAD
+	object_event  1, 53, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerCooltrainermErick, -1
+	object_event  7, 34, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerCooltrainermAndy, -1
+	object_event 12, 36, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerCooltrainermTyler, -1
+	object_event 10, 15, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerCooltrainermSteve, -1
+	object_event  8, 60, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerCooltrainerfSally, -1
+	object_event  9, 52, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerCooltrainerfWinona, -1
+	object_event  4, 14, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerCooltrainerfMarian, -1
 	object_event  3, 28, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, VictoryRoadTMEarthquake, EVENT_VICTORY_ROAD_TM_EARTHQUAKE
 	object_event 12, 48, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, VictoryRoadMaxRevive, EVENT_VICTORY_ROAD_MAX_REVIVE
 	object_event 18, 29, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, VictoryRoadFullRestore, EVENT_VICTORY_ROAD_FULL_RESTORE

@@ -10,6 +10,7 @@ BlackthornGym1F_MapScripts:
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, BlackthornGym1FBouldersCallback
+	callback MAPCALLBACK_OBJECTS, BlackthornGymClairCallback
 
 BlackthornGym1FBouldersCallback:
 	checkevent EVENT_BOULDER_IN_BLACKTHORN_GYM_1
@@ -24,6 +25,21 @@ BlackthornGym1FBouldersCallback:
 	iffalse .skip3
 	changeblock 8, 6, $3b ; fallen boulder 2
 .skip3
+	endcallback
+
+BlackthornGymClairCallback:
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .ClairCanDisappear
+	appear BLACKTHORNGYM1F_CLAIR
+	endcallback
+.ClairCanDisappear:
+	readvar VAR_WEEKDAY
+	ifequal THURSDAY, .ClairDisappear
+	ifequal SUNDAY, .ClairDisappear
+	appear BLACKTHORNGYM1F_CLAIR
+	endcallback
+.ClairDisappear:
+	disappear BLACKTHORNGYM1F_CLAIR
 	endcallback
 
 BlackthornGymClairScript:
@@ -126,6 +142,8 @@ TrainerCooltrainerfLola:
 BlackthornGymGuideScript:
 	faceplayer
 	opentext
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .BlackthornGymGuideClairHint
 	checkevent EVENT_BEAT_CLAIR
 	iftrue .BlackthornGymGuideWinScript
 	writetext BlackthornGymGuideText
@@ -135,6 +153,12 @@ BlackthornGymGuideScript:
 
 .BlackthornGymGuideWinScript:
 	writetext BlackthornGymGuideWinText
+	waitbutton
+	closetext
+	end
+
+.BlackthornGymGuideClairHint:
+	writetext BlackthornGymGuideHintText
 	waitbutton
 	closetext
 	end
@@ -231,7 +255,7 @@ BlackthornGymClairText_YouKeptMeWaiting:
 
 BlackthornGymText_ReceivedTM24:
 	text "<PLAYER> received"
-	line "TM24."
+	line "TM24 DRAGONBREATH."
 	done
 
 BlackthornGymClairText_DescribeTM24:
@@ -384,6 +408,18 @@ BlackthornGymGuideWinText:
 	cont "#MON CHAMPION!"
 	done
 
+BlackthornGymGuideHintText:
+	text "Long time, no see!"
+	line "CLAIR has really"
+	cont "been training"
+	cont "a lot lately."
+
+	para "She's been seen"
+	line "on THURSDAYs and"
+	cont "SUNDAYs at"
+	cont "LAKE OF RAGE."
+	done
+
 BlackthornGym1F_MapEvents:
 	db 0, 0 ; filler
 
@@ -403,7 +439,7 @@ BlackthornGym1F_MapEvents:
 	bg_event  6, 15, BGEVENT_READ, BlackthornGymStatue
 
 	def_object_events
-	object_event  5,  3, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, BlackthornGymClairScript, -1
+	object_event  5,  3, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, BlackthornGymClairScript, EVENT_CLAIR_IN_GYM
 	object_event  6,  6, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerCooltrainermMike, -1
 	object_event  1, 14, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerCooltrainermPaul, -1
 	object_event  9,  2, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerCooltrainerfLola, -1

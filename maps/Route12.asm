@@ -3,6 +3,9 @@
 	const ROUTE12_FISHER2
 	const ROUTE12_FISHER3
 	const ROUTE12_FISHER4
+	const ROUTE12_FISHER5
+	const ROUTE12_LASS
+	const ROUTE12_BEAUTY
 	const ROUTE12_POKE_BALL1
 	const ROUTE12_POKE_BALL2
 
@@ -51,6 +54,39 @@ TrainerFisherBarney:
 	endifjustbattled
 	opentext
 	writetext FisherBarneyAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerFisherNikolai:
+	trainer FISHER, NIKOLAI, EVENT_BEAT_FISHER_NIKOLAI, FisherNikolaiSeenText, FisherNikolaiBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext FisherNikolaiAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerLassNatalie:
+	trainer LASS, NATALIE, EVENT_BEAT_LASS_NATALIE, LassNatalieSeenText, LassNatalieBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext LassNatalieAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerBeautyBrenda:
+	trainer BEAUTY, BRENDA, EVENT_BEAT_BEAUTY_BRENDA, BeautyBrendaSeenText, BeautyBrendaBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext BeautyBrendaAfterBattleText
 	waitbutton
 	closetext
 	end
@@ -152,6 +188,56 @@ FisherKyleAfterBattleText:
 	line "feeling ever for"
 	cont "an angler like me."
 	done
+	
+LassNatalieSeenText:
+	text "Do we have to"
+	line "battle?"
+	done
+
+LassNatalieBeatenText:
+	text "I wish we didn't!"
+	done
+
+LassNatalieAfterBattleText:
+	text "I like caring for"
+	line "#MON more than"
+	cont "battling them."
+	done
+	
+BeautyBrendaSeenText:
+	text "My date is late!"
+	
+	para "Sure, I'll battle!"
+	done
+
+BeautyBrendaBeatenText:
+	text "They're still not"
+	line "here?"
+	done
+
+BeautyBrendaAfterBattleText:
+	text "Stood up and then"
+	line "lost a battle…"
+
+	para "I'm not having the"
+	line "best day here!"
+	done
+	
+FisherNikolaiSeenText:
+	text "Whoa there!"
+	
+	para "I was about to"
+	line "land a big #MON!"
+	done
+
+FisherNikolaiBeatenText:
+	text "Dang!"
+	done
+
+FisherNikolaiAfterBattleText:
+	text "Better luck next"
+	line "time…"
+	done
 
 Route12SignText:
 	text "ROUTE 12"
@@ -182,5 +268,8 @@ Route12_MapEvents:
 	object_event 14, 23, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerFisherStephen, -1
 	object_event 10, 38, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 5, TrainerFisherBarney, -1
 	object_event  6,  7, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerFisherKyle, -1
+	object_event 15, 28, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerFisherNikolai, -1
+	object_event  5, 32, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerLassNatalie, -1
+	object_event 13, 17, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerBeautyBrenda, -1
 	object_event  5, 43, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route12Calcium, EVENT_ROUTE_12_CALCIUM
 	object_event  5, 51, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route12Nugget, EVENT_ROUTE_12_NUGGET

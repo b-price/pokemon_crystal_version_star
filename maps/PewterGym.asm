@@ -7,6 +7,22 @@ PewterGym_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_OBJECTS, PewterGymBrockCallback
+
+PewterGymBrockCallback:
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .BrockCanDisappear
+	appear PEWTERGYM_BROCK
+	endcallback
+.BrockCanDisappear:
+	readvar VAR_WEEKDAY
+	ifequal SATURDAY, .BrockDisappear
+	ifequal THURSDAY, .BrockDisappear
+	appear PEWTERGYM_BROCK
+	endcallback
+.BrockDisappear:
+	disappear PEWTERGYM_BROCK
+	endcallback
 
 PewterGymBrockScript:
 	faceplayer
@@ -52,6 +68,8 @@ TrainerCamperJerry:
 PewterGymGuideScript:
 	faceplayer
 	opentext
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .PewterGymGuideBrockHint
 	checkevent EVENT_BEAT_BROCK
 	iftrue .PewterGymGuideWinScript
 	writetext PewterGymGuideText
@@ -61,6 +79,12 @@ PewterGymGuideScript:
 
 .PewterGymGuideWinScript:
 	writetext PewterGymGuideWinText
+	waitbutton
+	closetext
+	end
+
+.PewterGymGuideBrockHint:
+	writetext PewterGymGuideHintText
 	waitbutton
 	closetext
 	end
@@ -204,6 +228,26 @@ PewterGymGuideWinText:
 
 	para "inspiring. I mean"
 	line "that seriously."
+	done
+
+PewterGymGuideHintText:
+	text "Hey, <PLAYER>!"
+	line "I can't forget"
+	
+	para "that amazing"
+	line "battle you had"
+	cont "with BROCK."
+
+	para "I hear he likes"
+	line "to hang out in"
+
+	para "ROCK TUNNEL on"
+	line "THURSDAYs and"
+	cont "SATURDAYs."
+
+	para "Maybe he'd have"
+	line "a rematch with"
+	cont "you!"
 	done
 
 PewterGym_MapEvents:

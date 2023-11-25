@@ -10,6 +10,22 @@ SaffronGym_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_OBJECTS, SaffronGymSabrinaCallback
+
+SaffronGymSabrinaCallback:
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .SabrinaCanDisappear
+	appear SAFFRONGYM_SABRINA
+	endcallback
+.SabrinaCanDisappear:
+	readvar VAR_WEEKDAY
+	ifequal SATURDAY, .SabrinaDisappear
+	ifequal WEDNESDAY, .SabrinaDisappear
+	appear SAFFRONGYM_SABRINA
+	endcallback
+.SabrinaDisappear:
+	disappear SAFFRONGYM_SABRINA
+	endcallback
 
 SaffronGymSabrinaScript:
 	faceplayer
@@ -91,6 +107,8 @@ TrainerPsychicJared:
 SaffronGymGuideScript:
 	faceplayer
 	opentext
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .SaffronGymGuideSabrinaHint
 	checkevent EVENT_BEAT_SABRINA
 	iftrue .SaffronGymGuideWinScript
 	writetext SaffronGymGuideText
@@ -100,6 +118,12 @@ SaffronGymGuideScript:
 
 .SaffronGymGuideWinScript:
 	writetext SaffronGymGuideWinText
+	waitbutton
+	closetext
+	end
+
+.SaffronGymGuideSabrinaHint:
+	writetext SaffronGymGuideHintText
 	waitbutton
 	closetext
 	end
@@ -288,6 +312,26 @@ SaffronGymGuideWinText:
 	line "fantastic battle!"
 	done
 
+SaffronGymGuideHintText:
+	text "Hey, <PLAYER>!"
+	line "I can't forget"
+	
+	para "that amazing"
+	line "battle you had"
+	cont "with SABRINA."
+
+	para "I hear she goes"
+	line "to a mysterious"
+
+	para "cave near CERULEAN"
+	line "on WEDNESDAYs and"
+	cont "SATURDAYs."
+
+	para "Maybe she'd have"
+	line "a rematch with"
+	cont "you!"
+	done
+
 SaffronGym_MapEvents:
 	db 0, 0 ; filler
 
@@ -331,7 +375,7 @@ SaffronGym_MapEvents:
 	bg_event  8, 15, BGEVENT_READ, SaffronGymStatue
 
 	def_object_events
-	object_event  9,  8, SPRITE_SABRINA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, SaffronGymSabrinaScript, -1
+	object_event  9,  8, SPRITE_SABRINA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, SaffronGymSabrinaScript, EVENT_SABRINA_IN_GYM
 	object_event 17, 16, SPRITE_GRANNY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerMediumRebecca, -1
 	object_event  3, 16, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerPsychicFranklin, -1
 	object_event  3,  4, SPRITE_GRANNY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerMediumDoris, -1

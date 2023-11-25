@@ -1,5 +1,6 @@
 	object_const_def
 	const ROUTE25_MISTY
+	const ROUTE25_MISTY2
 	const ROUTE25_COOLTRAINER_M1
 	const ROUTE25_YOUNGSTER1
 	const ROUTE25_LASS1
@@ -10,6 +11,7 @@
 	const ROUTE25_SUPER_NERD
 	const ROUTE25_COOLTRAINER_M2
 	const ROUTE25_POKE_BALL
+	const ROUTE25_CAMPER
 
 Route25_MapScripts:
 	def_scene_scripts
@@ -17,6 +19,36 @@ Route25_MapScripts:
 	scene_script Route25Noop2Scene, SCENE_ROUTE25_MISTYS_DATE
 
 	def_callbacks
+	callback MAPCALLBACK_OBJECTS, Route25MistyCallback
+
+Route25AlwaysOnBikeCallback:
+	readvar VAR_YCOORD
+	ifless 5, .CanWalk
+	readvar VAR_XCOORD
+	ifgreater 13, .CanWalk
+	setflag ENGINE_ALWAYS_ON_BIKE
+	endcallback
+
+.CanWalk:
+	clearflag ENGINE_ALWAYS_ON_BIKE
+	endcallback
+
+Route25MistyCallback:
+	readvar VAR_WEEKDAY
+	ifequal MONDAY, .MistyCanAppear
+	ifequal FRIDAY, .MistyCanAppear
+	disappear ROUTE25_MISTY2
+	endcallback
+
+.MistyCanAppear:
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .MistyAppears
+	disappear ROUTE25_MISTY2
+	endcallback
+
+.MistyAppears:
+	appear ROUTE25_MISTY2
+	endcallback
 
 Route25Noop1Scene:
 	end
@@ -182,6 +214,40 @@ TrainerCooltrainermKevin:
 	closetext
 	end
 
+Route25Misty:
+    faceplayer
+    opentext
+    checkflag ENGINE_MISTY_REMATCH
+    iftrue .FightDone
+    writetext Route25MistyIntroText
+    yesorno
+    iffalse .RefusedBattle
+    writetext Route25MistyAcceptText
+    waitbutton
+    closetext
+    winlosstext Route25MistyBeatenText, 0
+    loadtrainer MISTY, MISTY2
+    startbattle
+    reloadmapafterbattle
+    setflag ENGINE_MISTY_REMATCH
+    opentext
+    writetext Route25MistyAfterBattleText
+    waitbutton
+    closetext
+    end
+
+.RefusedBattle:
+	writetext Route25MistyRefusedText
+	waitbutton
+	closetext
+	end
+
+.FightDone:
+	writetext Route25MistyAfterBattleText
+	waitbutton
+	closetext
+	end
+
 BillsHouseSign:
 	jumptext BillsHouseSignText
 
@@ -267,6 +333,46 @@ Route25MistyDateText:
 	para "I'm MISTY, the"
 	line "GYM LEADER in"
 	cont "CERULEAN."
+	done
+
+Route25MistyIntroText:
+	text "MISTY: Oh, look"
+	line "who it is,"
+	cont "the pest!"
+
+	para "Come to bother me"
+	line "some more?"
+
+	para "Just kidding!"
+	line "I've been training"
+
+	para "hard since I lost"
+	line "to you."
+
+	para "Want a rematch?"
+	done
+
+Route25MistyAcceptText:
+	text "Alright! Let's go!"
+	done
+
+Route25MistyRefusedText:
+	text "Too scared, huh?"
+	done
+
+Route25MistyBeatenText:
+	text "Grrr! Beaten"
+	line "again! You're"
+	cont "so tough!"
+	done
+
+Route25MistyAfterBattleText:
+	text "Wow, you JOHTO"
+	line "trainers sure are"
+	cont "tough."
+
+	para "I need to get out"
+	line "there sometime!"
 	done
 
 SchoolboyDudleySeenText:
@@ -443,6 +549,7 @@ Route25_MapEvents:
 
 	def_object_events
 	object_event 46,  9, SPRITE_MISTY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_MISTY_BOYFRIEND
+	object_event 46,  9, SPRITE_MISTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Route25Misty, EVENT_MISTY_REMATCH
 	object_event 46, 10, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_MISTY_BOYFRIEND
 	object_event 12,  8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerSchoolboyDudley, -1
 	object_event 16, 11, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerLassEllen, -1
@@ -453,3 +560,4 @@ Route25_MapEvents:
 	object_event 31,  7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerSupernerdPat, -1
 	object_event 37,  8, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, TrainerCooltrainermKevin, -1
 	object_event 32,  4, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route25Protein, EVENT_ROUTE_25_PROTEIN
+	object_event  3, 22, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 0, TrainerCamperLeroy, -1

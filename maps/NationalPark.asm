@@ -13,11 +13,30 @@
 	const NATIONALPARK_POKE_BALL1
 	const NATIONALPARK_GAMEBOY_KID
 	const NATIONALPARK_POKE_BALL2
+	const NATIONALPARK_ERIKA
 
 NationalPark_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_OBJECTS, NationalParkErikaCallback
+
+NationalParkErikaCallback:
+	readvar VAR_WEEKDAY
+	ifequal MONDAY, .ErikaCanAppear
+	ifequal TUESDAY, .ErikaCanAppear
+	disappear NATIONALPARK_ERIKA
+	endcallback
+
+.ErikaCanAppear:
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .ErikaAppears
+	disappear NATIONALPARK_ERIKA
+	endcallback
+
+.ErikaAppears:
+	appear NATIONALPARK_ERIKA
+	endcallback
 
 NationalParkLassScript:
 	jumptextfaceplayer NationalParkLassText
@@ -287,6 +306,40 @@ TrainerLassKrise:
 	closetext
 	end
 
+NationalParkErika:
+    faceplayer
+    opentext
+    checkflag ENGINE_ERIKA_REMATCH
+    iftrue .FightDone
+    writetext NationalParkErikaIntroText
+    yesorno
+    iffalse .RefusedBattle
+    writetext NationalParkErikaAcceptText
+    waitbutton
+    closetext
+    winlosstext NationalParkErikaBeatenText, 0
+    loadtrainer ERIKA, ERIKA2
+    startbattle
+    reloadmapafterbattle
+    setflag ENGINE_ERIKA_REMATCH
+    opentext
+    writetext NationalParkErikaAfterBattleText
+    waitbutton
+    closetext
+    end
+
+.RefusedBattle:
+	writetext NationalParkErikaRefusedText
+	waitbutton
+	closetext
+	end
+
+.FightDone:
+	writetext NationalParkErikaAfterBattleText
+	waitbutton
+	closetext
+	end
+
 NationalParkRelaxationSquareSign:
 	jumptext NationalParkRelaxationSquareText
 
@@ -487,6 +540,51 @@ LassKriseAfterBattleText:
 	cont "because I'm cute!"
 	done
 
+NationalParkErikaIntroText:
+	text "…"
+
+	para "Oh, hello,"
+	line "<PLAYER>."
+
+	para "How lucky you are"
+	line "to have this beau-"
+	cont "tiful park in"
+	cont "JOHTO…"
+
+	para "…Oh?"
+	line "A battle?"
+	done
+
+NationalParkErikaAcceptText:
+	text "Well, alright."
+	line "I have gotten"
+
+	para "stronger since"
+	line "last time…"
+	done
+
+NationalParkErikaRefusedText:
+	text "No?"
+	line "That's okay."
+
+	para "Let's just enjoy"
+	line "the greenery."
+	done
+
+NationalParkErikaBeatenText:
+	text "Another wonderful"
+	line "battle…"
+	done
+
+NationalParkErikaAfterBattleText:
+	text "That was fun."
+	line "Even though I'm"
+
+	para "a gym leader, I"
+	line "still have much"
+	cont "to learn…"
+	done
+
 NationalParkRelaxationSquareText:
 	text "RELAXATION SQUARE"
 	line "NATIONAL PARK"
@@ -543,3 +641,4 @@ NationalPark_MapEvents:
 	object_event 35, 12, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, NationalParkParlyzHeal, EVENT_NATIONAL_PARK_PARLYZ_HEAL
 	object_event 26,  6, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, NationalParkGameboyKidScript, -1
 	object_event  1, 43, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, NationalParkTMDig, EVENT_NATIONAL_PARK_TM_DIG
+	object_event 23, 31, SPRITE_ERIKA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, NationalParkErika, EVENT_ERIKA_REMATCH

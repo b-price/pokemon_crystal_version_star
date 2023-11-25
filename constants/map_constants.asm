@@ -154,6 +154,30 @@ ENDM
 	map_const SAFARI_ZONE_FUCHSIA_GATE_BETA,                5,  4 ; 89
 	map_const SAFARI_ZONE_BETA,                            10, 18 ; 90
 	map_const VICTORY_ROAD,                                10, 36 ; 91
+	map_const SAFARI_ZONE_CENTER,						   15, 13 ; 92	
+	map_const SAFARI_ZONE_NORTH,						   20, 18 ; 93
+	map_const SAFARI_ZONE_EAST,						       15, 13 ; 94
+	map_const SAFARI_ZONE_WEST,						       15, 13 ; 95
+	map_const CERULEAN_CAVE_1F,						       16, 10 ; 97
+	map_const CERULEAN_CAVE_2F,						       17, 11 ; 98
+	map_const CERULEAN_CAVE_B1F,						   17, 11 ; 99
+	map_const CINNABAR_VOLCANO_1F,						   14,  6 ; 100
+	map_const CINNABAR_VOLCANO_2F,						   10, 10 ; 101
+	map_const CINNABAR_VOLCANO_B1F,						   20, 15 ; 102
+	map_const CINNABAR_VOLCANO_ITEM_ROOMS,				   16,  5 ; 103
+	map_const SEAFOAM_ISLANDS_1F,						   13,  7 ; 104
+	map_const SEAFOAM_ISLANDS_B1F,						   27, 10 ; 105
+	map_const SEAFOAM_ISLANDS_B2F,						   17, 10 ; 106
+	map_const SEAFOAM_ISLANDS_B3F,						   20, 11 ; 107
+	map_const SEAFOAM_ISLANDS_B4F,						   20, 11 ; 108
+	map_const POWER_PLANT_B1F,						       15, 15 ; 109
+	map_const UNDERGROUND_KPF,						       15,  5 ; 110
+	map_const SAFARI_ZONE_CENTER_HOUSE,		 		        4,  4 ; 111
+	map_const SAFARI_ZONE_NORTH_HOUSE,		 		        4,  4 ; 112
+	map_const SAFARI_ZONE_EAST_HOUSE,		 		        4,  4 ; 113
+	map_const SAFARI_ZONE_WEST_HOUSE,		 		        4,  4 ; 114
+	map_const SAFARI_ZONE_SECRET_HOUSE,		 		        4,  4 ; 115
+	map_const TEST_WARP_ROOM,		 		                9,  5 ; 116 TESTING
 	endgroup
 
 	newgroup ECRUTEAK                                             ;  4
@@ -185,7 +209,7 @@ ENDM
 	map_const CINNABAR_POKECENTER_1F,                       5,  4 ;  1
 	map_const CINNABAR_POKECENTER_2F_BETA,                  8,  4 ;  2
 	map_const ROUTE_19_FUCHSIA_GATE,                        5,  4 ;  3
-	map_const SEAFOAM_GYM,                                  5,  4 ;  4
+	map_const SEAFOAM_GYM,                                 10,  10 ;  4
 	map_const ROUTE_19,                                    10, 18 ;  5
 	map_const ROUTE_20,                                    30,  9 ;  6
 	map_const ROUTE_21,                                    10, 18 ;  7
@@ -210,6 +234,7 @@ ENDM
 	map_const ROUTE_24,                                    10,  9 ; 15
 	map_const ROUTE_25,                                    30,  9 ; 16
 	map_const CERULEAN_CITY,                               20, 18 ; 17
+	map_const CERULEAN_BIKE_SHOP,                           4,  4 ; 18
 	endgroup
 
 	newgroup AZALEA                                               ;  8
@@ -312,6 +337,8 @@ ENDM
 	map_const PEWTER_POKECENTER_1F,                         5,  4 ;  6
 	map_const PEWTER_POKECENTER_2F_BETA,                    8,  4 ;  7
 	map_const PEWTER_SNOOZE_SPEECH_HOUSE,                   4,  4 ;  8
+	map_const MUSEUM_1F,                                   12,  4 ;  9
+	map_const MUSEUM_2F,                                    7,  4 ;  10
 	endgroup
 
 	newgroup FAST_SHIP                                            ; 15
@@ -371,6 +398,7 @@ ENDM
 	map_const LAV_RADIO_TOWER_1F,                          10,  4 ; 12
 	map_const ROUTE_8_SAFFRON_GATE,                         5,  4 ; 13
 	map_const ROUTE_12_SUPER_ROD_HOUSE,                     4,  4 ; 14
+	map_const ROUTE_8_UNDERGROUND_PATH_ENTRANCE,            4,  4 ; 15
 	endgroup
 
 	newgroup SILVER                                               ; 19
@@ -416,6 +444,7 @@ ENDM
 	map_const ROUTE_16_GATE,                                5,  4 ; 24
 	map_const ROUTE_7_SAFFRON_GATE,                         5,  4 ; 25
 	map_const ROUTE_17_ROUTE_18_GATE,                       5,  4 ; 26
+	map_const ROUTE_7_UNDERGROUND_PATH_ENTRANCE,            4,  4 ; 27
 	endgroup
 
 	newgroup CIANWOOD                                             ; 22
@@ -451,6 +480,9 @@ ENDM
 	map_const ROUTE_2_NUGGET_HOUSE,                         4,  4 ; 11
 	map_const ROUTE_2_GATE,                                 5,  4 ; 12
 	map_const VICTORY_ROAD_GATE,                           10,  9 ; 13
+	map_const ROUTE_2_VIRIDIAN_FOREST_GATE_NORTH,           5,  4 ; 14
+	map_const ROUTE_2_VIRIDIAN_FOREST_GATE_SOUTH,           5,  4 ; 15
+	map_const VIRIDIAN_FOREST,						       17, 25 ; 16
 	endgroup
 
 	newgroup NEW_BARK                                             ; 24
@@ -485,6 +517,7 @@ ENDM
 	map_const ROUTE_5_UNDERGROUND_PATH_ENTRANCE,            4,  4 ; 13
 	map_const ROUTE_5_SAFFRON_GATE,                         5,  4 ; 14
 	map_const ROUTE_5_CLEANSE_TAG_HOUSE,                    4,  4 ; 15
+	map_const SILPH_CO_2F,                                  8,  4 ; 16
 	endgroup
 
 	newgroup CHERRYGROVE                                          ; 26
