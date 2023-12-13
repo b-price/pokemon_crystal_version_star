@@ -93,6 +93,7 @@ NidoranMEggMoves:
 	db AMNESIA
 	db COUNTER
 	db BEAT_UP
+	db MEGAHORN
 	db -1 ; end
 
 VulpixEggMoves:
@@ -369,6 +370,7 @@ HorseaEggMoves:
 	db DISABLE
 	db SPLASH
 	db DRAGON_RAGE
+	db OUTRAGE
 	db -1 ; end
 
 GoldeenEggMoves:
@@ -390,6 +392,7 @@ ScytherEggMoves:
 	db RAZOR_WIND
 	db REVERSAL
 	db LIGHT_SCREEN
+	db TWINEEDLE
 	db -1 ; end
 
 PinsirEggMoves:
@@ -670,6 +673,7 @@ HeracrossEggMoves:
 	db HARDEN
 	db BIDE
 	db FLAIL
+	db CROSS_CHOP
 	db -1 ; end
 
 SneaselEggMoves:
@@ -769,6 +773,7 @@ TyrogueEggMoves:
 	db HI_JUMP_KICK
 	db MACH_PUNCH
 	db MIND_READER
+	db CROSS_CHOP
 	db -1 ; end
 
 SmoochumEggMoves:

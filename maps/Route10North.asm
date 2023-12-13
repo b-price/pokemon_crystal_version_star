@@ -5,20 +5,6 @@ Route10North_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_OBJECTS, Route10NorthCallback
-	
-Route10NorthCallback:
-	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue .NoAppear
-	sjump .Appear
-	
-.NoAppear:
-	disappear ROUTE10NORTH_OFFICER
-	endcallback
-	
-.Appear:
-	appear ROUTE10NORTH_OFFICER
-	endcallback
 	
 Route10NorthOfficer:
 	jumptextfaceplayer Route10NorthOfficerText
@@ -61,4 +47,4 @@ Route10North_MapEvents:
 	bg_event 12,  1, BGEVENT_READ, Route10PokecenterSign
 
 	def_object_events
-	object_event 14, 10, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route10NorthOfficer, -1
+	object_event 14, 10, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route10NorthOfficer, EVENT_ROUTE_10_OFFICER

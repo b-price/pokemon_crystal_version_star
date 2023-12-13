@@ -21,8 +21,8 @@ GoldenrodGymWhitneyCallback:
 	endcallback
 .WhitneyCanDisappear:
 	readvar VAR_WEEKDAY
-	ifequal SATURDAY, .WhitneyDisappear
-	ifequal SUNDAY, .WhitneyDisappear
+	ifequal MONDAY, .WhitneyDisappear
+	ifequal WEDNESDAY, .WhitneyDisappear
 	appear GOLDENRODGYM_WHITNEY
 	endcallback
 .WhitneyDisappear:

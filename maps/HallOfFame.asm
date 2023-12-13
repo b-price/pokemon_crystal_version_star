@@ -42,6 +42,12 @@ HallOfFameEnterScript:
 	iftrue .SkipPhoneCall
 	specialphonecall SPECIALCALL_SSTICKET
 .SkipPhoneCall:
+	checkevent EVENT_BEAT_RED
+	iftrue .Red2Reset
+	halloffame
+	end
+.Red2Reset:
+	clearevent EVENT_CERULEAN_CAVE_RED
 	halloffame
 	end
 

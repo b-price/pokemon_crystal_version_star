@@ -78,7 +78,7 @@ BurglarRaulBeatenText:
 
 BurglarRaulAfterBattleText:
 	text "Between you and me"
-	line "..."
+	line "…"
 
 	para "We're not supposed"
 	line "to be here. But,"
@@ -131,5 +131,5 @@ CinnabarVolcanoB1F_MapEvents:
 	object_event 12, 20, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, CinnabarVolcanoB1FNugget, EVENT_CINNABAR_VOLCANO_B1F_NUGGET
 	object_event 38, 17, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, CinnabarVolcanoB1FMaxElixer, EVENT_CINNABAR_VOLCANO_B1F_MAX_ELIXER
 	object_event 25,  5, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, CinnabarVolcanoB1FMaxRevive, EVENT_CINNABAR_VOLCANO_B1F_MAX_REVIVE
-	object_event 19, 24, SPRITE_PHARMACIST, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 0, TrainerBurglarRaul, -1
-	object_event  6, 21, SPRITE_PHARMACIST, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 0, TrainerBurglarTose, -1
+	object_event 19, 24, SPRITE_PHARMACIST, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 0, TrainerBurglarRaul, -1
+	object_event  6, 21, SPRITE_PHARMACIST, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 0, TrainerBurglarTose, -1

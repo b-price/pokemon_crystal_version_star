@@ -449,6 +449,7 @@ MartSaffron:
 		db KINGS_ROCK
 		db DRAGON_SCALE
 		db UP_GRADE
+		db RARE_CANDY
 		db -1 ; end
 	
 MartMtMoon:

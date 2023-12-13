@@ -78,6 +78,7 @@ Route25MistyDate1Script:
 	applymovement ROUTE25_MISTY, Route25MistyLeavesMovement
 	disappear ROUTE25_MISTY
 	clearevent EVENT_TRAINERS_IN_CERULEAN_GYM
+	clearevent EVENT_MISTY_IN_GYM
 	setscene SCENE_ROUTE25_NOOP
 	special RestartMapMusic
 	end
@@ -104,6 +105,7 @@ Route25MistyDate2Script:
 	applymovement ROUTE25_MISTY, Route25MistyLeavesMovement
 	disappear ROUTE25_MISTY
 	clearevent EVENT_TRAINERS_IN_CERULEAN_GYM
+	clearevent EVENT_MISTY_IN_GYM
 	setscene SCENE_ROUTE25_NOOP
 	special RestartMapMusic
 	end

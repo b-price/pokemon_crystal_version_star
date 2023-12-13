@@ -209,11 +209,15 @@ CeruleanCityFisherRocketTipText:
 	done
 
 CeruleanCityYoungsterText1:
-	text "There used to be a"
-	line "cave here that had"
+	text "There's a cave"
+	line "across the river"
 
-	para "horribly powerful"
-	line "#MON in it."
+	para "with horribly"
+	line "powerful #MON"
+	cont "in it."
+
+	para "No one is allowed"
+	line "in there!"
 	done
 
 CeruleanCityYoungsterText2:

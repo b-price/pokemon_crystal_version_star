@@ -44,7 +44,7 @@ CinnabarPokecenter1FHikerText:
 	line "Watch out, though!"
 	
 	para "Lava still flows"
-	cont "down there…"
+	line "down there…"
 	done
 
 CinnabarPokecenter1F_MapEvents:

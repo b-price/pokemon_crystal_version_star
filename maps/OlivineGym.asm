@@ -9,6 +9,8 @@ OlivineGym_MapScripts:
 	callback MAPCALLBACK_OBJECTS, OlivineGymJasmineCallback
 
 OlivineGymJasmineCallback:
+	checkevent EVENT_BEAT_JASMINE
+	iffalse .BeforeMtSilver
 	checkevent EVENT_OPENED_MT_SILVER
 	iftrue .JasmineCanDisappear
 	appear OLIVINEGYM_JASMINE
@@ -21,6 +23,8 @@ OlivineGymJasmineCallback:
 	endcallback
 .JasmineDisappear:
 	disappear OLIVINEGYM_JASMINE
+	endcallback
+.BeforeMtSilver:
 	endcallback
 
 OlivineGymJasmineScript:

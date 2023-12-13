@@ -44,6 +44,8 @@ Route34IlexForestGateCelebiEvent:
 Route34IlexForestGateTeacherScript:
 	faceplayer
 	opentext
+	checkevent EVENT_FOREST_IS_RESTLESS
+	iftrue .ForestIsRestless
 	checkevent EVENT_TALKED_TO_FOREST_GATE_MOVE_TUTOR
 	iffalse .FirstTime
 	writetext Route34IlexForestGateTeacherAskText

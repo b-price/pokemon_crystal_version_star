@@ -6,8 +6,8 @@ SafariZoneWestHouse_MapScripts:
 
 	def_callbacks
 
-SafariZoneWestHouseSecretKey:
-	itemball SECRET_KEY
+SafariZoneWestHouseScopeLens:
+	itemball SCOPE_LENS
 	
 SafariZoneWestHousePhone:
 	jumptext SafariZoneWestHousePhoneText
@@ -35,4 +35,4 @@ SafariZoneWestHouse_MapEvents:
 	bg_event  7,  7, BGEVENT_READ, SafariZoneWestHouseTrashCan
 
 	def_object_events
-	object_event  4,  4, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, SafariZoneWestHouseSecretKey, EVENT_SAFARI_ZONE_WEST_HOUSE_SECRET_KEY
+	object_event  4,  4, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, SafariZoneWestHouseScopeLens, EVENT_SAFARI_ZONE_WEST_HOUSE_SCOPE_LENS

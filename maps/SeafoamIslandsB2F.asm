@@ -114,7 +114,7 @@ SeafoamIslandsB2F_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event 25, 15, SEAFOAM_ISLANDS_B1F, 3
+	warp_event 25, 17, SEAFOAM_ISLANDS_B1F, 3
 	warp_event 11,  9, SEAFOAM_ISLANDS_B1F, 4
 	warp_event  7, 15, SEAFOAM_ISLANDS_B1F, 5
 	warp_event  3, 15, SEAFOAM_ISLANDS_B1F, 6

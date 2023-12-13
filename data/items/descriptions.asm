@@ -583,8 +583,8 @@ PoisonBarbDesc:
 	next "type moves. (HOLD)@"
 
 KingsRockDesc:
-	db   "Evolves #MON, may"
-	next "cause flinch(HOLD)@"
+	db   "Evolves, might ca-"
+	next "use flinch. (HOLD)@"
 
 BitterBerryDesc:
 	db   "A self-cure for"
@@ -814,8 +814,8 @@ TeruSama13Desc:
 	db   "?@"
 
 MetalCoatDesc:
-	db   "Evolves #MON, ups"
-	next "steel power.(HOLD)@"
+	db   "Holds the power"
+	next "of steel.(HOLD)@"
 
 DragonFangDesc:
 	db   "Powers up dragon-"

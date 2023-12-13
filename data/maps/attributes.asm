@@ -708,7 +708,7 @@ ENDM
 	map_attributes Route7UndergroundPathEntrance, ROUTE_7_UNDERGROUND_PATH_ENTRANCE, $00, 0
 	map_attributes CinnabarVolcano1F, CINNABAR_VOLCANO_1F, $09, 0
 	map_attributes CinnabarVolcano2F, CINNABAR_VOLCANO_2F, $09, 0
-	map_attributes CinnabarVolcanoB1F, CINNABAR_VOLCANO_B1F, $09, 0
+	map_attributes CinnabarVolcanoB1F, CINNABAR_VOLCANO_B1F, $2E, 0
 	map_attributes CinnabarVolcanoItemRooms, CINNABAR_VOLCANO_ITEM_ROOMS, $09, 0
 	map_attributes CeruleanCave1F, CERULEAN_CAVE_1F, $1D, 0
 	map_attributes CeruleanCaveB1F, CERULEAN_CAVE_B1F, $09, 0

@@ -69,8 +69,8 @@ HouseDoorScript::
 	end
 	
 SafariZoneWestSignText:
-	text "SAFARI ZONE CLOSED"
-	line "NO TRESPASSING!"
+	text "SAFARI ZONE"
+	line "WEST AREA"
 	done
 	
 SafariZoneWestHouseSignText:

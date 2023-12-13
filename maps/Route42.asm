@@ -272,8 +272,8 @@ PokemaniacShaneSeenText:
 	done
 
 PokemaniacShaneBeatenText:
-	text "I should have used"
-	line "my MOON STONE…"
+	text "Did I waste my"
+	line "MOON STONE?"
 	done
 
 PokemaniacShaneAfterBattleText:

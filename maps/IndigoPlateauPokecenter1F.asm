@@ -195,6 +195,7 @@ AbraScript:
 	end
 
 IndigoPlateauPokecenter1FJanine:
+	applymovement INDIGOPLATEAUPOKECENTER1F_JANINE, Movement_JanineSpin
     faceplayer
     opentext
     checkflag ENGINE_JANINE_REMATCH
@@ -252,6 +253,22 @@ PlateauRivalLeavesMovement:
 	step DOWN
 	step DOWN
 	step DOWN
+	step_end
+
+Movement_JanineSpin:
+	turn_head DOWN
+	turn_head LEFT
+	turn_head UP
+	turn_head RIGHT
+	turn_head DOWN
+	turn_head LEFT
+	turn_head UP
+	turn_head RIGHT
+	turn_head DOWN
+	turn_head LEFT
+	turn_head UP
+	turn_head RIGHT
+	turn_head DOWN
 	step_end
 
 IndigoPlateauPokecenter1FCooltrainerMText:
@@ -416,4 +433,4 @@ IndigoPlateauPokecenter1F_MapEvents:
 	object_event 16,  9, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INDIGO_PLATEAU_POKECENTER_RIVAL
 	object_event  1,  9, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, TeleportGuyScript, EVENT_TELEPORT_GUY
 	object_event  0,  9, SPRITE_JYNX, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, AbraScript, EVENT_TELEPORT_GUY
-	object_event  6,  7, SPRITE_JANINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, IndigoPlateauPokecenter1FJanine, EVENT_JANINE_REMATCH
+	object_event  9,  7, SPRITE_JANINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, IndigoPlateauPokecenter1FJanine, EVENT_JANINE_REMATCH

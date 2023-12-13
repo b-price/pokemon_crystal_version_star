@@ -17,7 +17,6 @@ CeruleanGym_MapScripts:
 CeruleanGymMistyCallback:
 	checkevent EVENT_OPENED_MT_SILVER
 	iftrue .MistyCanDisappear
-	appear CERULEANGYM_MISTY
 	endcallback
 .MistyCanDisappear:
 	readvar VAR_WEEKDAY
@@ -396,8 +395,8 @@ CeruleanGymGuideHintText:
 	line "to hang out on"
 
 	para "the CAPE on"
-	line "THURSDAYs and"
-	cont "SATURDAYs."
+	line "MONDAYs and"
+	cont "FRIDAYs."
 
 	para "Maybe she'd have"
 	line "a rematch with"
@@ -420,7 +419,7 @@ CeruleanGym_MapEvents:
 
 	def_object_events
 	object_event  4, 10, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_GYM_ROCKET
-	object_event  5,  3, SPRITE_MISTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanGymMistyScript, EVENT_TRAINERS_IN_CERULEAN_GYM
+	object_event  5,  3, SPRITE_MISTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanGymMistyScript, EVENT_MISTY_IN_GYM
 	object_event  4,  6, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerSwimmerfDiana, EVENT_TRAINERS_IN_CERULEAN_GYM
 	object_event  1,  9, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerSwimmerfBriana, EVENT_TRAINERS_IN_CERULEAN_GYM
 	object_event  8,  9, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerSwimmermParker, EVENT_TRAINERS_IN_CERULEAN_GYM

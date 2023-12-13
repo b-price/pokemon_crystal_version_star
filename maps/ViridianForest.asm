@@ -21,9 +21,9 @@ ViridianForest_MapScripts:
 
 ViridianForestBugsyMewCallback:
 	readvar VAR_WEEKDAY
+	ifequal MONDAY, .MewCanAppear
 	ifequal SATURDAY, .BugsyCanAppear
 	ifequal FRIDAY, .BugsyCanAppear
-	ifequal MONDAY, .MewCanAppear
 	disappear VIRIDIAN_FOREST_BUGSY
 	disappear VIRIDIAN_FOREST_MEW
 	endcallback

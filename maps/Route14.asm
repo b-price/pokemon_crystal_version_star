@@ -141,7 +141,8 @@ PokefanmTrevorSeenText:
 
 PokefanmTrevorBeatenText:
 	text "Where did I meet"
-	line "this PSYDUCK?"
+	line "this PSYDUCK"
+	cont "and GOLDUCK?"
 	done
 
 PokefanmTrevorAfterBattleText:

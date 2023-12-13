@@ -21,6 +21,7 @@ CinnabarIslandBlue:
 	applymovement CINNABARISLAND_BLUE, CinnabarIslandBlueTeleport
 	disappear CINNABARISLAND_BLUE
 	clearevent EVENT_VIRIDIAN_GYM_BLUE
+	clearevent EVENT_VIRIDIAN_GYM_GUIDE
 	end
 
 CinnabarIslandGymSign:

@@ -32,8 +32,8 @@ SafariZoneNorthHiddenPPUp:
 	hiddenitem PP_UP, EVENT_SAFARI_ZONE_NORTH_HIDDEN_PP_UP
 	
 SafariZoneNorthSignText:
-	text "SAFARI ZONE CLOSED"
-	line "NO TRESPASSING!"
+	text "SAFARI ZONE"
+	line "NORTH AREA"
 	done
 	
 SafariZoneNorthHouseSignText:

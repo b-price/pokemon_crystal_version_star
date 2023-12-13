@@ -10,6 +10,8 @@ OlivineLighthouse6F_MapScripts:
 	callback MAPCALLBACK_OBJECTS, OlivineLighthouseJasmineCallback
 
 OlivineLighthouseJasmineCallback:
+	checkevent EVENT_BEAT_JASMINE
+	iffalse .BeforeMtSilver
 	readvar VAR_WEEKDAY
 	ifequal WEDNESDAY, .JasmineCanAppear
 	ifequal FRIDAY, .JasmineCanAppear
@@ -24,6 +26,9 @@ OlivineLighthouseJasmineCallback:
 
 .JasmineAppears:
 	appear OLIVINELIGHTHOUSE6F_JASMINE
+	endcallback
+
+.BeforeMtSilver:
 	endcallback
 
 OlivineLighthouseJasmine:

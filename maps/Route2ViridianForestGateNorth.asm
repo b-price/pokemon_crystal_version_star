@@ -44,7 +44,7 @@ Route2ViridianForestGateNorth_MapEvents:
 	warp_event  4,  0, ROUTE_2, 6
 	warp_event  5,  0, ROUTE_2, 7
 	warp_event  4,  7, VIRIDIAN_FOREST, 3
-	warp_event  5,  7, VIRIDIAN_FOREST, 4
+	warp_event  5,  7, VIRIDIAN_FOREST, 3
 
 	def_coord_events
 

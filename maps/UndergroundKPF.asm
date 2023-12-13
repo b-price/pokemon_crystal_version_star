@@ -62,12 +62,37 @@ TrainerBikerRoberto:
 	end
 
 TrainerBikerKazu:
-	trainer BIKER, KAZU, EVENT_BEAT_BIKER_KAZU, BikerKazuSeenText, BikerKazuBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
+	faceplayer
+	opentext
+	checkevent EVENT_BEAT_BIKER_KAZU
+	iftrue .FightDone
+	writetext BikerKazuSeenText
+	waitbutton
+	closetext
+	winlosstext BikerKazuBeatenText, 0
+	loadtrainer BIKER, KAZU
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_BIKER_KAZU
+	setevent EVENT_BEAT_BIKER_HORACE
+	setevent EVENT_BEAT_BIKER_DIGBY
+	setevent EVENT_BEAT_BIKER_LEE
+	setevent EVENT_BEAT_BIKER_ROBERTO
+	setevent EVENT_BEAT_BIKER_LIAM
+	setevent EVENT_BEAT_BIKER_NIC
+	setevent EVENT_BEAT_BIKER_JESSE
+	setevent EVENT_KPF_BIKERS
 	opentext
 	writetext BikerKazuAfterBattleText
+	waitbutton
+	verbosegiveitem SECRET_KEY
+	writetext BikerKazuKeyText
+	waitbutton
+	closetext
+	end
+	
+.FightDone:
+	writetext BikerKazuLivesHereText
 	waitbutton
 	closetext
 	end
@@ -114,8 +139,8 @@ UndergroundKPFXAttack:
 UndergroundKPFPoisonBarb:
 	itemball POISON_BARB
 
-UndergroundKPFTMToxic:
-	itemball TM_TOXIC
+UndergroundKPFSecretKey:
+	itemball SECRET_KEY
 
 BikerLeeSeenText:
 	text "You're in KANTO"
@@ -205,9 +230,10 @@ BikerKazuAfterBattleText:
 	line "the toughest"
 	cont "around after all."
 	
-	para "The police are"
-	line "cowards. We'd"	
-	cont "listen to them."
+	para "We'd never listen"
+	line "to the police,"	
+	cont "they're always"
+	cont "hasslin' us."
 	
 	para "You're tough for"
 	line "real, though."
@@ -215,6 +241,35 @@ BikerKazuAfterBattleText:
 	para "We'll try to be"
 	line "more respectful"
 	cont "of the space."
+
+	para "One more thing,"
+	line "I want to give"
+	cont "you this key."
+	done
+
+BikerKazuKeyText:
+	text "I don't have any"
+	line "use for it, but"
+
+	para "take it as a"
+	line "memento of our"
+	cont "battle."
+
+	para "What's it for?"
+	line "Beats me."
+
+	para "All I know is some"
+	line "weird guy dropped"
+	cont "it in FUCHSIA."
+	done
+
+BikerKazuLivesHereText:
+	text "Truth be told,"
+	line "I live down here."
+
+	para "I just like to"
+	line "hang out with my"
+	cont "friends!"
 	done
 	
 BikerHoraceSeenText:
@@ -274,15 +329,15 @@ UndergroundKPF_MapEvents:
 	def_bg_events
 
 	def_object_events
-	object_event  7,  1, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerBikerJesse, -1
-	object_event 11,  4, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBikerLiam, -1
-	object_event 18,  1, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerBikerLee, -1
-	object_event 16,  7, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerBikerKazu, -1
-	object_event 24,  4, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerBikerRoberto, -1
-	object_event  2,  4, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerBikerHorace, -1
+	object_event  7,  1, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerBikerJesse, EVENT_KPF_BIKERS
+	object_event 11,  4, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBikerLiam, EVENT_KPF_BIKERS
+	object_event 18,  1, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerBikerLee, EVENT_KPF_BIKERS
+	object_event 16,  7, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 1, TrainerBikerKazu, -1
+	object_event 24,  4, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerBikerRoberto, EVENT_KPF_BIKERS
+	object_event  2,  4, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerBikerHorace, EVENT_KPF_BIKERS
 	object_event  4,  6, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerBikerDigby, -1
 	object_event  8,  8, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerBikerNic, -1
 	object_event  1,  8, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, UndergroundKPFNugget, EVENT_UNDERGROUND_KPF_NUGGET
 	object_event 17,  4, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, UndergroundKPFXAttack, EVENT_UNDERGROUND_KPF_X_ATTACK
 	object_event  9,  1, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, UndergroundKPFPoisonBarb, EVENT_UNDERGROUND_KPF_POISONBARB
-	object_event 18,  7, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, UndergroundKPFTMToxic, EVENT_UNDERGROUND_KPF_TM_TOXIC
+	;object_event 18,  7, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, UndergroundKPFSecretKey, EVENT_UNDERGROUND_KPF_SECRET_KEY

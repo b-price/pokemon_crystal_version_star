@@ -145,7 +145,7 @@ BikerZekeBeatenText:
 	done
 
 BikerZekeAfterBattleText:
-	text "We'll try not to"
+	text "I'll try not to"
 	line "disturb anyone"
 	cont "from now on…"
 	done
@@ -178,8 +178,9 @@ SupernerdTomBeatenText:
 SupernerdTomAfterBattleText:
 	text "It's so cool that"
 	line "they turned the"
-	cont "old #MON"
-	cont "TOWER into a"
+	
+	para "old #MON"
+	line "TOWER into a"
 	cont "RADIO TOWER!"
 	done
 	

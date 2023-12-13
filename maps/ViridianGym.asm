@@ -11,7 +11,6 @@ ViridianGym_MapScripts:
 ViridianGymBlueCallback:
 	checkevent EVENT_OPENED_MT_SILVER
 	iftrue .BlueCanDisappear
-	appear VIRIDIANGYM_BLUE
 	endcallback
 .BlueCanDisappear:
 	readvar VAR_WEEKDAY
@@ -226,4 +225,4 @@ ViridianGym_MapEvents:
 
 	def_object_events
 	object_event  5,  3, SPRITE_BLUE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ViridianGymBlueScript, EVENT_VIRIDIAN_GYM_BLUE
-	object_event  7, 13, SPRITE_GYM_GUIDE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ViridianGymGuideScript, EVENT_VIRIDIAN_GYM_BLUE
+	object_event  7, 13, SPRITE_GYM_GUIDE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ViridianGymGuideScript, EVENT_VIRIDIAN_GYM_GUIDE

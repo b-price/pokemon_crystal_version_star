@@ -37,7 +37,7 @@ CinnabarVolcanoItemRooms_MapEvents:
 	def_warp_events
 	warp_event  5,  7, CINNABAR_VOLCANO_B1F, 2
 	warp_event 15,  7, CINNABAR_VOLCANO_B1F, 3
-	warp_event 15,  3, CINNABAR_VOLCANO_1F, 2
+	warp_event 15,  3, CINNABAR_VOLCANO_1F, 3
 	warp_event 27,  7, CINNABAR_VOLCANO_B1F, 4
 
 	def_coord_events

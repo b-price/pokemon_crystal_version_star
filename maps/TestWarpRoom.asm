@@ -11,19 +11,28 @@ BillTestScript:
 	faceplayer
 	opentext
 	writetext BillTestText1
-	givepoke TYRANITAR, 250
+	givepoke TYRANITAR, 250, MAX_REPEL
 	writetext BillTestText2
 	setflag ENGINE_FOGBADGE
 	setflag ENGINE_HIVEBADGE
+	setflag ENGINE_STORMBADGE
+	setflag ENGINE_PLAINBADGE
 	setevent EVENT_GOT_TYROGUE_FROM_KIYO
 	setevent EVENT_OPENED_MT_SILVER
 	setevent EVENT_BEAT_RED
+	setevent EVENT_FOREST_IS_RESTLESS
+	setflag ENGINE_FLYPOINT_SAFFRON
+	setflag ENGINE_FLYPOINT_INDIGO_PLATEAU
+	setflag ENGINE_FLYPOINT_CINNABAR
+	setflag ENGINE_FLYPOINT_SILVER_CAVE
+	setflag ENGINE_FLYPOINT_CERULEAN
+	setflag ENGINE_FLYPOINT_GOLDENROD
 	waitbutton
 	closetext
 	end
 
 TestWarpRoomMasterBall:
-	itemball HM_CUT
+	itemball HM_STRENGTH
 	
 TestWarpRoomItem2:
 	itemball HM_SURF
@@ -46,25 +55,25 @@ TestWarpRoom_MapEvents:
 
 	def_warp_events
 	warp_event  1,  7, ELMS_LAB, 2
-	warp_event  3,  7, LAKE_OF_RAGE, 1
-	warp_event  5,  7, VIRIDIAN_FOREST, 1
-	warp_event  7,  7, VIOLET_GYM, 1
+	warp_event  3,  7, ROUTE_34, 1 
+	warp_event  5,  7, VIRIDIAN_FOREST, 1 ; BIRD IN VIRIDIAN NICKNAME HOUSE
+	warp_event  7,  7, SILVER_CAVE_OUTSIDE, 1
 	warp_event  9,  7, POWER_PLANT_B1F, 1
-	warp_event 11,  7, ECRUTEAK_GYM, 1
-	warp_event 13,  7, AZALEA_GYM, 1
+	warp_event 11,  7, TEAM_ROCKET_BASE_B3F, 1 ; BIRD HERE
+	warp_event 13,  7, AZALEA_GYM, 1 ;BIRD IN CHARCOAL GUY HOUSE
 	warp_event 15,  7, GOLDENROD_CITY, 1
 	warp_event 17,  7, OLIVINE_CITY, 1
 	warp_event  1,  1, SEAFOAM_GYM, 1
-	warp_event  3,  1, CERULEAN_CAVE_1F, 1
-	warp_event  5,  1, LAKE_OF_RAGE, 2
-	warp_event  7,  1, CINNABAR_VOLCANO_1F, 1
-	warp_event  9,  1, VERMILION_GYM, 1
-	warp_event 11,  1, CELADON_GYM, 1
+	warp_event  3,  1, CERULEAN_CAVE_B1F, 1
+	warp_event  5,  1, SAFARI_ZONE_SECRET_HOUSE, 1
+	warp_event  7,  1, CINNABAR_VOLCANO_B1F, 1
+	warp_event  9,  1, ROUTE_28_STEEL_WING_HOUSE, 1 ; BIRD IN HERE
+	warp_event 11,  1, UNDERGROUND_KPF, 2
 	warp_event 13,  1, CERULEAN_CITY, 1
-	warp_event 15,  1, FIGHTING_DOJO, 1
+	warp_event 15,  1, FIGHTING_DOJO, 1 ; BIRD IN COPYCATS HOUSE
 	warp_event 17,  1, OLIVINE_LIGHTHOUSE_6F, 1
-	warp_event 13,  5, CIANWOOD_CITY, 1
-	warp_event 15,  5, FUCHSIA_CITY, 1
+	warp_event 13,  5, VIOLET_CITY, 1 ; BIRD IN NICKNAME HOUSE
+	warp_event 15,  5, SAFARI_ZONE_CENTER, 1
 	warp_event 17,  5, INDIGO_PLATEAU_POKECENTER_1F, 1
 	
 

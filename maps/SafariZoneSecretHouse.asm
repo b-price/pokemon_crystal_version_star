@@ -62,8 +62,8 @@ SafariZoneSecretHouseTrashCan:
 SecretHouseKangaskhan:
 	faceplayer
 	opentext
-	writetext SecretHouseKangaskhanText
 	cry KANGASKHAN
+	writetext SecretHouseKangaskhanText
 	waitbutton
 	closetext
 	end
@@ -114,7 +114,9 @@ SecretHouseMoveTutorClear:
 	done
 	
 SecretHouseKangaskhanText:
-	text "KANGASKHAN"
+	text "KANGASKHAN: …"
+
+	para "KANGASKHAN"
 	line "has an untrusting"
 	cont "look…"
 	done
@@ -128,8 +130,8 @@ SafariZoneSecretHouse_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event  2,  7, SAFARI_ZONE_WEST, 7
-	warp_event  3,  7, SAFARI_ZONE_WEST, 7
+	warp_event  2,  7, SAFARI_ZONE_WEST, 8
+	warp_event  3,  7, SAFARI_ZONE_WEST, 8
 
 	def_coord_events
 
@@ -139,4 +141,4 @@ SafariZoneSecretHouse_MapEvents:
 
 	def_object_events
 	object_event  3,  4, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, SuperNerdInHouse, -1
-	object_event  6,  4, SPRITE_DRAGON, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, SecretHouseKangaskhan, -1
+	object_event  6,  4, SPRITE_RHYDON, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, SecretHouseKangaskhan, -1

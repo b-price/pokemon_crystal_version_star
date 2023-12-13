@@ -112,18 +112,32 @@ TrainerBlackbeltTakashi:
 	end
 	
 TrainerBlackbeltKiyo:
-	trainer BLACKBELT_T, KIYO2, EVENT_BEAT_BLACKBELT_KIYO2, BlackbeltKiyoSeenText, BlackbeltKiyoBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
+	faceplayer
 	opentext
+	checkevent EVENT_BEAT_BLACKBELT_KIYO2
+	iftrue .FightDone
+	writetext BlackbeltKiyoSeenText
+	waitbutton
+	closetext
+	winlosstext BlackbeltKiyoBeatenText, 0
+    loadtrainer BLACKBELT_T, KIYO2
+    startbattle
+    reloadmapafterbattle
+    setevent EVENT_BEAT_BLACKBELT_KIYO2
 	applymovement FIGHTINGDOJO_MACHOKE, FightingDojoMachokeMovement
+	opentext
 	writetext BlackbeltKiyoAfterBattleText
 	waitbutton
 	setevent EVENT_BEAT_BLACKBELT_HIROSHI
 	setevent EVENT_BEAT_BLACKBELT_KENSUKE
 	setevent EVENT_BEAT_BLACKBELT_SATORU
 	setevent EVENT_BEAT_BLACKBELT_TAKASHI
+	closetext
+	end
+
+.FightDone:
+	writetext BlackbeltKiyoTyrogueQuestion
+	waitbutton
 	closetext
 	end
 
@@ -292,8 +306,9 @@ BlackbeltKiyoAfterBattleText:
 	cont "MACHOKE!"
 
 	para "I want you to have"
-	line "this item as proof"
-	cont "of your victory."
+	line "the item behind me"
+	cont "as proof of"
+	cont "your victory."
 	
 	para "Though the taste"
 	line "of defeat is"
@@ -303,8 +318,14 @@ BlackbeltKiyoAfterBattleText:
 	
 	para "for that incred-"
 	line "ible battle!"
-	
-	para "By the way,"
+
+	para "It's inspired me"
+	line "to rethink our"
+	cont "whole approach."
+	done
+
+BlackbeltKiyoTyrogueQuestion:
+	text "By the way,"
 	line "how's TYROGUE"
 	cont "doing?"
 	
@@ -390,6 +411,6 @@ FightingDojo_MapEvents:
 	object_event  3,  7, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 6, TrainerBlackbeltKensuke, EVENT_FIGHTINGDOJO_KIYOANDCO
 	object_event  6,  6, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 6, TrainerBlackbeltSatoru, EVENT_FIGHTINGDOJO_KIYOANDCO
 	object_event  3,  5, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBlackbeltTakashi, EVENT_FIGHTINGDOJO_KIYOANDCO
-	object_event  4,  3, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 0, TrainerBlackbeltKiyo, EVENT_FIGHTINGDOJO_KIYOANDCO
+	object_event  4,  3, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, TrainerBlackbeltKiyo, EVENT_FIGHTINGDOJO_KIYOANDCO
 	object_event  3,  1, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, FightingDojoFocusBand, EVENT_PICKED_UP_FOCUS_BAND
 	
