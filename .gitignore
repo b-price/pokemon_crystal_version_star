@@ -44,6 +44,7 @@ used_space.png
 *.sn*
 *.sa*
 *.sg1
+*.ss*
 
 # vim configuration
 # http://www.vim.org/scripts/script.php?script_id=441
@@ -55,3 +56,9 @@ used_space.png
 
 # macos files
 .DS_STORE
+
+# unused files
+roammon_maps_kanto.asm
+logo2.png
+logo_copy.png
+logo_old.png
