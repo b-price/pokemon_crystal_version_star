@@ -181,7 +181,7 @@ CamperDavidAfterBattleText:
 	
 SupernerdNortonSeenText:
 	text "The FAST SHIP is"
-	cont "super hi-tech!"
+	line "super hi-tech!"
 	done
 
 SupernerdNortonBeatenText:

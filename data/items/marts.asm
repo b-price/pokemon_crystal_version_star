@@ -438,7 +438,7 @@ MartSaffron:
 		db -1 ; end
 	
 	MartSilphStones:
-		db 10
+		db 11
 		db FIRE_STONE
 		db THUNDERSTONE
 		db WATER_STONE

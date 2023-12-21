@@ -104,7 +104,8 @@ BikerRishiSeenText:
 	cont "with, kid?"
 
 	para "We're the KANTO"
-	line "#MON FEDERATION!"
+	line "#MON"
+	cont "FEDERATION!"
 	done
 
 BikerRishiBeatenText:
@@ -192,5 +193,5 @@ Route16_MapEvents:
 
 	def_object_events
 	object_event  4,  9, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerBikerRishi, -1
-	object_event  9, 14, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 4, TrainerBikerSaul, -1
+	object_event  9, 12, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 4, TrainerBikerSaul, -1
 	object_event  11, 2, SPRITE_FALKNER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route16Falkner, EVENT_FALKNER_REMATCH

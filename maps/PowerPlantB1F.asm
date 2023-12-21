@@ -289,7 +289,7 @@ PowerPlantB1FLtSurgeIntroText:
 
 PowerPlantB1FLtSurgeAcceptText:
 	text "Right on! No cry-"
-	line "-ing if you lose!"
+	line "ing if you lose!"
 	done
 
 PowerPlantB1FLtSurgeRefusedText:

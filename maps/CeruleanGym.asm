@@ -17,6 +17,8 @@ CeruleanGym_MapScripts:
 CeruleanGymMistyCallback:
 	checkevent EVENT_OPENED_MT_SILVER
 	iftrue .MistyCanDisappear
+	checkevent EVENT_RUINED_MISTYS_DATE
+	iffalse .MistyDisappear
 	endcallback
 .MistyCanDisappear:
 	readvar VAR_WEEKDAY

@@ -77,7 +77,7 @@ CeruleanCave1FSabrina:
 	end
 
 CeruleanCave1FSabrinaIntroText:
-	text "…"
+	text "SABRINA: …"
 
 	para "I knew you'd come."
 

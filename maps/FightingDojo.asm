@@ -201,7 +201,7 @@ FightingDojoBlackBelt1Text:
 	done
 	
 MachokeText:
-	text "Macho!"
+	text "MACHOKE: Macho!"
 	done
 	
 BlackbeltHiroshiSeenText:
@@ -337,7 +337,7 @@ BlackbeltKiyoTyrogueQuestion:
 	done
 
 FightingDojoChuckIntroText:
-	text "Ungh!"
+	text "CHUCK: Ungh!"
 	line "This is a workout!"
 
 	para "Oh hey, kid!"
