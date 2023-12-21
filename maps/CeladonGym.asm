@@ -10,6 +10,22 @@ CeladonGym_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_OBJECTS, CeladonGymErikaCallback
+
+CeladonGymErikaCallback:
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .ErikaCanDisappear
+	appear CELADONGYM_ERIKA
+	endcallback
+.ErikaCanDisappear:
+	readvar VAR_WEEKDAY
+	ifequal MONDAY, .ErikaDisappear
+	ifequal TUESDAY, .ErikaDisappear
+	appear CELADONGYM_ERIKA
+	endcallback
+.ErikaDisappear:
+	disappear CELADONGYM_ERIKA
+	endcallback
 
 CeladonGymErikaScript:
 	faceplayer
@@ -279,7 +295,7 @@ CeladonGym_MapEvents:
 	bg_event  6, 15, BGEVENT_READ, CeladonGymStatue
 
 	def_object_events
-	object_event  5,  3, SPRITE_ERIKA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonGymErikaScript, -1
+	object_event  5,  3, SPRITE_ERIKA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonGymErikaScript, EVENT_ERIKA_IN_GYM
 	object_event  7,  8, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerLassMichelle, -1
 	object_event  2,  8, SPRITE_LASS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 2, TrainerPicnickerTanya, -1
 	object_event  3,  5, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerBeautyJulia, -1

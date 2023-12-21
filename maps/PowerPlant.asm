@@ -6,6 +6,7 @@
 	const POWERPLANT_GYM_GUIDE3
 	const POWERPLANT_MANAGER
 	const POWERPLANT_FOREST
+	const POWERPLANT_SCIENTIST
 
 PowerPlant_MapScripts:
 	def_scene_scripts
@@ -161,6 +162,7 @@ PowerPlantManager:
 	promptbutton
 	takeitem MACHINE_PART
 	setevent EVENT_RETURNED_MACHINE_PART
+	setevent EVENT_ROUTE_10_OFFICER
 	clearevent EVENT_SAFFRON_TRAIN_STATION_POPULATION
 	setevent EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
 	setevent EVENT_ROUTE_24_ROCKET
@@ -190,6 +192,14 @@ Forest:
 	faceplayer
 	opentext
 	trade NPC_TRADE_FOREST
+	waitbutton
+	closetext
+	end
+
+PowerPlantScientistScript:
+	faceplayer
+	opentext
+	writetext PowerPlantScientistText
 	waitbutton
 	closetext
 	end
@@ -385,6 +395,21 @@ PowerPlantManagerMyBelovedGeneratorText:
 	para "Keep pumping the"
 	line "electricity out!"
 	done
+	
+PowerPlantScientistText:
+	text "They built the new"
+	line "POWER PLANT on top"
+	cont "of the old one."
+	
+	para "There are still"
+	line "ruins of it,"
+	cont "though."
+	
+	para "The old POWER"
+	line "PLANT was and is"
+	cont "a habitat for "
+	cont "electric #MON."
+	done
 
 PowerPlant_MapEvents:
 	db 0, 0 ; filler
@@ -408,3 +433,4 @@ PowerPlant_MapEvents:
 	object_event  7,  2, SPRITE_GYM_GUIDE, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PowerPlantGymGuide4Script, -1
 	object_event 14, 10, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, PowerPlantManager, -1
 	object_event  5,  5, SPRITE_GYM_GUIDE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Forest, -1
+	object_event  9,  7, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, PowerPlantScientistScript, -1

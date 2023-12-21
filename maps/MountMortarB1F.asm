@@ -123,6 +123,11 @@ MountMortarB1FKiyoGotTyrogueText:
 	para "Keep up the hard"
 	line "work. I'll keep"
 	cont "training too."
+	
+	para "Come visit the"
+	line "FIGHTING DOJO"
+	cont "if you're ever in"
+	cont "SAFFRON CITY."
 
 	para "Farewell!"
 	done

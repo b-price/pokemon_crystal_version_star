@@ -2,13 +2,31 @@
 	const ROUTE4_YOUNGSTER
 	const ROUTE4_LASS1
 	const ROUTE4_LASS2
+	const ROUTE4_OFFICER
 	const ROUTE4_POKE_BALL
 
 Route4_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
-
+	callback MAPCALLBACK_OBJECTS, Route4Callback
+	
+Route4Callback:
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .NoAppear
+	sjump .Appear
+	
+.NoAppear:
+	disappear ROUTE4_OFFICER
+	endcallback
+	
+.Appear:
+	appear ROUTE4_OFFICER
+	endcallback
+	
+Route4Officer:
+	jumptextfaceplayer Route4OfficerText
+	
 TrainerBirdKeeperHank:
 	trainer BIRD_KEEPER, HANK, EVENT_BEAT_BIRD_KEEPER_HANK, BirdKeeperHankSeenText, BirdKeeperHankBeatenText, 0, .Script
 
@@ -110,6 +128,15 @@ PicnickerSharonAfterBattleText:
 	text "……I'll go train"
 	line "some more…"
 	done
+	
+Route4OfficerText:
+	text "This cave is extr-"
+	line "emely dangerous."
+	
+	para "I can only permit"
+	line "the strongest"
+	cont "trainers to enter."
+	done
 
 MtMoonSquareSignText:
 	text "MT.MOON SQUARE"
@@ -123,6 +150,7 @@ Route4_MapEvents:
 
 	def_warp_events
 	warp_event  2,  5, MOUNT_MOON, 2
+	warp_event 36,  3, CERULEAN_CAVE_1F, 1
 
 	def_coord_events
 
@@ -134,4 +162,5 @@ Route4_MapEvents:
 	object_event 17,  9, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBirdKeeperHank, -1
 	object_event  9,  8, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 4, TrainerPicnickerHope, -1
 	object_event 21,  6, SPRITE_LASS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 4, TrainerPicnickerSharon, -1
+	object_event 36,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route4Officer, EVENT_OPENED_MT_SILVER
 	object_event 26,  3, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route4HPUp, EVENT_ROUTE_4_HP_UP

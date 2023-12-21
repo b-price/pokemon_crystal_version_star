@@ -12,6 +12,23 @@ CeruleanGym_MapScripts:
 	scene_script CeruleanGymGruntRunsOutScene, SCENE_CERULEANGYM_GRUNT_RUNS_OUT
 
 	def_callbacks
+	callback MAPCALLBACK_OBJECTS, CeruleanGymMistyCallback
+
+CeruleanGymMistyCallback:
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .MistyCanDisappear
+	checkevent EVENT_RUINED_MISTYS_DATE
+	iffalse .MistyDisappear
+	endcallback
+.MistyCanDisappear:
+	readvar VAR_WEEKDAY
+	ifequal MONDAY, .MistyDisappear
+	ifequal FRIDAY, .MistyDisappear
+	appear CERULEANGYM_MISTY
+	endcallback
+.MistyDisappear:
+	disappear CERULEANGYM_MISTY
+	endcallback
 
 CeruleanGymNoopScene:
 	end
@@ -119,6 +136,8 @@ TrainerSwimmermParker:
 CeruleanGymGuideScript:
 	faceplayer
 	opentext
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .CeruleanGymGuideMistyHint
 	checkevent EVENT_BEAT_MISTY
 	iftrue .CeruleanGymGuideWinScript
 	writetext CeruleanGymGuideText
@@ -128,6 +147,12 @@ CeruleanGymGuideScript:
 
 .CeruleanGymGuideWinScript:
 	writetext CeruleanGymGuideWinText
+	waitbutton
+	closetext
+	end
+
+.CeruleanGymGuideMistyHint:
+	writetext CeruleanGymGuideHintText
 	waitbutton
 	closetext
 	end
@@ -360,6 +385,26 @@ CeruleanGymGuideWinText:
 	cont "great battle!"
 	done
 
+CeruleanGymGuideHintText:
+	text "Hey, <PLAYER>!"
+	line "I can't forget"
+	
+	para "that amazing"
+	line "battle you had"
+	cont "with MISTY."
+
+	para "I hear she likes"
+	line "to hang out on"
+
+	para "the CAPE on"
+	line "MONDAYs and"
+	cont "FRIDAYs."
+
+	para "Maybe she'd have"
+	line "a rematch with"
+	cont "you!"
+	done
+
 CeruleanGym_MapEvents:
 	db 0, 0 ; filler
 
@@ -376,7 +421,7 @@ CeruleanGym_MapEvents:
 
 	def_object_events
 	object_event  4, 10, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_GYM_ROCKET
-	object_event  5,  3, SPRITE_MISTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanGymMistyScript, EVENT_TRAINERS_IN_CERULEAN_GYM
+	object_event  5,  3, SPRITE_MISTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanGymMistyScript, EVENT_MISTY_IN_GYM
 	object_event  4,  6, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerSwimmerfDiana, EVENT_TRAINERS_IN_CERULEAN_GYM
 	object_event  1,  9, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerSwimmerfBriana, EVENT_TRAINERS_IN_CERULEAN_GYM
 	object_event  8,  9, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerSwimmermParker, EVENT_TRAINERS_IN_CERULEAN_GYM

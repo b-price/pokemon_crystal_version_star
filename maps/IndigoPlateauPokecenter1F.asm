@@ -5,6 +5,7 @@
 	const INDIGOPLATEAUPOKECENTER1F_RIVAL
 	const INDIGOPLATEAUPOKECENTER1F_GRAMPS
 	const INDIGOPLATEAUPOKECENTER1F_ABRA
+	const INDIGOPLATEAUPOKECENTER1F_JANINE
 
 IndigoPlateauPokecenter1F_MapScripts:
 	def_scene_scripts
@@ -12,6 +13,7 @@ IndigoPlateauPokecenter1F_MapScripts:
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, IndigoPlateauPokecenter1FPrepareElite4Callback
+	callback MAPCALLBACK_OBJECTS, IndigoPlateauPokecenter1FJanineCallback
 
 IndigoPlateauPokecenter1FNoopScene:
 	end
@@ -39,6 +41,23 @@ IndigoPlateauPokecenter1FPrepareElite4Callback:
 	clearevent EVENT_BEAT_ELITE_4_KAREN
 	clearevent EVENT_BEAT_CHAMPION_LANCE
 	setevent EVENT_LANCES_ROOM_OAK_AND_MARY
+	endcallback
+
+IndigoPlateauPokecenter1FJanineCallback:
+	readvar VAR_WEEKDAY
+	ifequal SATURDAY, .JanineCanAppear
+	ifequal WEDNESDAY, .JanineCanAppear
+	disappear INDIGOPLATEAUPOKECENTER1F_JANINE
+	endcallback
+
+.JanineCanAppear:
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .JanineAppears
+	disappear INDIGOPLATEAUPOKECENTER1F_JANINE
+	endcallback
+
+.JanineAppears:
+	appear INDIGOPLATEAUPOKECENTER1F_JANINE
 	endcallback
 
 PlateauRivalBattle1:
@@ -175,6 +194,41 @@ AbraScript:
 	closetext
 	end
 
+IndigoPlateauPokecenter1FJanine:
+	applymovement INDIGOPLATEAUPOKECENTER1F_JANINE, Movement_JanineSpin
+    faceplayer
+    opentext
+    checkflag ENGINE_JANINE_REMATCH
+    iftrue .FightDone
+    writetext IndigoPlateauPokecenter1FJanineIntroText
+    yesorno
+    iffalse .RefusedBattle
+    writetext IndigoPlateauPokecenter1FJanineAcceptText
+    waitbutton
+    closetext
+    winlosstext IndigoPlateauPokecenter1FJanineBeatenText, 0
+    loadtrainer JANINE, JANINE2
+    startbattle
+    reloadmapafterbattle
+    setflag ENGINE_JANINE_REMATCH
+    opentext
+    writetext IndigoPlateauPokecenter1FJanineAfterBattleText
+    waitbutton
+    closetext
+    end
+
+.RefusedBattle:
+	writetext IndigoPlateauPokecenter1FJanineRefusedText
+	waitbutton
+	closetext
+	end
+
+.FightDone:
+	writetext IndigoPlateauPokecenter1FJanineAfterBattleText
+	waitbutton
+	closetext
+	end
+
 PlateauRivalMovement1:
 	step UP
 	step UP
@@ -199,6 +253,22 @@ PlateauRivalLeavesMovement:
 	step DOWN
 	step DOWN
 	step DOWN
+	step_end
+
+Movement_JanineSpin:
+	turn_head DOWN
+	turn_head LEFT
+	turn_head UP
+	turn_head RIGHT
+	turn_head DOWN
+	turn_head LEFT
+	turn_head UP
+	turn_head RIGHT
+	turn_head DOWN
+	turn_head LEFT
+	turn_head UP
+	turn_head RIGHT
+	turn_head DOWN
 	step_end
 
 IndigoPlateauPokecenter1FCooltrainerMText:
@@ -300,6 +370,47 @@ AbraText:
 	text "ABRA: Aabra…"
 	done
 
+IndigoPlateauPokecenter1FJanineIntroText:
+	text "Oh, hi, <PLAYER>!"
+	line "I wanted to talk"
+
+	para "to my dad about"
+	line "battle strategy."
+
+	para "His motto is"
+	line "'Don't rely on"
+	cont "brute force!'"
+
+	para "Maybe you could"
+	line "let me try some"
+
+	para "new techniques out"
+	line "in a rematch?"
+	done
+
+IndigoPlateauPokecenter1FJanineAcceptText:
+	text "Yes! Let's go!"
+	done
+
+IndigoPlateauPokecenter1FJanineRefusedText:
+	text "Too busy, huh?"
+	line "Maybe next time…"
+	done
+
+IndigoPlateauPokecenter1FJanineBeatenText:
+	text "Phew… what a"
+	line "match!"
+	done
+
+IndigoPlateauPokecenter1FJanineAfterBattleText:
+	text "I always learn a"
+	line "lot from battling"
+	cont "you, <PLAYER>."
+
+	para "Thanks for"
+	line "obliging me!"
+	done
+
 IndigoPlateauPokecenter1F_MapEvents:
 	db 0, 0 ; filler
 
@@ -322,3 +433,4 @@ IndigoPlateauPokecenter1F_MapEvents:
 	object_event 16,  9, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INDIGO_PLATEAU_POKECENTER_RIVAL
 	object_event  1,  9, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, TeleportGuyScript, EVENT_TELEPORT_GUY
 	object_event  0,  9, SPRITE_JYNX, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, AbraScript, EVENT_TELEPORT_GUY
+	object_event  9,  7, SPRITE_JANINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, IndigoPlateauPokecenter1FJanine, EVENT_JANINE_REMATCH

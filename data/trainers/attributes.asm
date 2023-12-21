@@ -261,7 +261,7 @@ TrainerClassAttributes:
 	dw CONTEXT_USE | SWITCH_SOMETIMES
 
 ; Hiker
-	db X_DEFENSE, HYPER_POTION ; items
+	db X_DEFEND, HYPER_POTION ; items
 	db 12 ; base reward
 	dw AI_BASIC | AI_OFFENSIVE | AI_SMART | AI_STATUS
 	dw CONTEXT_USE | SWITCH_SOMETIMES

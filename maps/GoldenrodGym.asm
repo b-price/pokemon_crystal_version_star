@@ -12,6 +12,22 @@ GoldenrodGym_MapScripts:
 	scene_script GoldenrodGymNoop2Scene, SCENE_GOLDENRODGYM_WHITNEY_STOPS_CRYING
 
 	def_callbacks
+	callback MAPCALLBACK_OBJECTS, GoldenrodGymWhitneyCallback
+
+GoldenrodGymWhitneyCallback:
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .WhitneyCanDisappear
+	appear GOLDENRODGYM_WHITNEY
+	endcallback
+.WhitneyCanDisappear:
+	readvar VAR_WEEKDAY
+	ifequal MONDAY, .WhitneyDisappear
+	ifequal WEDNESDAY, .WhitneyDisappear
+	appear GOLDENRODGYM_WHITNEY
+	endcallback
+.WhitneyDisappear:
+	disappear GOLDENRODGYM_WHITNEY
+	endcallback
 
 GoldenrodGymNoop1Scene:
 	end
@@ -149,6 +165,8 @@ TrainerBeautySamantha:
 
 GoldenrodGymGuideScript:
 	faceplayer
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .GoldenrodGymGuideWhitneyHint
 	checkevent EVENT_BEAT_WHITNEY
 	iftrue .GoldenrodGymGuideWinScript
 	opentext
@@ -160,6 +178,13 @@ GoldenrodGymGuideScript:
 .GoldenrodGymGuideWinScript:
 	opentext
 	writetext GoldenrodGymGuideWinText
+	waitbutton
+	closetext
+	end
+
+.GoldenrodGymGuideWhitneyHint:
+	opentext
+	writetext GoldenrodGymGuideHintText
 	waitbutton
 	closetext
 	end
@@ -239,10 +264,6 @@ WhitneyPlainBadgeText:
 
 	para "STRENGTH outside"
 	line "of battle."
-
-	para "It also boosts"
-	line "your #MON's"
-	cont "SPEED."
 
 	para "Oh, you can have"
 	line "this too!"
@@ -377,6 +398,26 @@ GoldenrodGymGuideWinText:
 	cont "the ladies here."
 	done
 
+GoldenrodGymGuideHintText:
+	text "Long time, no see!"
+	line "WHITNEY has really"
+	cont "been training"
+	cont "a lot lately."
+
+	para "…That is when"
+	line "she's not"
+	cont "off shopping!"
+
+	para "Her favorite place"
+	line "seems to be the"
+	cont "department store"
+	cont "CELADON."
+
+	para "I think she goes"
+	line "there on MONDAYs"
+	cont "and WEDNESDAYs."
+	done
+
 GoldenrodGym_MapEvents:
 	db 0, 0 ; filler
 
@@ -392,7 +433,7 @@ GoldenrodGym_MapEvents:
 	bg_event  4, 15, BGEVENT_READ, GoldenrodGymStatue
 
 	def_object_events
-	object_event  8,  3, SPRITE_WHITNEY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, GoldenrodGymWhitneyScript, -1
+	object_event  8,  3, SPRITE_WHITNEY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, GoldenrodGymWhitneyScript, EVENT_WHITNEY_IN_GYM
 	object_event  9, 13, SPRITE_LASS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 4, TrainerLassCarrie, -1
 	object_event  9,  6, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerLassBridget, -1
 	object_event  0,  2, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBeautyVictoria, -1

@@ -36,6 +36,10 @@
 	const TILESET_KABUTO_WORD_ROOM     ; 22
 	const TILESET_OMANYTE_WORD_ROOM    ; 23
 	const TILESET_AERODACTYL_WORD_ROOM ; 24
+	const TILESET_SAFARI_ZONE          ; 25
+	const TILESET_CAVE_CINNABAR        ; 26
+	const TILESET_MUSEUM      		   ; 27
+	const TILESET_POWER_PLANT          ; 28
 DEF NUM_TILESETS EQU const_value - 1
 
 ; wTileset struct size

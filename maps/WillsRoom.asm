@@ -45,6 +45,8 @@ WillScript_Battle:
 	opentext
 	checkevent EVENT_BEAT_ELITE_4_WILL
 	iftrue WillScript_AfterBattle
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue Will2Script
 	writetext WillScript_WillBeforeText
 	waitbutton
 	closetext
@@ -70,6 +72,28 @@ WillScript_AfterBattle:
 	waitbutton
 	closetext
 	end
+	
+Will2Script:
+	writetext WillScript_WillBeforeText2
+	waitbutton
+	closetext
+	winlosstext WillScript_WillBeatenText, 0
+	loadtrainer WILL, WILL2
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_ELITE_4_WILL
+	opentext
+	writetext WillScript_WillDefeatText
+	waitbutton
+	closetext
+	playsound SFX_ENTER_DOOR
+	changeblock 4, 2, $16 ; open door
+	reloadmappart
+	closetext
+	setevent EVENT_WILLS_ROOM_EXIT_OPEN
+	waitsfx
+	end
+		
 
 WillsRoom_EnterMovement:
 	step UP
@@ -98,6 +122,27 @@ WillScript_WillBeforeText:
 
 	para "I can only keep"
 	line "getting better!"
+
+	para "Losing is not an"
+	line "option!"
+	done
+	
+WillScript_WillBeforeText2:
+	text "Welcome back,"
+	line "<PLAYER>."
+
+	para "After my loss to"
+	line "you before, I"
+	cont "redoubled"
+	cont "our training."
+
+	para "My psychic #MON"
+	line "are more powerful"
+	cont "then ever."
+
+	para "I can forsee this"
+	line "battle will be a"
+	cont "great one."
 
 	para "Losing is not an"
 	line "option!"

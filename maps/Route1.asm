@@ -1,6 +1,8 @@
 	object_const_def
 	const ROUTE1_YOUNGSTER
 	const ROUTE1_COOLTRAINER_F
+	const ROUTE1_TWIN1
+	const ROUTE1_TWIN2
 	const ROUTE1_FRUIT_TREE
 
 Route1_MapScripts:
@@ -26,6 +28,28 @@ TrainerCooltrainerfQuinn:
 	endifjustbattled
 	opentext
 	writetext CooltrainerfQuinnAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerTwinsJazAndTaz1:
+	trainer TWINS, JAZANDTAZ, EVENT_BEAT_TWINS_JAZ_AND_TAZ, TwinsJazAndTaz1SeenText, TwinsJazAndTaz1BeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext TwinsJazAndTaz1AfterBattleText
+	waitbutton
+	closetext
+	end
+
+TrainerTwinsJazAndTaz2:
+	trainer TWINS, JAZANDTAZ, EVENT_BEAT_TWINS_JAZ_AND_TAZ, TwinsJazAndTaz2SeenText, TwinsJazAndTaz2BeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext TwinsJazAndTaz2AfterBattleText
 	waitbutton
 	closetext
 	end
@@ -70,6 +94,33 @@ CooltrainerfQuinnAfterBattleText:
 	para "You obviously must"
 	line "have trained hard."
 	done
+	
+TwinsJazAndTaz1SeenText:
+	text "We got strong"
+	line "#MON!"
+	done
+
+TwinsJazAndTaz1BeatenText:
+	text "Noooo!"
+	done
+
+TwinsJazAndTaz1AfterBattleText:
+	text "You're a meanie!"
+	done
+	
+TwinsJazAndTaz2SeenText:
+	text "Watch out, me and"
+	line "my sis are strong!"
+	done
+
+TwinsJazAndTaz2BeatenText:
+	text "Ahhhh!!!!"
+	done
+
+TwinsJazAndTaz2AfterBattleText:
+	text "Don't hurt my"
+	line "sweet #MON!"
+	done
 
 Route1SignText:
 	text "ROUTE 1"
@@ -91,4 +142,6 @@ Route1_MapEvents:
 	def_object_events
 	object_event  4, 12, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 4, TrainerSchoolboyDanny, -1
 	object_event  9, 25, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerCooltrainerfQuinn, -1
+	object_event  8, 15, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerTwinsJazAndTaz1, -1
+	object_event  9, 15, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerTwinsJazAndTaz2, -1
 	object_event  3,  7, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route1FruitTree, -1

@@ -1,6 +1,7 @@
 	object_const_def
 	const ROUTE18_YOUNGSTER1
 	const ROUTE18_YOUNGSTER2
+	const ROUTE18_POKEFAN_M
 
 Route18_MapScripts:
 	def_scene_scripts
@@ -25,6 +26,17 @@ TrainerBirdKeeperBob:
 	endifjustbattled
 	opentext
 	writetext BirdKeeperBobAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerPokefanmPierre:
+	trainer POKEFANM, PIERRE, EVENT_BEAT_POKEFANM_PIERRE, PokefanmPierreSeenText, PokefanmPierreBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext PokefanmPierreAfterBattleText
 	waitbutton
 	closetext
 	end
@@ -67,6 +79,24 @@ BirdKeeperBobAfterBattleText:
 	para "not allowed to use"
 	line "the shortcut."
 	done
+	
+PokefanmPierreSeenText:
+	text "Kinda bummed, but"
+	line "I'll battle…"
+	done
+
+PokefanmPierreBeatenText:
+	text "…Aww, man!"
+	done
+
+PokefanmPierreAfterBattleText:
+	text "I came all this"
+	line "way to FUSCHIA"
+
+	para "to find out the"
+	line "SAFARI ZONE is"
+	cont "closed."
+	done
 
 Route18SignText:
 	text "ROUTE 18"
@@ -90,3 +120,4 @@ Route18_MapEvents:
 	def_object_events
 	object_event  9, 12, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBirdKeeperBoris, -1
 	object_event 13,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBirdKeeperBob, -1
+	object_event 15,  9, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerPokefanmPierre, -1

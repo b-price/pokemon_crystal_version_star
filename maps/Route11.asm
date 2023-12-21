@@ -3,6 +3,8 @@
 	const ROUTE11_YOUNGSTER2
 	const ROUTE11_YOUNGSTER3
 	const ROUTE11_YOUNGSTER4
+	const ROUTE11_YOUNGSTER5
+	const ROUTE11_SUPER_NERD
 	const ROUTE11_FRUIT_TREE
 
 Route11_MapScripts:
@@ -50,6 +52,28 @@ TrainerPsychicFidel:
 	endifjustbattled
 	opentext
 	writetext PsychicFidelAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerCamperDavid:
+	trainer CAMPER, DAVID, EVENT_BEAT_CAMPER_DAVID, CamperDavidSeenText, CamperDavidBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext CamperDavidAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerSupernerdNorton:
+	trainer SUPER_NERD, NORTON, EVENT_BEAT_SUPER_NERD_NORTON, SupernerdNortonSeenText, SupernerdNortonBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext SupernerdNortonAfterBattleText
 	waitbutton
 	closetext
 	end
@@ -138,6 +162,39 @@ PsychicFidelAfterBattleText:
 	line "cause you believe"
 	cont "in your #MON."
 	done
+	
+CamperDavidSeenText:
+	text "I love being"
+	line "outside!"
+	done
+
+CamperDavidBeatenText:
+	text "I don't love"
+	line "losing though…"
+	done
+
+CamperDavidAfterBattleText:
+	text "I wish I lived"
+	line "closer to the"
+	cont "woods."
+	done
+	
+SupernerdNortonSeenText:
+	text "The FAST SHIP is"
+	line "super hi-tech!"
+	done
+
+SupernerdNortonBeatenText:
+	text "I'll never save up"
+	line "to buy a TICKET"
+	cont "at this rate…"
+	done
+
+SupernerdNortonAfterBattleText:
+	text "You took the FAST"
+	line "SHIP here?!"
+	cont "I'm jealous!"
+	done
 
 Route11SignText:
 	text "ROUTE 11"
@@ -159,4 +216,6 @@ Route11_MapEvents:
 	object_event 20,  4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerYoungsterJason, -1
 	object_event 28,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerPsychicHerman, -1
 	object_event  8,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerPsychicFidel, -1
+	object_event 19, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerCamperDavid, -1
+	object_event  5, 14, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerSupernerdNorton, -1
 	object_event 32,  2, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route11FruitTree, -1

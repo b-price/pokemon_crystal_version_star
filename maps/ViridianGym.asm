@@ -6,6 +6,21 @@ ViridianGym_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_OBJECTS, ViridianGymBlueCallback
+
+ViridianGymBlueCallback:
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .BlueCanDisappear
+	endcallback
+.BlueCanDisappear:
+	readvar VAR_WEEKDAY
+	ifequal FRIDAY, .BlueDisappear
+	ifequal SUNDAY, .BlueDisappear
+	appear VIRIDIANGYM_BLUE
+	endcallback
+.BlueDisappear:
+	disappear VIRIDIANGYM_BLUE
+	endcallback
 
 ViridianGymBlueScript:
 	faceplayer
@@ -39,6 +54,8 @@ ViridianGymBlueScript:
 ViridianGymGuideScript:
 	faceplayer
 	opentext
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .ViridianGymGuideBlueHint
 	checkevent EVENT_BEAT_BLUE
 	iftrue .ViridianGymGuideWinScript
 	writetext ViridianGymGuideText
@@ -48,6 +65,12 @@ ViridianGymGuideScript:
 
 .ViridianGymGuideWinScript:
 	writetext ViridianGymGuideWinText
+	waitbutton
+	closetext
+	end
+
+.ViridianGymGuideBlueHint:
+	writetext ViridianGymGuideHintText
 	waitbutton
 	closetext
 	end
@@ -167,6 +190,26 @@ ViridianGymGuideWinText:
 	line "tears to my eyes."
 	done
 
+ViridianGymGuideHintText:
+	text "Hey, <PLAYER>!"
+	line "I can't forget"
+	
+	para "that amazing"
+	line "battle you had"
+	cont "with BLUE."
+
+	para "I hear he hangs"
+	line "out at JOHTO's"
+
+	para "BATTLE TOWER on"
+	line "FRIDAYs and"
+	cont "SUNDAYs."
+
+	para "Maybe he'd have"
+	line "a rematch with"
+	cont "you!"
+	done
+
 ViridianGym_MapEvents:
 	db 0, 0 ; filler
 
@@ -182,4 +225,4 @@ ViridianGym_MapEvents:
 
 	def_object_events
 	object_event  5,  3, SPRITE_BLUE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ViridianGymBlueScript, EVENT_VIRIDIAN_GYM_BLUE
-	object_event  7, 13, SPRITE_GYM_GUIDE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ViridianGymGuideScript, EVENT_VIRIDIAN_GYM_BLUE
+	object_event  7, 13, SPRITE_GYM_GUIDE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ViridianGymGuideScript, EVENT_VIRIDIAN_GYM_GUIDE

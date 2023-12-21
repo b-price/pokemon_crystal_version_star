@@ -4,6 +4,8 @@
 	const ROUTE8_BIKER3
 	const ROUTE8_SUPER_NERD1
 	const ROUTE8_SUPER_NERD2
+	const ROUTE8_SUPER_NERD3
+	const ROUTE8_GRANNY
 	const ROUTE8_FRUIT_TREE
 
 Route8_MapScripts:
@@ -65,9 +67,28 @@ TrainerSupernerdTom:
 	waitbutton
 	closetext
 	end
+	
+TrainerSupernerdRuss:
+	trainer SUPER_NERD, RUSS, EVENT_BEAT_SUPER_NERD_RUSS, SupernerdRussSeenText, SupernerdRussBeatenText, 0, .Script
 
-Route8LockedDoor:
-	jumptext Route8LockedDoorText
+.Script:
+	endifjustbattled
+	opentext
+	writetext SupernerdRussAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerMediumBethany:
+	trainer MEDIUM, BETHANY, EVENT_BEAT_MEDIUM_BETHANY, MediumBethanySeenText, MediumBethanyBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext MediumBethanyAfterBattleText
+	waitbutton
+	closetext
+	end
 
 Route8UndergroundPathSign:
 	jumptext Route8UndergroundPathSignText
@@ -95,8 +116,9 @@ BikerDwayneAfterBattleText:
 	done
 
 BikerHarrisSeenText:
-	text "The cops shut down"
-	line "our UNDERGROUND"
+	text "The cops want to"
+	line "shut down our" 
+	cont "UNDERGROUND"
 
 	para "PATH! That really"
 	line "fries me!"
@@ -123,7 +145,7 @@ BikerZekeBeatenText:
 	done
 
 BikerZekeAfterBattleText:
-	text "We'll try not to"
+	text "I'll try not to"
 	line "disturb anyone"
 	cont "from now on…"
 	done
@@ -144,23 +166,58 @@ SupernerdSamAfterBattleText:
 	done
 
 SupernerdTomSeenText:
-	text "Hm… You've got"
-	line "many GYM BADGES."
+	text "I wanna go see"
+	line "the RADIO TOWER!"
 	done
 
 SupernerdTomBeatenText:
-	text "Just as I thought…"
-	line "You're tough!"
+	text "Well this isn't"
+	line "helping…"
 	done
 
 SupernerdTomAfterBattleText:
-	text "GYM BADGES give"
-	line "you advantages in"
-	cont "battles."
+	text "It's so cool that"
+	line "they turned the"
+	
+	para "old #MON"
+	line "TOWER into a"
+	cont "RADIO TOWER!"
+	done
+	
+SupernerdRussSeenText:
+	text "I guess a battle"
+	line "could be fun…"
 	done
 
-Route8LockedDoorText:
-	text "It's locked…"
+SupernerdRussBeatenText:
+	text "Oh well…"
+	done
+
+SupernerdRussAfterBattleText:
+	text "It gets lonely,"
+	line "you know."
+
+	para "No one I know is"
+	line "super into cool"
+	cont "science things"
+	cont "like me."
+	done	
+
+MediumBethanySeenText:
+	text "…mmmmmmm…"
+	
+	para "…the spirits are"
+	line "restless…"
+	done
+
+MediumBethanyBeatenText:
+	text "…mmmmm…"
+	done
+
+MediumBethanyAfterBattleText:
+	text "…not everyone"
+	line "wanted a RADIO"
+	cont "TOWER in LAVENDER…"
 	done
 
 Route8UndergroundPathSignText:
@@ -176,12 +233,12 @@ Route8_MapEvents:
 	def_warp_events
 	warp_event  4,  4, ROUTE_8_SAFFRON_GATE, 3
 	warp_event  4,  5, ROUTE_8_SAFFRON_GATE, 4
+	warp_event 10,  5, ROUTE_8_UNDERGROUND_PATH_ENTRANCE, 1
 
 	def_coord_events
 
 	def_bg_events
 	bg_event 11,  7, BGEVENT_READ, Route8UndergroundPathSign
-	bg_event 10,  5, BGEVENT_READ, Route8LockedDoor
 
 	def_object_events
 	object_event 10,  8, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 5, TrainerBikerDwayne, -1
@@ -189,4 +246,6 @@ Route8_MapEvents:
 	object_event 10, 10, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 5, TrainerBikerZeke, -1
 	object_event 23,  2, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerSupernerdSam, -1
 	object_event 31, 12, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 4, TrainerSupernerdTom, -1
+	object_event 16, 11, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 4, TrainerSupernerdRuss, -1
+	object_event 27,  6, SPRITE_GRANNY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerMediumBethany, -1
 	object_event 33,  5, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route8FruitTree, -1

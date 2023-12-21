@@ -38,6 +38,42 @@ TreeMonMaps:
 	treemon_map BLACKTHORN_CITY,           TREEMON_SET_CITY
 	treemon_map SILVER_CAVE_OUTSIDE,       TREEMON_SET_CITY
 	treemon_map ILEX_FOREST,               TREEMON_SET_FOREST
+	treemon_map ROUTE_1,                   TREEMON_SET_KANTO
+	treemon_map ROUTE_2,                   TREEMON_SET_KANTO
+	treemon_map ROUTE_3,                   TREEMON_SET_KANTO
+	treemon_map ROUTE_4,                   TREEMON_SET_KANTO
+	treemon_map ROUTE_5,                   TREEMON_SET_KANTO
+	treemon_map ROUTE_6,                   TREEMON_SET_KANTO
+	treemon_map ROUTE_7,                   TREEMON_SET_KANTO
+	treemon_map ROUTE_8,                   TREEMON_SET_KANTO
+	treemon_map ROUTE_9,                   TREEMON_SET_KANTO
+	treemon_map ROUTE_11,                  TREEMON_SET_KANTO
+	treemon_map ROUTE_12,                  TREEMON_SET_KANTO
+	treemon_map ROUTE_13,                  TREEMON_SET_KANTO
+	treemon_map ROUTE_14,                  TREEMON_SET_KANTO
+	treemon_map ROUTE_15,                  TREEMON_SET_KANTO
+	treemon_map ROUTE_16,                  TREEMON_SET_KANTO
+	treemon_map ROUTE_17,                  TREEMON_SET_KANTO
+	treemon_map ROUTE_18,                  TREEMON_SET_KANTO
+	treemon_map ROUTE_18,                  TREEMON_SET_KANTO
+	treemon_map ROUTE_20,                  TREEMON_SET_KANTO
+	treemon_map ROUTE_21,                  TREEMON_SET_KANTO
+	treemon_map ROUTE_22,                  TREEMON_SET_KANTO
+	treemon_map ROUTE_23,                  TREEMON_SET_KANTO
+	treemon_map ROUTE_24,                  TREEMON_SET_KANTO
+	treemon_map ROUTE_25,                  TREEMON_SET_KANTO
+	treemon_map VIRIDIAN_CITY,             TREEMON_SET_KANTO
+	treemon_map PEWTER_CITY,               TREEMON_SET_KANTO
+	treemon_map CERULEAN_CITY,             TREEMON_SET_KANTO
+	treemon_map VERMILION_CITY,            TREEMON_SET_KANTO
+	treemon_map CELADON_CITY,              TREEMON_SET_KANTO
+	treemon_map FUCHSIA_CITY,              TREEMON_SET_KANTO
+	treemon_map MOUNT_MOON_SQUARE,         TREEMON_SET_KANTO
+	treemon_map VIRIDIAN_FOREST,           TREEMON_SET_KANTO
+	treemon_map SAFARI_ZONE_CENTER,        TREEMON_SET_KANTO
+	treemon_map SAFARI_ZONE_EAST,          TREEMON_SET_KANTO
+	treemon_map SAFARI_ZONE_NORTH,         TREEMON_SET_KANTO
+	treemon_map SAFARI_ZONE_WEST,          TREEMON_SET_KANTO
 	db -1
 
 RockMonMaps:

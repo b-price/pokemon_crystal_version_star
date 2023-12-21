@@ -45,6 +45,8 @@ KogaScript_Battle:
 	opentext
 	checkevent EVENT_BEAT_ELITE_4_KOGA
 	iftrue KogaScript_AfterBattle
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue Koga2Script
 	writetext KogaScript_KogaBeforeText
 	waitbutton
 	closetext
@@ -69,6 +71,27 @@ KogaScript_AfterBattle:
 	writetext KogaScript_KogaDefeatText
 	waitbutton
 	closetext
+	end
+	
+Koga2Script:
+	writetext KogaScript_KogaBeforeText2
+	waitbutton
+	closetext
+	winlosstext KogaScript_KogaBeatenText, 0
+	loadtrainer KOGA, KOGA2
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_ELITE_4_KOGA
+	opentext
+	writetext KogaScript_KogaDefeatText
+	waitbutton
+	closetext
+	playsound SFX_ENTER_DOOR
+	changeblock 4, 2, $16 ; open door
+	reloadmappart
+	closetext
+	setevent EVENT_KOGAS_ROOM_EXIT_OPEN
+	waitsfx
 	end
 
 KogasRoom_EnterMovement:
@@ -100,11 +123,34 @@ KogaScript_KogaBeforeText:
 
 	para "Fwahahahaha!"
 
-	para "#MON is not"
+	para "Battling is not"
 	line "merely about brute"
 
 	para "force--you shall"
 	line "see soon enough!"
+	done
+	
+KogaScript_KogaBeforeText2:
+	text "Fwahahahaha!"
+
+	para "Hey <PLAYER>!"
+	line "Good to see you."
+
+	para "I've honed my"
+	line "ninja skills"
+	cont "since last time!"
+
+	para "This time will"
+	line "be diferent!"
+
+	para "Fwahahahaha!"
+
+	para "Your #MON will"
+	line "have to deal with"
+	cont "more sinister"
+	cont "techniques!"
+
+	para "Get ready!"
 	done
 
 KogaScript_KogaBeatenText:

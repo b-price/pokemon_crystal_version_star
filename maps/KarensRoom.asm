@@ -45,6 +45,8 @@ KarenScript_Battle:
 	opentext
 	checkevent EVENT_BEAT_ELITE_4_KAREN
 	iftrue KarenScript_AfterBattle
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue Karen2Script
 	writetext KarenScript_KarenBeforeText
 	waitbutton
 	closetext
@@ -69,6 +71,27 @@ KarenScript_AfterBattle:
 	writetext KarenScript_KarenDefeatText
 	waitbutton
 	closetext
+	end
+	
+Karen2Script:
+	writetext KarenScript_KarenBeforeText2
+	waitbutton
+	closetext
+	winlosstext KarenScript_KarenBeatenText, 0
+	loadtrainer KAREN, KAREN2
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_ELITE_4_KAREN
+	opentext
+	writetext KarenScript_KarenDefeatText
+	waitbutton
+	closetext
+	playsound SFX_ENTER_DOOR
+	changeblock 4, 2, $16 ; open door
+	reloadmappart
+	closetext
+	setevent EVENT_KARENS_ROOM_EXIT_OPEN
+	waitsfx
 	end
 
 KarensRoom_EnterMovement:
@@ -97,6 +120,26 @@ KarenScript_KarenBeforeText:
 	para "Think you can take"
 	line "them? Just try to"
 	cont "entertain me."
+
+	para "Let's go."
+	done
+	
+KarenScript_KarenBeforeText2:
+	text "You're back, huh,"
+	line "<PLAYER>?"
+	cont "How amusing."
+
+	para "My dark #MON"
+	line "have gotten much"
+	cont "stronger since the"
+	cont "last time we met."
+
+	para "Don't think your"
+	line "past victory means"
+	cont "you can take us."
+	
+	para "Just try to"
+	line "entertain me!"
 
 	para "Let's go."
 	done

@@ -1,5 +1,6 @@
 	object_const_def
 	const ROUTE24_ROCKET
+	const ROUTE24_CAMPER
 
 Route24_MapScripts:
 	def_scene_scripts
@@ -32,6 +33,17 @@ Route24RocketScript:
 	pause 25
 	special FadeInQuickly
 	playmapmusic
+	end
+	
+TrainerCamperLeroy:
+	trainer CAMPER, LEROY, EVENT_BEAT_CAMPER_LEROY, CamperLeroySeenText, CamperLeroyBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext CamperLeroyAfterBattleText
+	waitbutton
+	closetext
 	end
 
 Route24RocketSeenText:
@@ -115,6 +127,29 @@ Route24RocketDisappearsText:
 	line "do what now on"
 	cont "from, me?"
 	done
+	
+CamperLeroySeenText:
+	text "Hey!"
+
+	para "Betcha didn't"
+	line "see me there!"
+	done
+
+CamperLeroyBeatenText:
+	text "So much for"
+	line "stealth…"
+	done
+
+CamperLeroyAfterBattleText:
+	text "Trainers used to"
+	line "hang out on that"
+	cont "bridge."
+	
+	para "But they had to"
+	line "move because they"
+	cont "were causing"
+	cont "traffic jams."
+	done
 
 Route24_MapEvents:
 	db 0, 0 ; filler
@@ -127,3 +162,4 @@ Route24_MapEvents:
 
 	def_object_events
 	object_event  8,  7, SPRITE_ROCKET, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route24RocketScript, EVENT_ROUTE_24_ROCKET
+	object_event  3,  4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 4, TrainerCamperLeroy, -1

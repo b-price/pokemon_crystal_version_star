@@ -112,7 +112,7 @@ ROMX $24
 	"bank24"
 ROMX $25
 	"Maps"
-	"Events"
+	;"Events"
 ROMX $26
 	"Map Scripts 11"
 ROMX $27
@@ -316,7 +316,6 @@ ROMX $7e
 	"Crystal Events"
 ROMX $7f
 	org $7de0
-	"Stadium 2 Checksums"
 WRAM0
 	"Stack"
 	"Audio RAM"

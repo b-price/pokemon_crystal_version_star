@@ -170,10 +170,6 @@ AddHallOfFameEntry:
 		"GS_BALL_AVAILABLE is no longer equal to $b."
 	ret
 
-SaveGameData:
-	call _SaveGameData
-	ret
-
 AskOverwriteSaveFile:
 	ld a, [wSaveFileExists]
 	and a
@@ -230,7 +226,7 @@ SavedTheGame:
 	ld hl, .saving_text
 	call PrintText
 	pop hl
-	+res NO_TEXT_SCROLL, [hl]
+	res NO_TEXT_SCROLL, [hl]
 	call SaveGameData
 	; copy the original text speed setting to the stack
 	ld a, [wOptions]
@@ -321,30 +317,6 @@ FindStackTop:
 	ret nz
 	inc hl
 	jr .loop
-
-SavingDontTurnOffThePower:
-	; Prevent joypad interrupts
-	xor a
-	ldh [hJoypadReleased], a
-	ldh [hJoypadPressed], a
-	ldh [hJoypadSum], a
-	ldh [hJoypadDown], a
-	; Save the text speed setting to the stack
-	ld a, [wOptions]
-	push af
-	; Set the text speed to medium
-	ld a, TEXT_DELAY_MED
-	ld [wOptions], a
-	; SAVING... DON'T TURN OFF THE POWER.
-	ld hl, SavingDontTurnOffThePowerText
-	call PrintText
-	; Restore the text speed setting
-	pop af
-	ld [wOptions], a
-	; Wait for 16 frames
-	ld c, 16
-	call DelayFrames
-	ret
 
 ErasePreviousSave:
 	call EraseBoxes

@@ -13,6 +13,22 @@ CianwoodGym_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_OBJECTS, CianwoodGymChuckCallback
+
+CianwoodGymChuckCallback:
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .ChuckCanDisappear
+	appear CIANWOODGYM_CHUCK
+	endcallback
+.ChuckCanDisappear:
+	readvar VAR_WEEKDAY
+	ifequal THURSDAY, .ChuckDisappear
+	ifequal FRIDAY, .ChuckDisappear
+	appear CIANWOODGYM_CHUCK
+	endcallback
+.ChuckDisappear:
+	disappear CIANWOODGYM_CHUCK
+	endcallback
 
 CianwoodGymChuckScript:
 	faceplayer

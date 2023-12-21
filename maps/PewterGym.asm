@@ -7,6 +7,22 @@ PewterGym_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_OBJECTS, PewterGymBrockCallback
+
+PewterGymBrockCallback:
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .BrockCanDisappear
+	appear PEWTERGYM_BROCK
+	endcallback
+.BrockCanDisappear:
+	readvar VAR_WEEKDAY
+	ifequal SATURDAY, .BrockDisappear
+	ifequal THURSDAY, .BrockDisappear
+	appear PEWTERGYM_BROCK
+	endcallback
+.BrockDisappear:
+	disappear PEWTERGYM_BROCK
+	endcallback
 
 PewterGymBrockScript:
 	faceplayer
@@ -52,6 +68,8 @@ TrainerCamperJerry:
 PewterGymGuideScript:
 	faceplayer
 	opentext
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .PewterGymGuideBrockHint
 	checkevent EVENT_BEAT_BROCK
 	iftrue .PewterGymGuideWinScript
 	writetext PewterGymGuideText
@@ -61,6 +79,12 @@ PewterGymGuideScript:
 
 .PewterGymGuideWinScript:
 	writetext PewterGymGuideWinText
+	waitbutton
+	closetext
+	end
+
+.PewterGymGuideBrockHint:
+	writetext PewterGymGuideHintText
 	waitbutton
 	closetext
 	end
@@ -206,6 +230,26 @@ PewterGymGuideWinText:
 	line "that seriously."
 	done
 
+PewterGymGuideHintText:
+	text "Hey, <PLAYER>!"
+	line "I can't forget"
+	
+	para "that amazing"
+	line "battle you had"
+	cont "with BROCK."
+
+	para "I hear he likes"
+	line "to hang out in"
+
+	para "ROCK TUNNEL on"
+	line "THURSDAYs and"
+	cont "SATURDAYs."
+
+	para "Maybe he'd have"
+	line "a rematch with"
+	cont "you!"
+	done
+
 PewterGym_MapEvents:
 	db 0, 0 ; filler
 
@@ -220,6 +264,6 @@ PewterGym_MapEvents:
 	bg_event  7, 11, BGEVENT_READ, PewterGymStatue
 
 	def_object_events
-	object_event  5,  1, SPRITE_BROCK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, PewterGymBrockScript, -1
+	object_event  5,  1, SPRITE_BROCK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, PewterGymBrockScript, EVENT_BROCK_IN_GYM
 	object_event  2,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerCamperJerry, -1
 	object_event  6, 11, SPRITE_GYM_GUIDE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 1, PewterGymGuideScript, -1

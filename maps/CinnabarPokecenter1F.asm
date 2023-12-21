@@ -2,6 +2,7 @@
 	const CINNABARPOKECENTER1F_NURSE
 	const CINNABARPOKECENTER1F_COOLTRAINER_F
 	const CINNABARPOKECENTER1F_FISHER
+	const CINNABARPOKECENTER1F_FISHER2
 
 CinnabarPokecenter1F_MapScripts:
 	def_scene_scripts
@@ -16,6 +17,9 @@ CinnabarPokecenter1FCooltrainerFScript:
 
 CinnabarPokecenter1FFisherScript:
 	jumptextfaceplayer CinnabarPokecenter1FFisherText
+	
+CinnabarPokecenter1FHikerScript:
+	jumptextfaceplayer CinnabarPokecenter1FHikerText
 
 CinnabarPokecenter1FCooltrainerFText:
 	text "CINNABAR GYM's"
@@ -30,6 +34,17 @@ CinnabarPokecenter1FFisherText:
 	text "It's been a year"
 	line "since the volcano"
 	cont "erupted."
+	done
+	
+CinnabarPokecenter1FHikerText:
+	text "After the volcano"
+	line "erupted, a new"
+
+	para "cavern appeared!"
+	line "Watch out, though!"
+	
+	para "Lava still flows"
+	line "down there…"
 	done
 
 CinnabarPokecenter1F_MapEvents:
@@ -48,3 +63,4 @@ CinnabarPokecenter1F_MapEvents:
 	object_event  3,  1, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CinnabarPokecenter1FNurseScript, -1
 	object_event  7,  6, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CinnabarPokecenter1FCooltrainerFScript, -1
 	object_event  2,  4, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CinnabarPokecenter1FFisherScript, -1
+	object_event  9,  4, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CinnabarPokecenter1FHikerScript, -1

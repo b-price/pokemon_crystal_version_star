@@ -33,3 +33,4 @@ RoamMaps:
 	roam_map ROUTE_46, ROUTE_45, ROUTE_29
 	assert_list_length NUM_ROAMMON_MAPS
 	db -1 ; end
+	

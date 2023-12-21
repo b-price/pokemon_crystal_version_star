@@ -12,6 +12,11 @@ AsleepTreeMonsNite:
 	db EXEGGCUTE
 	db LEDYBA
 	db AIPOM
+	db FEAROW
+	db	TANGELA
+	db ARBOK
+	db SCYTHER
+	db PINSIR
 	db -1 ; end
 
 AsleepTreeMonsDay:
@@ -28,4 +33,5 @@ AsleepTreeMonsMorn:
 	db NOCTOWL
 	db SPINARAK
 	db HERACROSS
+	db MANKEY
 	db -1 ; end

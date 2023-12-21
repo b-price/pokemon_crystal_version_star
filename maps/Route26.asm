@@ -25,7 +25,7 @@ TrainerCooltrainermJake:
 	end
 
 TrainerCooltrainermGaven3:
-	trainer COOLTRAINERM, GAVEN3, EVENT_BEAT_COOLTRAINERM_GAVEN, CooltrainermGaven3SeenText, CooltrainermGaven3BeatenText, 0, .Script
+	trainer COOLTRAINERM, GAVEN1, EVENT_BEAT_COOLTRAINERM_GAVEN, CooltrainermGaven3SeenText, CooltrainermGaven3BeatenText, 0, .Script
 
 .Script:
 	loadvar VAR_CALLERID, PHONE_COOLTRAINERM_GAVEN
@@ -67,7 +67,7 @@ TrainerCooltrainermGaven3:
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .LoadFight1
 .LoadFight0:
-	loadtrainer COOLTRAINERM, GAVEN3
+	loadtrainer COOLTRAINERM, GAVEN1
 	startbattle
 	reloadmapafterbattle
 	loadmem wGavenFightCount, 1
@@ -75,7 +75,7 @@ TrainerCooltrainermGaven3:
 	end
 
 .LoadFight1:
-	loadtrainer COOLTRAINERM, GAVEN1
+	loadtrainer COOLTRAINERM, GAVEN2
 	startbattle
 	reloadmapafterbattle
 	loadmem wGavenFightCount, 2
@@ -83,7 +83,7 @@ TrainerCooltrainermGaven3:
 	end
 
 .LoadFight2:
-	loadtrainer COOLTRAINERM, GAVEN2
+	loadtrainer COOLTRAINERM, GAVEN3
 	startbattle
 	reloadmapafterbattle
 	clearflag ENGINE_GAVEN_READY_FOR_REMATCH

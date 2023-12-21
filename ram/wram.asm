@@ -1893,7 +1893,16 @@ wMartItem7BCD:: ds 3
 wMartItem8BCD:: ds 3
 wMartItem9BCD:: ds 3
 wMartItem10BCD:: ds 3
-
+wMartItem11BCD:: ds 3
+wMartItem12BCD:: ds 3
+wMartItem13BCD:: ds 3
+wMartItem14BCD:: ds 3
+wMartItem15BCD:: ds 3
+wMartItem16BCD:: ds 3
+wMartItem17BCD:: ds 3
+wMartItem18BCD:: ds 3
+wMartItem19BCD:: ds 3
+wMartItem20BCD:: ds 3
 
 SECTION UNION "Miscellaneous WRAM 1", WRAMX
 
@@ -2322,7 +2331,7 @@ wUsingItemWithSelect:: db
 UNION
 ; mart data
 wCurMartCount:: db
-wCurMartItems:: ds 15
+wCurMartItems:: ds 21
 
 NEXTU
 ; elevator data
@@ -2375,7 +2384,7 @@ wSpriteFlags:: db
 
 wHandlePlayerStep:: db
 
-	ds 1
+wCurIconMonHasItemOrMail:: db
 
 wPartyMenuActionText:: db
 
@@ -3120,8 +3129,9 @@ wFastShipB1FSceneID::                             db
 wMountMoonSquareSceneID::                         db
 wMobileTradeRoomSceneID::                         db
 wMobileBattleRoomSceneID::                        db
+wSafariZoneMainOfficeSceneID::					  db
 
-	ds 49
+	ds 48
 
 ; fight counts
 wJackFightCount::    db
@@ -3212,6 +3222,8 @@ wMomItemTriggerBalance:: ds 3
 wDailyResetTimer:: dw
 wDailyFlags1:: db
 wDailyFlags2:: db
+wDailyFlags3:: db
+wDailyFlags4:: db
 wSwarmFlags:: db
 	ds 2
 wTimerEventStartDay:: db
@@ -3262,7 +3274,7 @@ wPhoneList:: ds CONTACT_LIST_SIZE + 1
 	ds 22
 
 wLuckyNumberShowFlag:: db
-	ds 1
+wRepelType:: db
 wLuckyIDNumber:: dw
 
 wRepelEffect:: db ; If a Repel is in use, it contains the nr of steps it's still active

@@ -51,6 +51,7 @@ TilesetKantoAnim:
 	dw NULL,  DoneTileAnimation
 
 TilesetParkAnim:
+TilesetSafariZoneAnim:	
 	dw vTiles2 tile $14, AnimateWaterTile
 	dw NULL,  WaitTileAnimation
 	dw vTiles2 tile $5f, AnimateFountainTile
@@ -236,6 +237,40 @@ TilesetTowerAnim:
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  DoneTileAnimation
+	
+TilesetCaveCinnabarAnim:
+	dw NULL,  AnimateLavaBubbleTile2
+	dw vTiles2 tile $14, ReadTileToAnimBuffer
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw wTileAnimBuffer, ScrollTileRightLeft
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw vTiles2 tile $14, WriteTileFromAnimBuffer
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw NULL,  AnimateWaterPalette
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw vTiles2 tile $40, ReadTileToAnimBuffer
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw wTileAnimBuffer, ScrollTileDown
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw wTileAnimBuffer, ScrollTileDown
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw wTileAnimBuffer, ScrollTileDown
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw vTiles2 tile $40, WriteTileFromAnimBuffer
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw NULL,  AnimateLavaBubbleTile1
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw vTiles2 tile $44, ReadTileToAnimBuffer
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw wTileAnimBuffer, ScrollTileDown
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw wTileAnimBuffer, ScrollTileDown
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw wTileAnimBuffer, ScrollTileDown
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw vTiles2 tile $44, WriteTileFromAnimBuffer
+	;dw NULL,  StandingTileFrame8
+	dw NULL,  DoneTileAnimation
 
 UnusedTilesetAnim5: ; unreferenced
 ; Scrolls tile $4f like cave water.
@@ -275,6 +310,8 @@ TilesetHoOhWordRoomAnim:
 TilesetKabutoWordRoomAnim:
 TilesetOmanyteWordRoomAnim:
 TilesetAerodactylWordRoomAnim:
+TilesetPowerPlantAnim:
+TilesetMuseumAnim:	
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation

@@ -774,7 +774,7 @@ _CGB_TrainerCardKanto:
 	lb bc, 3, 3
 	ld a, $2 ; brock
 	call FillBoxCGB
-	hlcoord 7, 10 wAttrmap
+	hlcoord 7, 10, wAttrmap
 	lb bc, 3, 3
 	ld a, $0 ; misty / chris
 	call FillBoxCGB

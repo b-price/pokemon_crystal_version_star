@@ -13,6 +13,7 @@ EcruteakGym_MapScripts:
 	scene_script EcruteakGymNoopScene,          SCENE_ECRUTEAKGYM_NOOP
 
 	def_callbacks
+	callback MAPCALLBACK_OBJECTS, EcruteakGymMortyCallback
 
 EcruteakGymForcedToLeaveScene:
 	sdefer EcruteakGymClosed
@@ -20,6 +21,21 @@ EcruteakGymForcedToLeaveScene:
 
 EcruteakGymNoopScene:
 	end
+
+EcruteakGymMortyCallback:
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .MortyCanDisappear
+	appear ECRUTEAKGYM_MORTY
+	endcallback
+.MortyCanDisappear:
+	readvar VAR_WEEKDAY
+	ifequal TUESDAY, .MortyDisappear
+	ifequal THURSDAY, .MortyDisappear
+	appear ECRUTEAKGYM_MORTY
+	endcallback
+.MortyDisappear:
+	disappear ECRUTEAKGYM_MORTY
+	endcallback
 
 EcruteakGymMortyScript:
 	faceplayer
@@ -142,9 +158,17 @@ TrainerMediumGrace:
 EcruteakGymGuideScript:
 	faceplayer
 	opentext
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .EcruteakGymGuideMortyHint
 	checkevent EVENT_BEAT_MORTY
 	iftrue .EcruteakGymGuideWinScript
 	writetext EcruteakGymGuideText
+	waitbutton
+	closetext
+	end
+
+.EcruteakGymGuideMortyHint:
+	writetext EcruteakGymGuideHintText
 	waitbutton
 	closetext
 	end
@@ -374,6 +398,24 @@ EcruteakGymGuideWinText:
 	cont "pure terror!"
 	done
 
+EcruteakGymGuideHintText:
+	text "Long time, no see!"
+	line "MORTY has really"
+	cont "been training"
+	cont "a lot lately."
+
+	para "He's not here on"
+	line "TUESDAYs and"
+	cont "THURSDAYs."
+
+	para "He mentioned a"
+	line "'town of spirits'"
+	cont "in KANTO."
+
+	para "I'll bet he's"
+	line "training there!"
+	done
+
 EcruteakGymClosedText:
 	text "MORTY, the GYM"
 	line "LEADER, is absent."
@@ -429,7 +471,7 @@ EcruteakGym_MapEvents:
 	bg_event  6, 15, BGEVENT_READ, EcruteakGymStatue
 
 	def_object_events
-	object_event  5,  1, SPRITE_MORTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, EcruteakGymMortyScript, -1
+	object_event  5,  1, SPRITE_MORTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, EcruteakGymMortyScript, EVENT_MORTY_IN_GYM
 	object_event  2,  7, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerSageJeffrey, -1
 	object_event  3, 13, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerSagePing, -1
 	object_event  7,  5, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerMediumMartha, -1

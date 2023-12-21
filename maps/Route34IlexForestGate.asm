@@ -46,23 +46,46 @@ Route34IlexForestGateTeacherScript:
 	opentext
 	checkevent EVENT_FOREST_IS_RESTLESS
 	iftrue .ForestIsRestless
-	checkevent EVENT_GOT_TM12_SWEET_SCENT
-	iftrue .GotSweetScent
+	checkevent EVENT_TALKED_TO_FOREST_GATE_MOVE_TUTOR
+	iffalse .FirstTime
+	writetext Route34IlexForestGateTeacherAskText
+	yesorno
+	iffalse .Refused
+	setval SWEET_SCENT
+	writetext Route34IlexForestGateTeacherMoveText
+	special MoveTutor
+	ifequal FALSE, .TeachMove
+	sjump .Incompatible
+.FirstTime:
 	writetext Route34IlexForestGateTeacherText
-	promptbutton
-	verbosegiveitem TM_SWEET_SCENT
-	iffalse .NoRoom
-	setevent EVENT_GOT_TM12_SWEET_SCENT
-.GotSweetScent:
-	writetext Route34IlexForestGateTeacher_GotSweetScent
+	setevent EVENT_TALKED_TO_FOREST_GATE_MOVE_TUTOR
 	waitbutton
-.NoRoom:
+	writetext Route34IlexForestGateTeacherAskText
+	yesorno
+	iffalse .Refused
+	setval SWEET_SCENT
+	writetext Route34IlexForestGateTeacherMoveText
+	special MoveTutor
+	ifequal FALSE, .TeachMove
+	sjump .Incompatible
+.Refused:
+	writetext Route34IlexForestGateTeacherRefusedText
+	waitbutton
 	closetext
 	end
-
+.Incompatible:
+	writetext Route34IlexForestGateTeacherCantText
+	waitbutton
+	closetext
+	end
 .ForestIsRestless:
 	writetext Route34IlexForestGateTeacher_ForestIsRestless
 	promptbutton
+	closetext
+	end
+.TeachMove:
+	writetext Route34IlexForestGateTeacherTaughtText
+	waitbutton
 	closetext
 	end
 
@@ -94,12 +117,29 @@ Route34IlexForestGateTeacherText:
 	para "It must be hard if"
 	line "#MON won't"
 
-	para "appear. Try using"
-	line "this TM."
+	para "appear. Luckily,"
+	line "I can teach your"
+	
+	para "#MON a move"
+	line "that can help"
+	cont "with that."
+	done
+	
+Route34IlexForestGateTeacherMoveText:
+	text "Alright! Let's"
+	line "get started."
+	done
+		
+Route34IlexForestGateTeacherAskText:	
+	text "You want me to"
+	line "teach one of your"
+	
+	para "#MON"
+	line "SWEET SCENT?"
 	done
 
-Route34IlexForestGateTeacher_GotSweetScent:
-	text "It's SWEET SCENT."
+Route34IlexForestGateTeacherTaughtText:
+	text "There!"
 
 	para "Use it wherever"
 	line "#MON appear."
@@ -114,6 +154,17 @@ Route34IlexForestGateTeacher_ForestIsRestless:
 
 	para "You should stay"
 	line "away right now."
+	done
+
+Route34IlexForestGateTeacherRefusedText:
+	text "No?"
+	line "OK, then."
+	done
+	
+Route34IlexForestGateTeacherCantText:
+	text "…Your #MON"
+	line "can't learn the"
+	cont "move, huh?"
 	done
 
 Route34IlexForestGateButterfreeText:

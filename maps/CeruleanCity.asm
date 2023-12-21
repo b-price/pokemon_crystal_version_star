@@ -5,15 +5,30 @@
 	const CERULEANCITY_COOLTRAINER_F
 	const CERULEANCITY_FISHER
 	const CERULEANCITY_YOUNGSTER
+	const CERULEANCITY_OFFICER
 
 CeruleanCity_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, CeruleanCityFlypointCallback
+	callback MAPCALLBACK_OBJECTS, CeruleanCityCallback
 
 CeruleanCityFlypointCallback:
 	setflag ENGINE_FLYPOINT_CERULEAN
+	endcallback
+
+CeruleanCityCallback:
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .NoAppear
+	sjump .Appear
+	
+.NoAppear:
+	disappear CERULEANCITY_OFFICER
+	endcallback
+	
+.Appear:
+	appear CERULEANCITY_OFFICER
 	endcallback
 
 CeruleanCityCooltrainerMScript:
@@ -135,9 +150,6 @@ CeruleanPoliceSign:
 CeruleanCapeSign:
 	jumptext CeruleanCapeSignText
 
-CeruleanLockedDoor:
-	jumptext CeruleanLockedDoorText
-
 CeruleanCityPokecenterSign:
 	jumpstd PokecenterSignScript
 
@@ -212,11 +224,15 @@ CeruleanCityFisherRocketTipText:
 	done
 
 CeruleanCityYoungsterText1:
-	text "There used to be a"
-	line "cave here that had"
+	text "There's a cave"
+	line "across the river"
 
-	para "horribly powerful"
-	line "#MON in it."
+	para "with horribly"
+	line "powerful #MON"
+	cont "in it."
+
+	para "No one is allowed"
+	line "in there!"
 	done
 
 CeruleanCityYoungsterText2:
@@ -243,12 +259,11 @@ CeruleanGymSignText:
 	done
 
 CeruleanBikeShopSignText:
-	text "There's a notice"
-	line "here…"
+	text "CERULEAN CITY"
+	line "BIKE SHOP"
 
-	para "The BIKE SHOP has"
-	line "moved to GOLDENROD"
-	cont "CITY in JOHTO…"
+	para "The original"
+	line "location!"
 	done
 
 CeruleanPoliceSignText:
@@ -269,10 +284,6 @@ CeruleanCapeSignText:
 	line "AHEAD"
 	done
 
-CeruleanLockedDoorText:
-	text "It's locked…"
-	done
-
 CeruleanCity_MapEvents:
 	db 0, 0 ; filler
 
@@ -283,6 +294,7 @@ CeruleanCity_MapEvents:
 	warp_event 19, 21, CERULEAN_POKECENTER_1F, 1
 	warp_event 30, 23, CERULEAN_GYM, 1
 	warp_event 25, 29, CERULEAN_MART, 2
+	warp_event 14, 29, CERULEAN_BIKE_SHOP, 1
 
 	def_coord_events
 
@@ -292,7 +304,6 @@ CeruleanCity_MapEvents:
 	bg_event 11, 29, BGEVENT_READ, CeruleanBikeShopSign
 	bg_event 25, 17, BGEVENT_READ, CeruleanPoliceSign
 	bg_event 23,  7, BGEVENT_READ, CeruleanCapeSign
-	bg_event 14, 29, BGEVENT_READ, CeruleanLockedDoor
 	bg_event 20, 21, BGEVENT_READ, CeruleanCityPokecenterSign
 	bg_event 26, 29, BGEVENT_READ, CeruleanCityMartSign
 	bg_event  2, 12, BGEVENT_ITEM, CeruleanCityHiddenBerserkGene
@@ -304,3 +315,4 @@ CeruleanCity_MapEvents:
 	object_event 21, 24, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeruleanCityCooltrainerFScript, -1
 	object_event 30, 26, SPRITE_FISHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanCityFisherScript, -1
 	object_event  6, 12, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 1, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanCityYoungsterScript, -1
+	object_event -4, 14, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route4Officer, EVENT_OPENED_MT_SILVER

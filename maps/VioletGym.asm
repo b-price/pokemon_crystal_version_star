@@ -8,6 +8,22 @@ VioletGym_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_OBJECTS, VioletGymFalknerCallback
+
+VioletGymFalknerCallback:
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .FalknerCanDisappear
+	appear VIOLETGYM_FALKNER
+	endcallback
+.FalknerCanDisappear:
+	readvar VAR_WEEKDAY
+	ifequal SATURDAY, .FalknerDisappear
+	ifequal SUNDAY, .FalknerDisappear
+	appear VIOLETGYM_FALKNER
+	endcallback
+.FalknerDisappear:
+	disappear VIOLETGYM_FALKNER
+	endcallback
 
 VioletGymFalknerScript:
 	faceplayer
@@ -89,6 +105,8 @@ TrainerBirdKeeperAbe:
 VioletGymGuideScript:
 	faceplayer
 	opentext
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .VioletGymGuideFalknerHint
 	checkevent EVENT_BEAT_FALKNER
 	iftrue .VioletGymGuideWinScript
 	writetext VioletGymGuideText
@@ -98,6 +116,12 @@ VioletGymGuideScript:
 
 .VioletGymGuideWinScript:
 	writetext VioletGymGuideWinText
+	waitbutton
+	closetext
+	end
+
+.VioletGymGuideFalknerHint:
+	writetext VioletGymGuideHintText
 	waitbutton
 	closetext
 	end
@@ -152,12 +176,9 @@ ReceivedZephyrBadgeText:
 	done
 
 FalknerZephyrBadgeText:
-	text "ZEPHYRBADGE"
-	line "raises the attack"
-	cont "power of #MON."
-
-	para "It also enables"
-	line "#MON to use"
+	text "That ZEPHYRBADGE"
+	line "will enable"
+	cont "#MON to use"
 
 	para "FLASH, if they"
 	line "have it, anytime."
@@ -279,6 +300,18 @@ VioletGymGuideWinText:
 	line "time at all!"
 	done
 
+VioletGymGuideHintText:
+	text "Long time, no see!"
+	line "FALKNER has really"
+	cont "been training"
+	cont "a lot lately."
+
+	para "I hear he likes"
+	line "to hang out just"
+	cont "west of CELADON"
+	cont "on the weekends."
+	done
+
 VioletGym_MapEvents:
 	db 0, 0 ; filler
 
@@ -293,7 +326,7 @@ VioletGym_MapEvents:
 	bg_event  6, 13, BGEVENT_READ, VioletGymStatue
 
 	def_object_events
-	object_event  5,  1, SPRITE_FALKNER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, VioletGymFalknerScript, -1
-	object_event  7,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 2, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBirdKeeperRod, -1
-	object_event  2, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 2, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBirdKeeperAbe, -1
+	object_event  5,  1, SPRITE_FALKNER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, VioletGymFalknerScript, EVENT_FALKNER_IN_GYM
+	object_event  7,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 2, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBirdKeeperRod, -1 
+	object_event  2, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 2, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBirdKeeperAbe, -1 
 	object_event  7, 13, SPRITE_GYM_GUIDE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, VioletGymGuideScript, -1

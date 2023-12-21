@@ -32,6 +32,10 @@ Marts:
 	dw MartCeladon5F2
 	dw MartFuchsia
 	dw MartSaffron
+	dw MartSilphTM1
+	dw MartSilphTM2
+	dw MartSilphTM3
+	dw MartSilphStones
 	dw MartMtMoon
 	dw MartIndigoPlateau
 	dw MartUnderground
@@ -370,13 +374,91 @@ MartSaffron:
 	db X_DEFEND
 	db FLOWER_MAIL
 	db -1 ; end
-
+	
+	MartSilphTM1:
+		db 17 ; # items
+		db TM_DYNAMICPUNCH ; bf
+		db TM_HEADBUTT     ; c0
+		db TM_CURSE        ; c1
+		db TM_ROLLOUT      ; c2
+		db TM_ROAR         ; c4
+		db TM_TOXIC        ; c5
+		db TM_ZAP_CANNON   ; c6
+		db TM_ROCK_SMASH   ; c7
+		db TM_PSYCH_UP     ; c8
+		db TM_HIDDEN_POWER ; c9
+		db TM_SUNNY_DAY    ; ca
+		db TM_ICE_BEAM  ; cb
+		db TM_SNORE        ; cc
+		db TM_BLIZZARD     ; cd
+		db TM_HYPER_BEAM   ; ce
+		db TM_ICY_WIND     ; cf
+		db TM_PROTECT      ; d0
+		db -1 ; end
+	
+	MartSilphTM2:
+		db 17 ; # items
+		db TM_RAIN_DANCE   ; d1
+		db TM_GIGA_DRAIN   ; d2
+		db TM_ENDURE       ; d3
+		db TM_FRUSTRATION  ; d4
+		db TM_SOLARBEAM    ; d5
+		db TM_IRON_TAIL    ; d6
+		db TM_DRAGONBREATH ; d7
+		db TM_THUNDER      ; d8
+		db TM_EARTHQUAKE   ; d9
+		db TM_RETURN       ; da
+		db TM_DIG          ; db
+		db TM_PSYCHIC_M    ; dd
+		db TM_SHADOW_BALL  ; de
+		db TM_MUD_SLAP     ; df
+		db TM_DOUBLE_TEAM  ; e0
+		db TM_ICE_PUNCH    ; e1
+		db TM_THUNDERBOLT      ; e2
+		db -1 ; end
+	
+	MartSilphTM3:
+		db 16 ; # items
+		db TM_SLEEP_TALK   ; e3
+		db TM_SLUDGE_BOMB  ; e4
+		db TM_SANDSTORM    ; e5
+		db TM_FIRE_BLAST   ; e6
+		db TM_SWIFT        ; e7
+		db TM_DEFENSE_CURL ; e8
+		db TM_THUNDERPUNCH ; e9
+		db TM_DREAM_EATER  ; ea
+		db TM_FLAMETHROWER      ; eb
+		db TM_REST         ; ec
+		db TM_ATTRACT      ; ed
+		db TM_THIEF        ; ee
+		db TM_STEEL_WING   ; ef
+		db TM_FIRE_PUNCH   ; f0
+		db TM_FURY_CUTTER  ; f1
+		db TM_NIGHTMARE    ; f2
+		db -1 ; end
+	
+	MartSilphStones:
+		db 11
+		db FIRE_STONE
+		db THUNDERSTONE
+		db WATER_STONE
+		db LEAF_STONE
+		db MOON_STONE
+		db SUN_STONE
+		db METAL_COAT
+		db KINGS_ROCK
+		db DRAGON_SCALE
+		db UP_GRADE
+		db RARE_CANDY
+		db -1 ; end
+	
 MartMtMoon:
-	db 6 ; # items
+	db 7 ; # items
 	db POKE_DOLL
 	db FRESH_WATER
 	db SODA_POP
 	db LEMONADE
+	db MOON_STONE
 	db REPEL
 	db PORTRAITMAIL
 	db -1 ; end

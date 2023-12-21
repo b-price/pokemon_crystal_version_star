@@ -3,6 +3,8 @@
 	const ROUTE17_BIKER2
 	const ROUTE17_BIKER3
 	const ROUTE17_BIKER4
+	const ROUTE17_BIKER5
+	const ROUTE17_BIKER6
 
 Route17_MapScripts:
 	def_scene_scripts
@@ -55,6 +57,28 @@ TrainerBikerGlenn:
 	endifjustbattled
 	opentext
 	writetext BikerGlennAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerBikerBrett:
+	trainer BIKER, BRETT, EVENT_BEAT_BIKER_BRETT, BikerBrettSeenText, BikerBrettBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext BikerBrettAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerBikerAnton:
+	trainer BIKER, ANTON, EVENT_BEAT_BIKER_ANTON, BikerAntonSeenText, BikerAntonBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext BikerAntonAfterBattleText
 	waitbutton
 	closetext
 	end
@@ -129,6 +153,39 @@ BikerCharlesAfterBattleText:
 	line "causes accidents!"
 	cont "Take it easy!"
 	done
+	
+BikerAntonSeenText:
+	text "I can't get enough"
+	line "of the rush of a"
+	cont "downhill ride!"
+	done
+
+BikerAntonBeatenText:
+	text "Whoa!"
+	done
+
+BikerAntonAfterBattleText:
+	text "Chill out, dude!"
+	done
+	
+BikerBrettSeenText:
+	text "My engine is"
+	line "bigger than yours!"
+	done
+
+BikerBrettBeatenText:
+	text "Too bad my battle"
+	line "skill isn't…"
+	done
+
+BikerBrettAfterBattleText:
+	text "Those KANTO #MON"
+	line "FEDERATION freaks"
+	
+	para "love bragging"
+	line "about their"
+	cont "engines…"
+	done
 
 Route17_MapEvents:
 	db 0, 0 ; filler
@@ -148,3 +205,5 @@ Route17_MapEvents:
 	object_event  9, 68, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerBikerJoel, -1
 	object_event  3, 53, SPRITE_BIKER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerBikerGlenn, -1
 	object_event  6, 80, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 4, TrainerBikerCharles, -1
+	object_event 18, 23, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 4, TrainerBikerBrett, -1
+	object_event 18, 59, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 4, TrainerBikerAnton, -1
