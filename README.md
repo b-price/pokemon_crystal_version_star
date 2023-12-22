@@ -23,8 +23,6 @@ Issues:
 - Cave entrances no longer flicker, except dark palette
 
 Future Implementations:
-- Running shoes
-- Underground path updates
 - Daily lucky number
   
 Credits:
