@@ -1,6 +1,8 @@
 # Pokemon Crystal Version *
 By Ben Price
 
+![img](screenshots/titlescreen.png)
+
 Features:
 
 - Balanced, though challenging difficulty curve
@@ -11,6 +13,7 @@ Features:
 - 100+ new trainers
 - New move tutor moves
 - No significant story or mechanics changes
+- See [CHANGES.md](CHANGES.md) for more
 
 How to play:
 - Download the latest release and load into your favorite GBC emulator
