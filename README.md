@@ -24,7 +24,6 @@ Issues:
 
 Future Implementations:
 - Running shoes
-- Daily lucky number
   
 Credits:
 - Based heavily on pret's pokecrystal disassembly and its tutorials
