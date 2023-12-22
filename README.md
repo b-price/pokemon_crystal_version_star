@@ -24,9 +24,10 @@ Issues:
 
 Future Implementations:
 - Running shoes
-- Underground path updates
 - Daily lucky number
   
 Credits:
-- Based heavily on pret's pokecrystal disassembly
+- Based heavily on pret's pokecrystal disassembly and its tutorials
+- Utilized Rangi42's Polished Map for map/tileset editing
+- Additional Pokemon overwold sprites by LuigiTKO
   
