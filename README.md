@@ -29,4 +29,5 @@ Future Implementations:
   
 Credits:
 - Based heavily on pret's pokecrystal disassembly
+- Running sprites by Tom Wang and Seasick
   
