@@ -22,12 +22,9 @@ How to play:
 Issues:
 - Cave entrances no longer flicker, except dark palette
 
-Future Implementations:
-- Running shoes
-- Daily lucky number
-  
 Credits:
 - Based heavily on pret's pokecrystal disassembly and its tutorials
 - Utilized Rangi42's Polished Map for map/tileset editing
 - Additional Pokemon overwold sprites by LuigiTKO
+- Running sprites by Tom Wang and Seasick
   
