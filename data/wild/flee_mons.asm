@@ -28,5 +28,4 @@ OftenFleeMons:
 AlwaysFleeMons:
 	db RAIKOU
 	db ENTEI
-	db MEW
 	db -1

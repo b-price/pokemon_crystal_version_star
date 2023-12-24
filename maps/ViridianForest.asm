@@ -41,7 +41,7 @@ ViridianForestBugsyMewCallback:
 
 .MewCanAppear:
 	disappear VIRIDIAN_FOREST_BUGSY
-	checkflag EVENT_FOUGHT_MEW
+	checkevent EVENT_FOUGHT_MEW
 	iftrue .NoAppear
 	appear VIRIDIAN_FOREST_MEW
 	endcallback

@@ -56,7 +56,7 @@ TestWarpRoom_MapEvents:
 
 	def_warp_events
 	warp_event  1,  7, ELMS_LAB, 2
-	warp_event  3,  7, RADIO_TOWER_5F, 2 
+	warp_event  3,  7, VIRIDIAN_FOREST, 1
 	warp_event  5,  7, ROUTE_44, 1 
 	warp_event  7,  7, ROUTE_16, 4
 	warp_event  9,  7, POWER_PLANT_B1F, 1
