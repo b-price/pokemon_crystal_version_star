@@ -13,10 +13,13 @@
 
 # Quality of Life Improvements
 - Saving is now instant
+- Hold B to run
 - New text speed option: instant
 - Kurt makes Pokeballs instantly
 - Repels can be used continuously without going into menu
 - Simply press down, B, select simultaneously at the title screen to reset the clock
+- Lucky Number Game is now daily instead of weekly
+- Numerous bug fixes
 
 ![img](screenshots/seafoamislands2.png)
 ![img](screenshots/powerplant1.png)

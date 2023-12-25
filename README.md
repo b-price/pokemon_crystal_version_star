@@ -27,4 +27,7 @@ Credits:
 - Utilized Rangi42's Polished Map for map/tileset editing
 - Additional Pokemon overwold sprites by LuigiTKO
 - Running sprites by Tom Wang and Seasick
+
+Use:
+- Feel free to use but credit me
   
